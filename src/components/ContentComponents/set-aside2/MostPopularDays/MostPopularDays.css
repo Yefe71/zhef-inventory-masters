@@ -1,0 +1,34 @@
+
+.head-total-orders{
+    display: flex;
+}
+
+.total-num{
+    font-size: 1.8rem;
+    font-weight: 600;
+    flex: 1 1 auto;
+    
+}
+
+
+.image-wrapper{
+    display: flex;
+    background-color: #ced1f4;
+    width:46px;
+    height: 46px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    
+    
+}
+
+.image-wrapper img{
+    width:30px;
+    height: 30px;
+}
+
+.head-description{
+    position: relative;
+    top: -8px;
+}

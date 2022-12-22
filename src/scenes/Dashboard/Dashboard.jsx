@@ -1,14 +1,14 @@
 // Imports
 import "./Dashboard.css"
 import profileImg from './images/dp.jpg'
-import {Grid, StyleTotalOrder, StyleMostPopularDays, StyleMostPopularTime, StyleBestSellingItem, StyleRevenueChart, StyleOrderSummaryChart, StyleOrderDataTable, StyleHeader} from '../../components/Layout/Grid'
+import {Grid, StyleTotalRevenue, StyleTotalOrders, StyleNewCustomers, StyleHeader, StyleRevenueChart, StyleOrderSummaryChart, StyleOrderDataTable} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
-import TotalOrders from "../../components/ContentComponents/TotalRevenue/TotalRevenue"
+import TotalRevenue from "../../components/ContentComponents/TotalRevenue/TotalRevenue"
 import Revenue from '../../components/ContentComponents/Revenue/Revenue'
 import OrderDataTable from '../../components/ContentComponents/OrderDataTable/OrderDataTable'
 import OrderSummary from '../../components/ContentComponents/OrderSummary/OrderSummary'
-import Cards from '../../components/Cards/Cards'
-import MostPopularDays from "../../components/ContentComponents/MostPopularDays/MostPopularDays"
+import TotalOrders from "../../components/ContentComponents/TotalOrders/TotalOrders"
+import NewCustomers from "../../components/ContentComponents/NewCustomers/NewCustomers"
 
 const Dashboard = () => {
 
@@ -35,12 +35,12 @@ const Dashboard = () => {
 
                   <Grid>
                     <StyleHeader>Dashboard</StyleHeader>
-                    <StyleTotalOrder> <TotalOrders/> </StyleTotalOrder>
-                    <StyleTotalOrder> <MostPopularDays/>  </StyleTotalOrder>   
-
+                    <StyleTotalRevenue> <TotalRevenue/> </StyleTotalRevenue>
+                    <StyleTotalOrders>  <TotalOrders/> </StyleTotalOrders>   
+                    <StyleNewCustomers> <NewCustomers/></StyleNewCustomers>  
                     {/*  
 
-                    <StyleMostPopularDays> </StyleMostPopularDays>   
+                     
 
                     <StyleMostPopularTime>  </StyleMostPopularTime>
 

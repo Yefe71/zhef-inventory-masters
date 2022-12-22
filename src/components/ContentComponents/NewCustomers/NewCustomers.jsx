@@ -1,8 +1,8 @@
 import React from 'react';
-import './TotalRevenue.css'
+import './NewCustomers.css'
 import check from '../../../scenes/Dashboard/images/check.svg'
 import SkillsBar from '../../Charts/ChartTotalOrders/ChartTotalOrders.';
-import Card from '../TotalRevenue/Card/Card';
+import Card from '../NewCustomers/Card/Card';
 import { CardsData } from '../../../Data/Data';
 
 
@@ -10,7 +10,7 @@ import { CardsData } from '../../../Data/Data';
 const TotalOrders = () => {
 
         {
-          const card = CardsData[0];
+          const card = CardsData[2];
             return(
             <div>
               <Card title = {card.title}

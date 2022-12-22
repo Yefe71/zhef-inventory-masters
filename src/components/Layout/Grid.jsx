@@ -15,23 +15,25 @@ export const Grid = styled.div`
     gap: 1rem;
     `;
 
-export const StyleTotalOrder= styled(Card)`
-   
+export const StyleTotalRevenue= styled(Card)`
+    grid-area: top1;
     padding: 0;
 
     
     
     `;
 
-export const StyleMostPopularDays= styled(Card)`
-    background: white;
+export const StyleTotalOrders= styled(Card)`
     grid-area: top2;
+    padding: 0;
+
     `;
 
 
-export const StyleMostPopularTime= styled(Card)`
-    background: white;
+export const StyleNewCustomers= styled(Card)`
     grid-area: top3;
+    padding: 0;
+
     `;
 
 export const StyleBestSellingItem= styled(Card)`

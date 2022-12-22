@@ -62,7 +62,7 @@ import {
         
       },
       barValue: 80,
-      value: "10",
+      value: "80",
       png: UilMoneyWithdrawal,
       series: [
         {
@@ -76,17 +76,17 @@ import {
 
 
     {
-      title: "Expenses",
+      title: "New Customers",
       gridArea: 'top3',
       color: {
-        backGround: "white",
+        backGround: "#7ca3de",
       },
       barValue: 60,
-      value: "4,270",
+      value: "15",
       png: UilClipboardAlt,
       series: [
         {
-          name: "Expenses",
+          name: "New Customers",
           data: [10, 25, 15, 30, 12, 15, 20],
         },
       ],
