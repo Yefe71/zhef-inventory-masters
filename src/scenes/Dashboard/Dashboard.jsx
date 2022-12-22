@@ -3,14 +3,12 @@ import "./Dashboard.css"
 import profileImg from './images/dp.jpg'
 import {Grid, StyleTotalOrder, StyleMostPopularDays, StyleMostPopularTime, StyleBestSellingItem, StyleRevenueChart, StyleOrderSummaryChart, StyleOrderDataTable, StyleHeader} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
-import BestSellingItem from '../../components/ContentComponents/BestSellingItem/BestSellingItem'
-import MostPopularDays from '../../components/ContentComponents/MostPopularDays/MostPopularDays'
+import TotalOrders from "../../components/ContentComponents/TotalRevenue/TotalRevenue"
 import Revenue from '../../components/ContentComponents/Revenue/Revenue'
-import MostPopularTime from '../../components/ContentComponents/MostPopularTime/MostPopularTime'
 import OrderDataTable from '../../components/ContentComponents/OrderDataTable/OrderDataTable'
 import OrderSummary from '../../components/ContentComponents/OrderSummary/OrderSummary'
-import TotalOrders from '../../components/ContentComponents/TotalOrders/TotalOrders'
-
+import Cards from '../../components/Cards/Cards'
+import MostPopularDays from "../../components/ContentComponents/MostPopularDays/MostPopularDays"
 
 const Dashboard = () => {
 
@@ -37,14 +35,16 @@ const Dashboard = () => {
 
                   <Grid>
                     <StyleHeader>Dashboard</StyleHeader>
+                    <StyleTotalOrder> <TotalOrders/> </StyleTotalOrder>
+                    <StyleTotalOrder> <MostPopularDays/>  </StyleTotalOrder>   
 
-                    <StyleTotalOrder> <TotalOrders/> </StyleTotalOrder>    
+                    {/*  
 
-                    <StyleMostPopularDays> <MostPopularDays/> </StyleMostPopularDays>   
+                    <StyleMostPopularDays> </StyleMostPopularDays>   
 
-                    <StyleMostPopularTime> <MostPopularTime/> </StyleMostPopularTime>
+                    <StyleMostPopularTime>  </StyleMostPopularTime>
 
-                    <StyleBestSellingItem> <BestSellingItem/> </StyleBestSellingItem>
+                    <StyleBestSellingItem>  </StyleBestSellingItem> */}
 
                     <StyleRevenueChart> <Revenue/> </StyleRevenueChart>
 

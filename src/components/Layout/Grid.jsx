@@ -16,8 +16,11 @@ export const Grid = styled.div`
     `;
 
 export const StyleTotalOrder= styled(Card)`
-    background: white;
-    grid-area: top1;
+   
+    padding: 0;
+
+    
+    
     `;
 
 export const StyleMostPopularDays= styled(Card)`

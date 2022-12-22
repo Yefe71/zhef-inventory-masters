@@ -94,6 +94,10 @@ onRouteChange = (route) => {
   this.setState({route: route})
 }
 
+//total orders chart
+getTotalOrders = () => {
+
+}
 
 render(){
   const {isSignedIn, imageUrl} = this.state;

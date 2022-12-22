@@ -6,7 +6,7 @@ const Card = styled.div`
     background: white;
     border: 1px solid #eeefef;
     transition: 0.3s;
-  
+    padding: 1.5rem;
     
     `;
 
