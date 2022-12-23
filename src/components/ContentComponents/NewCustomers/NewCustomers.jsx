@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewCustomers.css'
 import check from '../../../scenes/Dashboard/images/check.svg'
-import SkillsBar from '../../Charts/ChartTotalOrders/ChartTotalOrders.';
+
 import Card from '../NewCustomers/Card/Card';
 import { CardsData } from '../../../Data/Data';
 

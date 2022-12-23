@@ -1,8 +1,8 @@
 import React from 'react';
 import './TotalOrders.css'
 import check from '../../../scenes/Dashboard/images/check.svg'
-import SkillsBar from '../../Charts/ChartTotalOrders/ChartTotalOrders.';
-import Card from '../TotalOrders/Card/Card';
+
+import Card from './Card/Card';
 import { CardsData } from '../../../Data/Data';
 
 

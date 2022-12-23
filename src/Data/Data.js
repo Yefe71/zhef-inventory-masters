@@ -42,7 +42,7 @@ import {
         backGround: "#79b665",
       },
       barValue: 70,
-      value: "25,970",
+      value: "4,500",
       png: UilUsdSquare,
       series: [
         {
@@ -79,7 +79,7 @@ import {
       title: "New Customers",
       gridArea: 'top3',
       color: {
-        backGround: "#7ca3de",
+        backGround: "#07adb6",
       },
       barValue: 60,
       value: "15",
@@ -102,7 +102,7 @@ import {
         backGround: "#f1592a"
       },
       barValue: 60,
-      value: "Burger",
+      value: "Egg",
       png: UilClipboardAlt,
       series: [44, 55, 41, 17, 15],
       labels: ['A', 'B', 'C', 'D', 'E'],

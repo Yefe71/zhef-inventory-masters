@@ -6,7 +6,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { motion } from "framer-motion";
 import { UilTimes } from "@iconscout/react-unicons";
 import Chart from "react-apexcharts";
-import './Card.css'
+
 
 
 const Card = (props) => {
@@ -51,7 +51,7 @@ function CompactCard ({param, setExpanded}){
             <div className="detail">
                 <Png/>
                 <span>{param.value}</span>
-                <span>Goal Today: 100 Orders</span>
+                <span>Goal: 100 Orders</span>
             </div>
         </motion.div>
     )

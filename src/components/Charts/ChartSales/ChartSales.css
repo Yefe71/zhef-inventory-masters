@@ -1,0 +1,13 @@
+.mixed-chart{
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0;
+padding-left: 0px;
+}
+
+.mixed-chart *{
+
+}
+
+

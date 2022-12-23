@@ -10,6 +10,9 @@ import OrderSummary from '../../components/ContentComponents/OrderSummary/OrderS
 import TotalOrders from "../../components/ContentComponents/TotalOrders/TotalOrders"
 import NewCustomers from "../../components/ContentComponents/NewCustomers/NewCustomers"
 import BestSellingItem from "../../components/ContentComponents/BestSellingItem/BestSellingItem"
+import MostPopularTime from "../../components/ContentComponents/MostPopularTime/MostPopularTime"
+import Table from "../../components/ContentComponents/Table/Table"
+
 
 const Dashboard = () => {
 
@@ -39,7 +42,7 @@ const Dashboard = () => {
                     <StyleTotalRevenue> <TotalRevenue/> </StyleTotalRevenue>
                     <StyleTotalOrders>  <TotalOrders/> </StyleTotalOrders>   
                     <StyleNewCustomers> <NewCustomers/></StyleNewCustomers>
-                    <StyleBestSellingItem>  <BestSellingItem/> </StyleBestSellingItem>
+                    <StyleBestSellingItem> <BestSellingItem/> </StyleBestSellingItem>
                     {/*  
 
                      
@@ -50,11 +53,11 @@ const Dashboard = () => {
 
                     <StyleRevenueChart> <Revenue/> </StyleRevenueChart>
 
-                    <StyleOrderSummaryChart> <OrderSummary/> </StyleOrderSummaryChart>
+                    <StyleOrderSummaryChart> <MostPopularTime/> </StyleOrderSummaryChart>
 
                   </Grid>
                    
-                  <StyleOrderDataTable> <OrderDataTable/> </StyleOrderDataTable>
+                  <StyleOrderDataTable> <Table/> </StyleOrderDataTable>
 
                 </Container>
               </div>

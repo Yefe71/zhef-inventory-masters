@@ -6,7 +6,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { motion } from "framer-motion";
 import { UilTimes } from "@iconscout/react-unicons";
 import Chart from "react-apexcharts";
-import './Card.css'
+
 import New from './new.svg'
 
 const Card = (props) => {

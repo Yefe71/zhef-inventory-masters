@@ -10,10 +10,7 @@
     padding: 1rem;
 }
 
-.CompactCard:hover{
-    box-shadow: none !important;
 
-}
 
 .radialBar{
     flex: 2;
@@ -76,7 +73,7 @@
     position:absolute;
     width: 60%;
     height: 70vh;
-    z-index: 9;
+    z-index: 1000;
     left: 37rem !important;
     border-radius: 1rem;
     display: flex;
@@ -84,6 +81,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
+  
 }
 
 
@@ -101,5 +99,6 @@
 }
 
 .chartContainer{
-    width: 50%;
+    width: 55%;
+    color: white;
 }

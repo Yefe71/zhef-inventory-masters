@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import Card from "./Card";
+import Card from "./CardParent";
 export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 0.5fr 3fr 2.5fr 2.5fr;
+    grid-template-rows: 0.5fr 2.5fr 2.4fr 2.5fr;
     
         
     grid-template-areas:
@@ -43,22 +43,22 @@ export const StyleBestSellingItem= styled(Card)`
     `;
 
 export const StyleRevenueChart= styled(Card)`
-    background: white;
+    background: #0f0f0f;
     grid-area: chart1;
     `;
 
 export const StyleOrderSummaryChart= styled(Card)`
-    background: white;
+    background: #234896;
     grid-area: chart2;
     `;
 
 
 export const StyleOrderDataTable= styled(Card)`
-    background: white;
+    background: #1e3c7e;
     width: 100%;
     margin-top: 1rem;
     height: 30rem;
-    `;
+    box-shadow: 0 0 0 6 8px #ccc   `;
 
 export const StyleHeader = styled.div`
    
