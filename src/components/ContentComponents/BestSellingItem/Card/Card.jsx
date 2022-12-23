@@ -6,7 +6,8 @@ import "react-circular-progressbar/dist/styles.css";
 import { motion } from "framer-motion";
 import { UilTimes } from "@iconscout/react-unicons";
 import Chart from "react-apexcharts";
-import './Card1.css'
+import './Card2.css'
+import New from './new.svg'
 
 
 const Card = (props) => {
@@ -41,16 +42,14 @@ function CompactCard ({param, setExpanded}){
         onClick = {setExpanded}
         >
             <div className="radialBar">
-                <CircularProgressbar
-                value = {param.barValue}
-                text = {`${param.barValue}%`}
-                />
-                <span>Total<br/>Revenue</span>
+                <img src = {New} alt="" />
+                <span>Most<br/>Popular Dish</span>
+                
             </div>
             <div className="detail">
                 <Png/>
-                <span>P{param.value}</span>
-                <span>Last 24 hours</span>
+                <span>{param.value}</span>
+                <span>of all time</span>
             </div>
         </motion.div>
     )
@@ -59,54 +58,7 @@ function CompactCard ({param, setExpanded}){
 function ExpandedCard ({param, setExpanded}){
     const data = {
         options: {
-            chart:{
-                chart: {
-                    type: "area",
-                    height: "auto",
-                  },
-
-                  dropShadow: {
-                    enabled: false,
-                    enabledOnSeries: undefined,
-                    top: 0,
-                    left: 0,
-                    blur: 3,
-                    color: "#000",
-                    opacity: 0.35,
-                  },
-
-                  fill: {
-                    colors: ["#fff"],
-                    type: "gradient",
-                  },
-                  dataLabels: {
-                    enabled: false,
-                  },
-                  stroke: {
-                    curve: "smooth",
-                    colors: ["white"],
-                  },
-                  tooltip: {
-                    x: {
-                      format: "dd/MM/yy HH:mm",
-                    },
-                  },
-                  grid: {
-                    show: true,
-                  },
-                  xaxis: {
-                    type: "datetime",
-                    categories: [
-                      "2018-09-19T00:00:00.000Z",
-                      "2018-09-19T01:30:00.000Z",
-                      "2018-09-19T02:30:00.000Z",
-                      "2018-09-19T03:30:00.000Z",
-                      "2018-09-19T04:30:00.000Z",
-                      "2018-09-19T05:30:00.000Z",
-                      "2018-09-19T06:30:00.000Z",
-                    ],
-                  }
-            }
+            
         }
     }
     return (
@@ -125,7 +77,7 @@ function ExpandedCard ({param, setExpanded}){
             </div>
             <span>{param.title}</span>
             <div className="chartContainer">
-                <Chart series = {param.series} type = 'area' options = {data.options}/>
+                <Chart series = {param.series} type = 'donut' options = {data.options}/>
             </div>
             <span>Last 24 hours</span>
 

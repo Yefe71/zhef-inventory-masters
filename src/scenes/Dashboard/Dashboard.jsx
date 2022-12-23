@@ -1,7 +1,7 @@
 // Imports
 import "./Dashboard.css"
 import profileImg from './images/dp.jpg'
-import {Grid, StyleTotalRevenue, StyleTotalOrders, StyleNewCustomers, StyleHeader, StyleRevenueChart, StyleOrderSummaryChart, StyleOrderDataTable} from '../../components/Layout/Grid'
+import {Grid, StyleTotalRevenue, StyleTotalOrders, StyleNewCustomers, StyleBestSellingItem, StyleHeader, StyleRevenueChart, StyleOrderSummaryChart, StyleOrderDataTable} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
 import TotalRevenue from "../../components/ContentComponents/TotalRevenue/TotalRevenue"
 import Revenue from '../../components/ContentComponents/Revenue/Revenue'
@@ -9,6 +9,7 @@ import OrderDataTable from '../../components/ContentComponents/OrderDataTable/Or
 import OrderSummary from '../../components/ContentComponents/OrderSummary/OrderSummary'
 import TotalOrders from "../../components/ContentComponents/TotalOrders/TotalOrders"
 import NewCustomers from "../../components/ContentComponents/NewCustomers/NewCustomers"
+import BestSellingItem from "../../components/ContentComponents/BestSellingItem/BestSellingItem"
 
 const Dashboard = () => {
 
@@ -37,12 +38,13 @@ const Dashboard = () => {
                     <StyleHeader>Dashboard</StyleHeader>
                     <StyleTotalRevenue> <TotalRevenue/> </StyleTotalRevenue>
                     <StyleTotalOrders>  <TotalOrders/> </StyleTotalOrders>   
-                    <StyleNewCustomers> <NewCustomers/></StyleNewCustomers>  
+                    <StyleNewCustomers> <NewCustomers/></StyleNewCustomers>
+                    <StyleBestSellingItem>  <BestSellingItem/> </StyleBestSellingItem>
                     {/*  
 
                      
 
-                    <StyleMostPopularTime>  </StyleMostPopularTime>
+                    
 
                     <StyleBestSellingItem>  </StyleBestSellingItem> */}
 

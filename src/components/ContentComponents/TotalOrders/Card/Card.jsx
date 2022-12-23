@@ -45,7 +45,8 @@ function CompactCard ({param, setExpanded}){
                 value = {param.barValue}
                 text = {`${param.barValue}%`}
                 />
-                <span>{param.title}</span>
+                <span>Total<br/>Orders</span>
+                
             </div>
             <div className="detail">
                 <Png/>

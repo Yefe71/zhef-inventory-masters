@@ -18,6 +18,7 @@ export const Grid = styled.div`
 export const StyleTotalRevenue= styled(Card)`
     grid-area: top1;
     padding: 0;
+    
 
     
     
@@ -37,8 +38,8 @@ export const StyleNewCustomers= styled(Card)`
     `;
 
 export const StyleBestSellingItem= styled(Card)`
-    background: white;
     grid-area: top4;
+    padding: 0;
     `;
 
 export const StyleRevenueChart= styled(Card)`

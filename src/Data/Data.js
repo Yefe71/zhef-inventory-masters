@@ -58,7 +58,7 @@ import {
       title: "Total Orders",
       gridArea: 'top2',
       color: {
-        backGround: "#c49057",
+        backGround: "#d24365",
         
       },
       barValue: 80,
@@ -96,19 +96,15 @@ import {
 
 
     {
-      title: "Expenses",
+      title: "Most Popular Dish",
       gridArea: 'top4',
       color: {
-        backGround: "white"
+        backGround: "#f1592a"
       },
       barValue: 60,
-      value: "4,270",
+      value: "Burger",
       png: UilClipboardAlt,
-      series: [
-        {
-          name: "Expenses",
-          data: [10, 25, 15, 30, 12, 15, 20],
-        },
-      ],
+      series: [44, 55, 41, 17, 15],
+      labels: ['A', 'B', 'C', 'D', 'E'],
     },
   ];
