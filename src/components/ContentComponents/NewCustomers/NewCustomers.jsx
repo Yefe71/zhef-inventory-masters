@@ -9,7 +9,7 @@ import { CardsData } from '../../../Data/Data';
 
 const TotalOrders = () => {
 
-        {
+        
           const card = CardsData[2];
             return(
             <div>
@@ -23,7 +23,7 @@ const TotalOrders = () => {
               />
             </div>
             )   
-        }
+        
    
     
 

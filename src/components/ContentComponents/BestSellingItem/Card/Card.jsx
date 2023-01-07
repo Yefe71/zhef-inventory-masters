@@ -62,7 +62,7 @@ function ExpandedCard ({param, setExpanded}){
         }
     }
     return (
-        <motion.div className="ExpandedCard"
+        <motion.div className="ExpandedCard4"
              style = {{background: param.color.backGround,
                        boxShadow: param.color.boxShadow,
                        
@@ -76,7 +76,7 @@ function ExpandedCard ({param, setExpanded}){
                 />
             </div>
             <span>{param.title}</span>
-            <div className="chartContainer">
+            <div className="chartContainer4">
                 <Chart series = {param.series} type = 'donut' options = {data.options}/>
             </div>
             <span>Last 24 hours</span>

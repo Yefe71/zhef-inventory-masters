@@ -69,12 +69,54 @@
 
 /* Expandable Card */
 
-.ExpandedCard{
+.ExpandedCard4{
     position:absolute;
     width: 60%;
     height: 70vh;
     z-index: 1000;
-    left: 37rem !important;
+    left: 44.3rem !important;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  
+}
+.ExpandedCard1{
+    position:absolute;
+    width: 60%;
+    height: 70vh;
+    z-index: 1000;
+    left: 29.6rem !important;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  
+}
+.ExpandedCard2{
+    position:absolute;
+    width: 60%;
+    height: 70vh;
+    z-index: 1000;
+    left: 44.3rem !important;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  
+}
+.ExpandedCard3{
+    position:absolute;
+    width: 60%;
+    height: 70vh;
+    z-index: 1000;
+    left: 29.6rem !important;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -99,6 +141,23 @@
 }
 
 .chartContainer{
-    width: 55%;
-    color: white;
+    width: 70%;
+    color: black;
 }
+
+.chartContainer2{
+    width: 70%;
+    color: black;
+}
+
+.chartContainer3{
+    width: 70%;
+    color: black;
+}
+
+.chartContainer4{
+    width: 55%;
+    color: black;
+}
+
+

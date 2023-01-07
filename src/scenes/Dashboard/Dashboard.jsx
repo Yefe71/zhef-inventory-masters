@@ -1,7 +1,7 @@
 // Imports
 import "./Dashboard.css"
 import profileImg from './images/dp.jpg'
-import {Grid, StyleTotalRevenue, StyleTotalOrders, StyleNewCustomers, StyleBestSellingItem, StyleHeader, StyleRevenueChart, StyleOrderSummaryChart, StyleOrderDataTable} from '../../components/Layout/Grid'
+import {Grid, StyleTotalRevenue, StyleTotalOrders, StyleNewCustomers, StyleBestSellingItem, StyleSpan, StyleHeader, StyleRevenueChart, StyleOrderSummaryChart, StyleOrderDataTable} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
 import TotalRevenue from "../../components/ContentComponents/TotalRevenue/TotalRevenue"
 import Revenue from '../../components/ContentComponents/Revenue/Revenue'
@@ -14,11 +14,16 @@ import MostPopularTime from "../../components/ContentComponents/MostPopularTime/
 import Table from "../../components/ContentComponents/Table/Table"
 
 
+
+
 const Dashboard = () => {
 
+
+
     return (
-        
+      
         <div>
+
             <div className="wrapper">
                 <div className="aside-container">
                   <div className="info-container">
@@ -38,11 +43,8 @@ const Dashboard = () => {
                 <Container>
 
                   <Grid>
-                    <StyleHeader>Dashboard</StyleHeader>
-                    <StyleTotalRevenue> <TotalRevenue/> </StyleTotalRevenue>
-                    <StyleTotalOrders>  <TotalOrders/> </StyleTotalOrders>   
-                    <StyleNewCustomers> <NewCustomers/></StyleNewCustomers>
-                    <StyleBestSellingItem> <BestSellingItem/> </StyleBestSellingItem>
+                    <StyleHeader>Pet<span className = "red">ron</span> Dashboard</StyleHeader>
+        
                     {/*  
 
                      

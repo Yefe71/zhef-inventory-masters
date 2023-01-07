@@ -8,7 +8,7 @@ import { CardsData } from '../../../Data/Data';
 
 const BestSellingItem = () => {
 
-        {
+        
           const card = CardsData[3];
             return(
             <div>
@@ -22,7 +22,7 @@ const BestSellingItem = () => {
               />
             </div>
             )   
-        }
+        
    
     
 

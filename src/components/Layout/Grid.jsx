@@ -3,12 +3,12 @@ import Card from "./CardParent";
 export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 0.5fr 2.5fr 2.4fr 2.5fr;
+    grid-template-rows: 0.5fr 2.5fr 2.5fr;
     
         
     grid-template-areas:
     "header header header header"
-    "top1 top2 top3 top4"
+    /* "top1 top2 top3 top4" */
     "chart1 chart1 chart2 chart2"
     "chart1 chart1 chart2 chart2"
     ;
@@ -48,20 +48,24 @@ export const StyleRevenueChart= styled(Card)`
     `;
 
 export const StyleOrderSummaryChart= styled(Card)`
-    background: #234896;
+    background: #0f0f0f;
     grid-area: chart2;
     `;
 
 
 export const StyleOrderDataTable= styled(Card)`
-    background: #1e3c7e;
+    background: #0f0f0f;
     width: 100%;
     margin-top: 1rem;
-    height: 30rem;
+ 
     box-shadow: 0 0 0 6 8px #ccc   `;
 
 export const StyleHeader = styled.div`
    
+    span.red {
+        color: #dc001e;
+      }
+
     grid-area: header;
     font-weight: 600;
     font-size: 40px;
@@ -70,6 +74,8 @@ export const StyleHeader = styled.div`
     
 
     `;
+
+
 
 
 

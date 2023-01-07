@@ -19,6 +19,12 @@ const rows = [
   createData("Nilaga", 18908421, "24 December 2022", "Done"),
   createData("Sinigang", 18908421, "24 December 2022", "Done"),
   createData("Pepsi", 18908421, "24 December 2022", "Done"),
+  createData("Adobo", 18908424, "24 December 2022", "Pending"),
+  createData("Tapsilog", 18908424, "24 December 2022", "Done"),
+  createData("Egg", 18908424, "24 December 2022", "Done"),
+  createData("Nilaga", 18908421, "24 December 2022", "Done"),
+  createData("Sinigang", 18908421, "24 December 2022", "Done"),
+  createData("Pepsi", 18908421, "24 December 2022", "Done"),
  
 ];
 
@@ -52,7 +58,7 @@ export default function BasicTable() {
       <h3 className="titles">Recent Orders</h3>
         <TableContainer
           component={Paper}
-          style={{ paddingLeft: "5rem", paddingTop: "1rem", borderRadius: "1rem", boxShadow: "0px 0px 10px 0px #00000029" }}
+          style={{ paddingLeft: "5rem", paddingTop: "1rem", borderRadius: "3rem", boxShadow: "0px 0px 10px 0px #00000029" }}
         >
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
