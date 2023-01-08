@@ -3,7 +3,7 @@ import Card from "./CardParent";
 export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 0.5fr 2.5fr 2.5fr;
+    grid-template-rows: 0.5fr 2.3fr 2.3fr;
     
         
     grid-template-areas:
@@ -43,18 +43,18 @@ export const StyleBestSellingItem= styled(Card)`
     `;
 
 export const StyleRevenueChart= styled(Card)`
-    background: #0f0f0f;
+    background: #06081b;
     grid-area: chart1;
     `;
 
 export const StyleOrderSummaryChart= styled(Card)`
-    background: #0f0f0f;
+    background: #06081b;
     grid-area: chart2;
     `;
 
 
 export const StyleOrderDataTable= styled(Card)`
-    background: #0f0f0f;
+    background: #06081b;
     width: 100%;
     margin-top: 1rem;
  
@@ -67,10 +67,11 @@ export const StyleHeader = styled.div`
       }
 
     grid-area: header;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 40px;
-    padding-bottom: 10px;
-    color: #262A41;
+    
+
+    color: #1c2473;
     
 
     `;

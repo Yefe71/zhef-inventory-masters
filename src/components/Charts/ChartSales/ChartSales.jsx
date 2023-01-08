@@ -15,47 +15,89 @@ class App extends Component {
       currentWeekData:      
       [{
         name: "Week 1: 2022-12-08",
-        data: [30, 40, 45, 80, 49, 60, 100]
+        data: [30, 40, 45, 80, 49, 60]
       }],
 
       currentWeek: "2022-12-01",
       options: {
-        colors:['#40ff00', '#ffffff', '#ffffff'],
+        
+        colors:['#00eeff', '#ffffff', '#ffffff'],
         grid: {
+          borderColor: '#444443',
+          
             padding: {
              left: 0,
              right: 0
-            }
+            },
+            show: true,      // you can either change hear to disable all grids
+            xaxis: {
+              lines: {
+                show: false,
+                 //or just here to disable only x axis grids
+               }
+             },
+             
+   
           },
         chart: {
           id: "basic-line",
-         
           sparkline: {
-            enabled: true
-          }
+            enabled: false
+          },
+ 
+          
+        },
+
+   
+
+        yaxis: {
+  
+          min: 0,
+          max: 100,
+          tickAmount: 5,
+          labels: {
+            style: {
+              colors: 'white',
+              fontFamily: 'Poppins',
+              fontSize: '16px'
+              }
+            },
+              
         },
         xaxis: {
+          axisTicks: {
+            color: '#363636'
+          },
+          categories: ['ADO', 'ADO T', 'E10', 'KERO', 'XCS', 'XUB'],
+
+
+          labels: {
+            style: {
+              colors: 'white',
+              fontFamily: 'Poppins',
+              fontSize: '16px'}
+            },
             
-          categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          
         }
       },
       
       series: [
         {
           name: "Week 1: 2022-12-01",
-          data: [30, 40, 100, 50, 49, 60, 70],
+          data: [30, 40, 100, 50, 49, 60],
         },
         {
           name: "Week 2: 2022-12-08",
-          data: [30, 40, 45, 80, 49, 60, 70]
+          data: [30, 40, 45, 80, 49, 60]
         },
         {
           name: "Week 3: 2022-12-15",
-          data: [30, 40, 30, 50, 49, 60, 70]
+          data: [30, 40, 30, 50, 49, 60]
         },
         {
           name: "Week 4:2022-12-22",
-          data: [30, 40, 45, 50, 49, 90, 70]
+          data: [30, 40, 45, 50, 49, 90]
         }
       ]
     };
@@ -100,11 +142,11 @@ class App extends Component {
             currentWeekData:      
             [{
             name: "Week 1: 2022-12-01",
-            data: [30, 40, 25, 80, 49, 60, 100]
+            data: [30, 40, 25, 80, 49, 60]
             }],
             options: {
               ...this.state.options,
-              colors: ['#51ff00', '#ffffff', '#ffffff'],
+              colors: ['#00eeff', '#ffffff', '#ffffff'],
             },
           });
           break;
@@ -112,11 +154,11 @@ class App extends Component {
           this.setState({ currentWeekData:      
             [{
             name: "Week 2: 2022-12-08",
-            data: [30, 40, 25, 80, 70, 60, 100]
+            data: [30, 40, 25, 80, 70, 60]
             }],
             options: {
               ...this.state.options,
-              colors: ['#00eeff', '#ffffff', '#ffffff'],
+              colors: ['#51ff00', '#ffffff', '#ffffff'],
             },
      
           });
@@ -125,7 +167,7 @@ class App extends Component {
           this.setState({ currentWeekData:      
             [{
             name: "Week 3: 2022-12-15",
-            data: [30, 40, 45, 80, 49, 40, 100]
+            data: [30, 40, 45, 80, 49, 40]
             }],
               options: {
                   ...this.state.options,
@@ -141,7 +183,7 @@ class App extends Component {
           this.setState({ currentWeekData:      
             [{
             name: "Week 4: 2022-12-22",
-            data: [30, 40, 45, 30, 49, 60, 100]
+            data: [30, 40, 45, 30, 49, 60]
             }],              options: {
                   ...this.state.options,
                   colors: ['#fffb00', '#ffffff', '#ffffff'],
@@ -167,10 +209,10 @@ class App extends Component {
   
           <div className="topBar">
              <h1>{this.state.currentWeek}</h1>
-             <h1 className = "title">Top Sales</h1>
+             <h1 className = "title">Top Products</h1>
              <div className="nav-buttons">
-                  <button onClick={ () => {this.moveBackward()}} type = "button" className = "backBt">Back</button>
-                  <button  onClick={ () => {this.moveForward()}} type = "button" className ="forwardBt">Forward</button>
+             <button onClick={ () => {this.moveBackward()}} type = "button" className = "backBt">&lt;</button>
+              <button  onClick={ () => {this.moveForward()}} type = "button" className ="forwardBt">&gt;</button>
 
              </div>
 
@@ -183,32 +225,13 @@ class App extends Component {
                 options={this.state.options}
                 series={this.state.currentWeekData}
                 type="line"
-                width="550"
-               
+                width="650"
                 
               />
 
               
           </div>
-          <div className = "labelsy">
-              <div className="labelsy2">
-                    <h2>100</h2>
-                    <h2>80</h2>
-                    <h2>60</h2>
-                    <h2>40</h2>
-                    <h2>20</h2>
-              </div>
 
-            </div>
-          <div className = "labels">
-                <h3>Mon</h3>
-                <h3>Tue</h3>
-                <h3>Wed</h3>
-                <h3>Thu</h3>
-                <h3>Fri</h3>
-                <h3>Sat</h3>
-                <h3>Sun</h3>
-            </div>
       
         
       </div>

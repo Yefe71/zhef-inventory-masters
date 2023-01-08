@@ -5,13 +5,14 @@ import {Grid, StyleTotalRevenue, StyleTotalOrders, StyleNewCustomers, StyleBestS
 import Container from '../../components/Layout/Container'
 import TotalRevenue from "../../components/ContentComponents/TotalRevenue/TotalRevenue"
 import Revenue from '../../components/ContentComponents/Revenue/Revenue'
-import OrderDataTable from '../../components/ContentComponents/OrderDataTable/OrderDataTable'
-import OrderSummary from '../../components/ContentComponents/OrderSummary/OrderSummary'
-import TotalOrders from "../../components/ContentComponents/TotalOrders/TotalOrders"
-import NewCustomers from "../../components/ContentComponents/NewCustomers/NewCustomers"
-import BestSellingItem from "../../components/ContentComponents/BestSellingItem/BestSellingItem"
+// import OrderDataTable from '../../components/ContentComponents/OrderDataTable/OrderDataTable'
+// import OrderSummary from '../../components/ContentComponents/OrderSummary/OrderSummary'
+// import TotalOrders from "../../components/ContentComponents/TotalOrders/TotalOrders"
+// import NewCustomers from "../../components/ContentComponents/NewCustomers/NewCustomers"
+// import BestSellingItem from "../../components/ContentComponents/BestSellingItem/BestSellingItem"
 import MostPopularTime from "../../components/ContentComponents/MostPopularTime/MostPopularTime"
 import Table from "../../components/ContentComponents/Table/Table"
+import logo from "./images/logo.png"
 
 
 
@@ -43,7 +44,7 @@ const Dashboard = () => {
                 <Container>
 
                   <Grid>
-                    <StyleHeader>Pet<span className = "red">ron</span> Dashboard</StyleHeader>
+                  <StyleHeader> <img className = "logo" src={logo} alt="" />DASHBOARD</StyleHeader>
         
                     {/*  
 
