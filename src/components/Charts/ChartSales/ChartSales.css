@@ -24,19 +24,18 @@ padding-left: 0px;
 
 
 
-.title{
+.titleSales{
     font-size: 25px;
     font-weight: 600;
     color: rgb(255, 255, 255);
-   
-
+    position: absolute;
+    left: 43%;
 }
-.topBar{
+.topBarSales{
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 h3{

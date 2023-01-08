@@ -206,9 +206,9 @@ class App extends Component {
     return (
       <div className="app">
   
-          <div className="topBar">
+          <div className="topBarProducts">
              <h1>{this.state.currentWeek}</h1>
-             <h1 className = "title">Top Products</h1>
+             <h1 className = "titleProducts">Top Products</h1>
              <div className="nav-buttons">
                   <button onClick={ () => {this.moveBackward()}} type = "button" className = "backBt">&lt;</button>
                   <button  onClick={ () => {this.moveForward()}} type = "button" className ="forwardBt">&gt;</button>
