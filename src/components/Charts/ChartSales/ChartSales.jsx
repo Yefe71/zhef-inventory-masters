@@ -3,29 +3,51 @@ import Chart from "react-apexcharts";
 import './ChartSales.css'
 import moment from 'moment'
 
-
+function shortenLabels(value) {
+  if (value >= 1000000) {
+    return 'P' + (value / 1000000).toFixed(1) + 'm';
+  } else if (value >= 1000) {
+    return 'P' + (value / 1000).toFixed(1) + 'k';
+  } else {
+    return value;
+  }
+}
 
 class App extends Component {
 
   constructor(props) {
     super(props);
+    
 
+
+  
+
+   
     
     this.state = {
+      valueIncVat: ['wat'],
+
       currentWeekData:      
       [{
         name: "Week 1: 2022-12-08",
-        data: [30, 40, 45, 80, 49, 60]
+        data: [1557307.65, 212116.79, 1271749.24, 231179.55, 900765.68, 66767.69]
       }],
-
+      currentWeekNum: "Week 1",
+      currentWeekEnd: "2022-12-07",
       currentWeek: "2022-12-01",
-      options: {
+      currentWeekDay: "",
+
+      getAllData: {
         
-        colors:['#00eeff', '#ffffff', '#ffffff'],
+      },
+
+      options: {
+
+        colors:['#ed1b2f', '#ffffff', '#ffffff'],
+
         grid: {
-          borderColor: '#444443',
-          
-            padding: {
+             borderColor: '#444443',
+             padding: {
              left: 0,
              right: 0
             },
@@ -36,34 +58,34 @@ class App extends Component {
                  //or just here to disable only x axis grids
                }
              },
-             
-   
+
           },
+
         chart: {
           id: "basic-line",
           sparkline: {
             enabled: false
           },
- 
-          
         },
 
    
 
         yaxis: {
-  
           min: 0,
-          max: 100,
+          max: 3000000,
           tickAmount: 5,
           labels: {
+            formatter: function(value) {
+              return shortenLabels(value);
+            },
             style: {
               colors: 'white',
               fontFamily: 'Poppins',
               fontSize: '16px'
               }
-            },
-              
+            },  
         },
+
         xaxis: {
           axisTicks: {
             color: '#363636'
@@ -77,33 +99,37 @@ class App extends Component {
               fontFamily: 'Poppins',
               fontSize: '16px'}
             },
-            
-          
         }
       },
       
+
       series: [
         {
           name: "Week 1: 2022-12-01",
-          data: [30, 40, 100, 50, 49, 60],
+          data: [1557307.65, 212116.79, 1271749.24, 231179.55, 900765.68, 66767.69]
         },
         {
           name: "Week 2: 2022-12-08",
-          data: [30, 40, 45, 80, 49, 60]
+          data: [482882.93, 17093, 226393, 28944, 132831, 12057]
         },
         {
           name: "Week 3: 2022-12-15",
-          data: [30, 40, 30, 50, 49, 60]
+          data: [2292862.73, 340154.28, 1383918.03, 244971.48, 1135987.48, 120485.12]
         },
         {
           name: "Week 4:2022-12-22",
-          data: [30, 40, 45, 50, 49, 90]
+          data: [696039.77, 154466.56, 922506.33, 207681.09, 1301989.12, 76318.5]
         }
       ]
     };
   }
 
+         
 
+  
+
+
+  
   moveBackward() {
     if (this.state.currentWeek !== "2022-12-01") {
       const currentWeek = this.state.currentWeek;
@@ -128,50 +154,95 @@ class App extends Component {
     }
   }
 
+
+  
+  componentDidMount() {
+
+    this.setState({ 
+      currentWeekDay: this.state.currentWeek.slice(-2)
+    },() => console.log(this.state.currentWeekDay));
+  
+    //FETCH DATA
+    
+    fetch('http://localhost:3000/grabdata', {
+      method: 'get',
+      headers: {'Content-Type': 'application/json'},
+    })
+  
+    .then(response => response.json())
+    .then(values => { 
+
+      if (values){
+
+        let valueIncVat = values.map(item => item.valueinvat);
+        this.setState({ 
+          valueIncVat: valueIncVat
+        },() => console.log(this.state.valueIncVat[0]));
+        
+
+      }
+    });
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.currentWeek !== prevState.currentWeek) {
       const currentWeekData = this.state.series.filter(
         (datapoint) => datapoint.name.startsWith(this.state.currentWeek)
       );
 
+ 
 
+
+
+      
       switch (this.state.currentWeek) {
         case "2022-12-01":
           this.setState({ 
-            
+            currentWeekEnd: "2022-12-07",
+            currentWeekNum: "Week 1",
             currentWeekData:      
             [{
             name: "Week 1: 2022-12-01",
-            data: [30, 40, 25, 80, 49, 60]
+            data: [1557307.65, 212116.79, 1271749.24, 231179.55, 900765.68, 66767.69]
             }],
+
+         
             options: {
               ...this.state.options,
-              colors: ['#00eeff', '#ffffff', '#ffffff'],
+              colors: ['#ed1b2f', '#ffffff', '#ffffff'],
             },
           });
           break;
+
         case "2022-12-08":
-          this.setState({ currentWeekData:      
+          this.setState({ 
+            currentWeekEnd: "2022-12-14",
+            currentWeekNum: "Week 2",
+            currentWeekData:      
             [{
+            
             name: "Week 2: 2022-12-08",
-            data: [30, 40, 25, 80, 70, 60]
+            data: [482882.93, 17093, 226393, 28944, 132831, 12057]
             }],
             options: {
               ...this.state.options,
-              colors: ['#51ff00', '#ffffff', '#ffffff'],
+              colors: ['#ed1b2f', '#ffffff', '#ffffff'],
             },
      
           });
           break;
         case "2022-12-15":
-          this.setState({ currentWeekData:      
+          this.setState({ 
+            currentWeekEnd: "2022-12-21",
+            currentWeekNum: "Week 3",
+            currentWeekData:      
             [{
             name: "Week 3: 2022-12-15",
-            data: [30, 40, 45, 80, 49, 40]
+            data: [2292862.73, 340154.28, 1383918.03, 244971.48, 1135987.48, 120485.12]
             }],
               options: {
                   ...this.state.options,
-                  colors: ['#ff00d4', '#ffffff', '#ffffff'],
+                  colors: ['#ed1b2f', '#ffffff', '#ffffff'],
                 },
 
 
@@ -180,13 +251,16 @@ class App extends Component {
           });
           break;
         case "2022-12-22":
-          this.setState({ currentWeekData:      
+          this.setState({
+            currentWeekEnd: "2022-12-28",
+            currentWeekNum: "Week 4",
+            currentWeekData:      
             [{
             name: "Week 4: 2022-12-22",
-            data: [30, 40, 45, 30, 49, 60]
+            data: [696039.77, 154466.56, 922506.33, 207681.09, 1301989.12, 76318.5]
             }],              options: {
                   ...this.state.options,
-                  colors: ['#fffb00', '#ffffff', '#ffffff'],
+                  colors: ['#ed1b2f', '#ffffff', '#ffffff'],
                 }, 
           });
           break;
@@ -197,9 +271,6 @@ class App extends Component {
       }
 
 
-
-
-
     }
   }
   
@@ -208,7 +279,11 @@ class App extends Component {
       <div className="app">
   
           <div className="topBarSales">
-             <h1>{this.state.currentWeek}</h1>
+            <div className="topLeft">
+               <h1>{this.state.currentWeekNum}</h1>
+               <h2>{this.state.currentWeek} → {this.state.currentWeekEnd} </h2>
+            </div>
+
              <h1 className = "titleSales">Top Sales</h1>
              <div className="nav-buttons">
              <button onClick={ () => {this.moveBackward()}} type = "button" className = "backBt">&lt;</button>
@@ -224,7 +299,7 @@ class App extends Component {
           <Chart
                 options={this.state.options}
                 series={this.state.currentWeekData}
-                type="line"
+                type="area"
                 width="650"
                 
               />

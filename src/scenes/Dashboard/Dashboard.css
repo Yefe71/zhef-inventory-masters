@@ -102,7 +102,7 @@ li{
 
 html{
     font-family: Poppins;
-    background: #06081b;
+    background: #0b0f31;
     color:white;
 }
 .wrapper{
@@ -112,7 +112,7 @@ html{
 /* ASIDE PART / LEFT */
 .aside-container{
     display: flex;
-    background: #06081b;
+    background: #0b0f31;
     min-height: 100vh;
     flex: 1 1 40rem;
     flex-direction: column;

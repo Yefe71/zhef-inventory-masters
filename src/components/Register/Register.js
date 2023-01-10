@@ -35,6 +35,15 @@ class Register extends React.Component {
         name: this.state.name
       })
     })
+
+    .then(response => response.json())
+    .then(user => { 
+      if (user.id){
+        this.props.loadUser(user)
+        this.props.onRouteChange('home');
+      }
+    })
+    
   // onSubmitSignin = (event) => {
   //   event.preventDefault()
   //   fetch('https://quiet-bastion-31102.herokuapp.com/register', {
@@ -46,15 +55,6 @@ class Register extends React.Component {
   //       name: this.state.name
   //     })
   //   })
-    .then(response => response.json())
-    .then(user => { 
-      if (user.id){
-        this.props.loadUser(user)
-        this.props.onRouteChange('home');
-      }
-    })
-    
-
   }
 
   render(){

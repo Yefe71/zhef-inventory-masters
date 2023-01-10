@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect} from "react";
 import Chart from "react-apexcharts";
-import './MostPopularDays.css'
+import './MostPopularDayWeek.css'
 import moment from 'moment'
 
 
@@ -15,14 +15,14 @@ class App extends Component {
       currentWeekData:      
       [{
         name: "Week 1: 2022-12-08",
-        data: [30, 40, 45, 80, 49, 60]
+        data: [10, 80, 45, 55, 49, 60, 100]
       }],
       currentWeekNum: "Week 1",
       currentWeekEnd: "2022-12-07",
       currentWeek: "2022-12-01",
       options: {
         
-        colors:['#4a59fd', '#ffffff', '#ffffff'],
+        colors:['#ff7e05ea', '#ffffff', '#ffffff'],
         grid: {
           borderColor: '#444443',
           
@@ -41,6 +41,7 @@ class App extends Component {
    
           },
         chart: {
+          width: '100%',
           id: "basic-line",
           sparkline: {
             enabled: false
@@ -69,7 +70,7 @@ class App extends Component {
           axisTicks: {
             color: '#363636'
           },
-          categories: ['ADO', 'ADO T', 'E10', 'KERO', 'XCS', 'XUB'],
+          categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 
 
           labels: {
@@ -86,19 +87,19 @@ class App extends Component {
       series: [
         {
           name: "Week 1: 2022-12-01",
-          data: [30, 40, 100, 50, 49, 60],
+          data: [10, 80, 45, 55, 49, 60, 100]
         },
         {
           name: "Week 2: 2022-12-08",
-          data: [30, 40, 45, 80, 49, 60]
+          data: [30, 40, 45, 80, 49, 60, 40]
         },
         {
           name: "Week 3: 2022-12-15",
-          data: [30, 40, 30, 50, 49, 60]
+          data: [30, 40, 30, 50, 49, 60, 30]
         },
         {
           name: "Week 4:2022-12-22",
-          data: [30, 40, 45, 50, 49, 90]
+          data: [30, 40, 45, 50, 49, 50, 90]
         }
       ]
     };
@@ -144,13 +145,13 @@ class App extends Component {
             currentWeekData:      
             [{
             name: "Week 1: 2022-12-01",
-            data: [30, 40, 25, 80, 49, 60]
+            data: [10, 80, 45, 55, 49, 60, 100]
             }],
 
          
             options: {
               ...this.state.options,
-              colors: ['#4a59fd', '#ffffff', '#ffffff'],
+              colors: ['#ff912aea', '#ffffff', '#ffffff'],
             },
           });
           break;
@@ -163,11 +164,11 @@ class App extends Component {
             [{
             
             name: "Week 2: 2022-12-08",
-            data: [30, 40, 25, 80, 70, 60]
+            data: [30, 40, 45, 80, 49, 60, 40]
             }],
             options: {
               ...this.state.options,
-              colors: ['#4a59fd', '#ffffff', '#ffffff'],
+              colors: ['#ff7e05ea', '#ffffff', '#ffffff'],
             },
      
           });
@@ -179,11 +180,11 @@ class App extends Component {
             currentWeekData:      
             [{
             name: "Week 3: 2022-12-15",
-            data: [30, 40, 45, 80, 49, 40]
+            data: [30, 40, 30, 50, 49, 60, 30]
             }],
               options: {
                   ...this.state.options,
-                  colors: ['#4a59fd', '#ffffff', '#ffffff'],
+                  colors: ['#ff912aea', '#ffffff', '#ffffff'],
                 },
 
 
@@ -198,10 +199,10 @@ class App extends Component {
             currentWeekData:      
             [{
             name: "Week 4: 2022-12-22",
-            data: [30, 40, 45, 30, 49, 60]
+            data: [30, 40, 45, 50, 49, 50, 90]
             }],              options: {
                   ...this.state.options,
-                  colors: ['#4a59fd', '#ffffff', '#ffffff'],
+                  colors: ['#ff912aea', '#ffffff', '#ffffff'],
                 }, 
           });
           break;
@@ -219,13 +220,16 @@ class App extends Component {
     return (
       <div className="app">
   
-  <div className="topBarProducts">
+  <div className="topBarDayWeek">
             <div className="topLeft">
                <h1>{this.state.currentWeekNum}</h1>
                <h2>{this.state.currentWeek} → {this.state.currentWeekEnd} </h2>
             </div>
+           
+              <h1 className = "titleDayWeek">Daily Sales per Week</h1>
+              <h2 className = "titleDayWeekSub">(In Philippine Peso)</h2>
 
-             <h1 className = "titleProducts">Top Products</h1>
+             
              <div className="nav-buttons">
              <button onClick={ () => {this.moveBackward()}} type = "button" className = "backBt">&lt;</button>
               <button  onClick={ () => {this.moveForward()}} type = "button" className ="forwardBt">&gt;</button>
@@ -240,7 +244,7 @@ class App extends Component {
           <Chart
                 options={this.state.options}
                 series={this.state.currentWeekData}
-                type="bar"
+                type="line"
                 width="650"
                 
               />

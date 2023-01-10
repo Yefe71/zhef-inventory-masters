@@ -21,21 +21,61 @@
     
     }
     
-   
     
-    .titleProducts{
+    
+    .titleDayWeek{
         font-size: 25px;
         font-weight: 600;
         color: rgb(255, 255, 255);
         position: absolute;
-        left: 40%;
+        left: 30%;
+        top: 3%;
     }
-    .topBarProducts{
+
+    .titleDayWeekSub{
+        position: absolute;
+        top: 65%;
+        left: 39%;
+        
+    }
+
+    .titleDayWeekSub2{
+        position: absolute;
+        top: 65%;
+        left: 45%;
+        
+    }
+    .topBarDayWeek{
         position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+
+
+
+
+
+
+
+
+
+    .titleDayWeek2{
+        font-size: 25px;
+        font-weight: 600;
+        color: rgb(255, 255, 255);
+        position: absolute;
+        left: 30%;
+        top: 3%;
+    }
+    .topBarDayWeek2{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
     
     h3{
         color: white;
@@ -74,10 +114,12 @@
         padding-bottom: 42px;
     }
     
+    .topLeft h2{
+        font-size: 13px;
+    }
     
-    
-    
-    
+ 
+
     
     
     h3:nth-child(4){
@@ -189,3 +231,4 @@
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
   }
+

@@ -1,6 +1,6 @@
 import React from 'react';
-import ChartSales from '../../Charts/MostPopularDays/MostPopularDays';
-import './MostPopularTime.css'
+import MostPopularDayWeek from '../../Charts/MostPopularDayWeek/MostPopularDayWeek';
+import './MostPopularDayWeek.css'
 const MostPopularTime = () => {
 
     
@@ -8,8 +8,7 @@ const MostPopularTime = () => {
                 
             <div>
 
-              <ChartSales />
-
+              <MostPopularDayWeek />
                 
 
             </div>

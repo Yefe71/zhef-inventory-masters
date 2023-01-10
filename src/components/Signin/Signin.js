@@ -26,16 +26,6 @@ class Signin extends React.Component {
         password: this.state.signInPassword
       })
     })
-  // onSubmitSignin = (event) => {
-  //   event.preventDefault()
-  //   fetch('https://quiet-bastion-31102.herokuapp.com/signin', {
-  //     method: 'post',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify({
-  //       email: this.state.signInEmail,
-  //       password: this.state.signInPassword
-  //     })
-  //   })
     .then(response => response.json())
     .then(user => {
       if (user.id){
