@@ -17,13 +17,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    
 
-
-  
-
-   
-    
     this.state = {
       valueIncVat: ['wat'],
 
@@ -36,10 +30,20 @@ class App extends Component {
       currentWeekEnd: "2022-12-07",
       currentWeek: "2022-12-01",
       currentWeekDay: "",
+      currentWeekDefault: "01",
 
-      getAllData: {
-        
-      },
+    //Data
+    // get total value inclusive vat of each product per week.
+      weekTotalValIncVat: [],
+   
+    // get total quantity of each product per week. 
+      weekTotalQuantity: [],
+ 
+    // get total value inclusive vat of all products each day per week.
+      weekTotalValIncVatProdPerDay: [],
+ 
+    // get total quantity of all products each day per week.
+      weekTotalQuantityProdPerDay: [],
 
       options: {
 
@@ -160,11 +164,11 @@ class App extends Component {
 
     this.setState({ 
       currentWeekDay: this.state.currentWeek.slice(-2)
-    },() => console.log(this.state.currentWeekDay));
+    });
   
     //FETCH DATA
     
-    fetch('http://localhost:3000/grabdata', {
+    fetch(`http://localhost:3000/grabdata?weekDay=${this.state.currentWeekDefault}`, {
       method: 'get',
       headers: {'Content-Type': 'application/json'},
     })
@@ -190,11 +194,34 @@ class App extends Component {
         (datapoint) => datapoint.name.startsWith(this.state.currentWeek)
       );
 
- 
 
 
+      this.setState({ 
+        currentWeekDay: this.state.currentWeek.slice(-2)
+      });
+  
+      //FETCH DATA
+    
+      fetch(`http://localhost:3000/grabdata?weekDay=${this.state.currentWeekDay}`, {
+        method: 'get',
+        headers: {'Content-Type': 'application/json'},
+      })
+  
+      .then(response => response.json())
+      .then(values => { 
 
-      
+        if (values){
+
+          let valueIncVat = values.map(item => item.valueinvat);
+          this.setState({ 
+            valueIncVat: valueIncVat
+          },() => console.log(this.state.valueIncVat));
+        
+
+        }
+      });
+
+
       switch (this.state.currentWeek) {
         case "2022-12-01":
           this.setState({ 
@@ -244,8 +271,6 @@ class App extends Component {
                   ...this.state.options,
                   colors: ['#ed1b2f', '#ffffff', '#ffffff'],
                 },
-
-
 
 
           });
