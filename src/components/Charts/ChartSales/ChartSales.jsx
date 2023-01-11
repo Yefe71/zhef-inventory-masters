@@ -263,8 +263,6 @@ class App extends Component {
         let firstWeek4 = [this.state.valueIncVat[3], this.state.valueIncVat[9], this.state.valueIncVat[15], this.state.valueIncVat[21], this.state.valueIncVat[27], this.state.valueIncVat[33], this.state.valueIncVat[39]]
         let firstWeek5 = [this.state.valueIncVat[4], this.state.valueIncVat[10], this.state.valueIncVat[16], this.state.valueIncVat[22], this.state.valueIncVat[28], this.state.valueIncVat[34], this.state.valueIncVat[40]]
         let firstWeek6 = [this.state.valueIncVat[5], this.state.valueIncVat[11], this.state.valueIncVat[17], this.state.valueIncVat[23], this.state.valueIncVat[29], this.state.valueIncVat[35], this.state.valueIncVat[41]]
-        let firstWeek7 = [this.state.valueIncVat[6], this.state.valueIncVat[12], this.state.valueIncVat[18], this.state.valueIncVat[24], this.state.valueIncVat[30], this.state.valueIncVat[36], this.state.valueIncVat[42]]
-
 
 
 
