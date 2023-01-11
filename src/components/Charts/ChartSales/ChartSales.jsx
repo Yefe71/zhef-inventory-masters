@@ -27,12 +27,18 @@ class App extends Component {
         data: [1557307.65, 212116.79, 1271749.24, 231179.55, 900765.68, 66767.69]
       }],
       currentWeekNum: "Week 1",
-      currentWeekEnd: "2022-12-07",
+
       currentWeek: "2022-12-01",
-      currentWeekDay: "",
+      currentWeekEnd: "2022-12-07",
+      
+      
       currentWeekDefault: "01",
 
     //Data
+    currentWeekRangeStart: "01",
+    currentWeekRangeEnd: "07",
+
+
     // get total value inclusive vat of each product per week.
       weekTotalValIncVat: [],
    
@@ -140,9 +146,39 @@ class App extends Component {
       const currentWeekMoment = moment(currentWeek, "YYYY-MM-DD");
       const previousWeekMoment = currentWeekMoment.subtract(1, "week");
       const previousWeek = previousWeekMoment.format("YYYY-MM-DD");
-      this.setState({ currentWeek: previousWeek }, () => {
-        console.log(`Current week: ${this.state.currentWeek}`);
+
+      const nextWeekPrevMoment = previousWeekMoment.add(6, "days");
+      const nextWeekPrev = nextWeekPrevMoment.format("YYYY-MM-DD");
+
+      this.setState({ 
+        currentWeek: previousWeek,
+        currentWeekEnd: nextWeekPrev
+      }, () => {
+
+        //FETCH DATA
+    
+        fetch(`http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&code=${this.state.stateCode}`, {
+          method: 'get',
+          headers: {'Content-Type': 'application/json'},
+        })
+  
+        .then(response => response.json())
+        .then(values => { 
+
+          if (values){
+
+            let valueIncVat = values.map(item => item.valueinvat);
+            this.setState({ 
+              valueIncVat: valueIncVat
+            },() => console.log(this.state.valueIncVat));
+        
+
+          }
+        });
+
       });
+      
+
     }
   }
 
@@ -152,43 +188,65 @@ class App extends Component {
       const currentWeekMoment = moment(currentWeek, "YYYY-MM-DD");
       const nextWeekMoment = currentWeekMoment.add(1, "week");
       const nextWeek = nextWeekMoment.format("YYYY-MM-DD");
-      this.setState({ currentWeek: nextWeek }, () => {
-        console.log(`Current week: ${this.state.currentWeek}`);
+
+      const currentWeekEnd = this.state.currentWeekEnd;
+      const currentWeekEndMoment = moment(currentWeekEnd, "YYYY-MM-DD");
+      const nextWeekEndMoment = currentWeekEndMoment.add(1, "week");
+      const nextWeekEnd = nextWeekEndMoment.format("YYYY-MM-DD");
+
+      this.setState({ 
+        currentWeek: nextWeek,
+        currentWeekEnd: nextWeekEnd
+      }, () => {
+
+        //FETCH DATA
+    
+        fetch(`http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}`, {
+          method: 'get',
+          headers: {'Content-Type': 'application/json'},
+        })
+  
+        .then(response => response.json())
+        .then(values => { 
+
+          if (values){
+
+            let valueIncVat = values.map(item => item.valueinvat);
+            this.setState({ 
+              valueIncVat: valueIncVat
+            },() => 
+            
+            console.log(this.state.valueIncVat)); //do something
+        
+          }
+        });
+
       });
+      
+
     }
   }
 
 
   
   componentDidMount() {
+ 
+    console.log(this.state.currentWeek, this.state.currentWeekEnd, 'START')
 
-    this.setState({ 
-      currentWeekDay: this.state.currentWeek.slice(-2)
-    });
-  
-    //FETCH DATA
-    
-    fetch(`http://localhost:3000/grabdata?weekDay=${this.state.currentWeekDefault}`, {
-      method: 'get',
-      headers: {'Content-Type': 'application/json'},
-    })
-  
-    .then(response => response.json())
-    .then(values => { 
-
-      if (values){
-
-        let valueIncVat = values.map(item => item.valueinvat);
-        this.setState({ 
-          valueIncVat: valueIncVat
-        },() => console.log(this.state.valueIncVat[0]));
-        
-
-      }
-    });
   }
 
+
+  
   componentDidUpdate(prevProps, prevState) {
+
+   function sumArray(arr) {
+      let sum = 0;
+      for (let i = 0; i < arr.length; i++) {
+          sum += Number(arr[i]);
+      }
+      return sum;
+  }
+
     if (this.state.currentWeek !== prevState.currentWeek) {
       const currentWeekData = this.state.series.filter(
         (datapoint) => datapoint.name.startsWith(this.state.currentWeek)
@@ -196,41 +254,27 @@ class App extends Component {
 
 
 
-      this.setState({ 
-        currentWeekDay: this.state.currentWeek.slice(-2)
-      });
-  
-      //FETCH DATA
-    
-      fetch(`http://localhost:3000/grabdata?weekDay=${this.state.currentWeekDay}`, {
-        method: 'get',
-        headers: {'Content-Type': 'application/json'},
-      })
-  
-      .then(response => response.json())
-      .then(values => { 
-
-        if (values){
-
-          let valueIncVat = values.map(item => item.valueinvat);
-          this.setState({ 
-            valueIncVat: valueIncVat
-          },() => console.log(this.state.valueIncVat));
-        
-
-        }
-      });
-
-
       switch (this.state.currentWeek) {
         case "2022-12-01":
+
+        let firstWeek1 = [this.state.valueIncVat[0], this.state.valueIncVat[6], this.state.valueIncVat[12], this.state.valueIncVat[18], this.state.valueIncVat[24], this.state.valueIncVat[30], this.state.valueIncVat[36]]
+        let firstWeek2 = [this.state.valueIncVat[1], this.state.valueIncVat[7], this.state.valueIncVat[13], this.state.valueIncVat[19], this.state.valueIncVat[25], this.state.valueIncVat[31], this.state.valueIncVat[37]]
+        let firstWeek3 = [this.state.valueIncVat[2], this.state.valueIncVat[8], this.state.valueIncVat[14], this.state.valueIncVat[20], this.state.valueIncVat[26], this.state.valueIncVat[32], this.state.valueIncVat[38]]
+        let firstWeek4 = [this.state.valueIncVat[3], this.state.valueIncVat[9], this.state.valueIncVat[15], this.state.valueIncVat[21], this.state.valueIncVat[27], this.state.valueIncVat[33], this.state.valueIncVat[39]]
+        let firstWeek5 = [this.state.valueIncVat[4], this.state.valueIncVat[10], this.state.valueIncVat[16], this.state.valueIncVat[22], this.state.valueIncVat[28], this.state.valueIncVat[34], this.state.valueIncVat[40]]
+        let firstWeek6 = [this.state.valueIncVat[5], this.state.valueIncVat[11], this.state.valueIncVat[17], this.state.valueIncVat[23], this.state.valueIncVat[29], this.state.valueIncVat[35], this.state.valueIncVat[41]]
+        let firstWeek7 = [this.state.valueIncVat[6], this.state.valueIncVat[12], this.state.valueIncVat[18], this.state.valueIncVat[24], this.state.valueIncVat[30], this.state.valueIncVat[36], this.state.valueIncVat[42]]
+
+
+
+
           this.setState({ 
             currentWeekEnd: "2022-12-07",
             currentWeekNum: "Week 1",
             currentWeekData:      
             [{
             name: "Week 1: 2022-12-01",
-            data: [1557307.65, 212116.79, 1271749.24, 231179.55, 900765.68, 66767.69]
+            data: [sumArray(firstWeek1), sumArray(firstWeek2), sumArray(firstWeek3),sumArray(firstWeek4), sumArray(firstWeek5), sumArray(firstWeek6)]
             }],
 
          
@@ -258,6 +302,7 @@ class App extends Component {
      
           });
           break;
+
         case "2022-12-15":
           this.setState({ 
             currentWeekEnd: "2022-12-21",
@@ -295,6 +340,11 @@ class App extends Component {
           break;
       }
 
+
+
+
+  
+      //FETCH DATA
 
     }
   }
