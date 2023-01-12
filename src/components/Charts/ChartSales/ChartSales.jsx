@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import "./ChartSales.css";
 import moment from "moment";
 
-function shortenLabels(value) {
+function shortenLabelsPesos(value) {
   if (value >= 1000000) {
     return "P" + (value / 1000000).toFixed(1) + "m";
   } else if (value >= 1000) {
@@ -73,7 +73,7 @@ class App extends Component {
         },
         dataLabels: {
           formatter: function (value) {
-            return shortenLabels(value);
+            return shortenLabelsPesos(value);
           },
           enabled: true
         },
@@ -90,7 +90,7 @@ class App extends Component {
           tickAmount: 5,
           labels: {
             formatter: function (value) {
-              return shortenLabels(value);
+              return shortenLabelsPesos(value);
             },
             style: {
               colors: "white",

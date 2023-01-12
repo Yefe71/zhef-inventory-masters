@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import "./MostPopularDayWeek.css";
 import moment from "moment";
 
-function shortenLabels(value) {
+function shortenLabelsPesos(value) {
   if (value >= 1000000) {
     return "P" + (value / 1000000).toFixed(1) + "m";
   } else if (value >= 1000) {
@@ -13,22 +13,7 @@ function shortenLabels(value) {
   }
 }
 
-function shortenLabelsPesos(value) {
-  if (value >= 1000000) {
-    return  (value / 1000000).toFixed(1) + "m L";
-  } else if (value >= 1000) {
-    return  (value / 1000).toFixed(1) + "k L";
 
-    
-  } else if (value < 1000){
-    return  (value / 1000).toFixed(1) + "L";
-  }
-  
-  
-  else {
-    return value;
-  }
-}
 
 class App extends Component {
   constructor(props) {
@@ -90,7 +75,7 @@ class App extends Component {
         },
         dataLabels: {
           formatter: function (value) {
-            return shortenLabels(value);
+            return shortenLabelsPesos(value);
           },
           enabled: true
         },
@@ -107,7 +92,7 @@ class App extends Component {
           tickAmount: 5,
           labels: {
             formatter: function (value) {
-              return shortenLabels(value);
+              return shortenLabelsPesos(value);
             },
             style: {
               colors: "white",
