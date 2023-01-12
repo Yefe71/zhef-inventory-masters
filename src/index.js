@@ -4,14 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons'
-import Particle from './components/Particle';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
   <div>
     <App />
-    {/* <Particle/> */}
     </div>
     
 );

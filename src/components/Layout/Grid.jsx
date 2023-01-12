@@ -44,28 +44,28 @@ export const StyleBestSellingItem= styled(Card)`
     padding: 0;
     `;
 
-export const StyleRevenueChart= styled(Card)`
+export const StyleChart1= styled(Card)`
     background: #1c2473;
     grid-area: chart1;
     `;
 
-export const StyleOrderSummaryChart= styled(Card)`
+export const StyleChart2= styled(Card)`
     background: #1c2473;
     grid-area: chart2;
     `;
 
-export const StyleDaysChart= styled(Card)`
+export const StyleChart3= styled(Card)`
     background: #1c2473;
     grid-area: chart3;
     `;
 
-export const StyleDaysChart2= styled(Card)`
+export const StyleChart4= styled(Card)`
     background: #1c2473;
     grid-area: chart4;
     `;
 
 
-export const StyleOrderDataTable= styled(Card)`
+export const StyleTable= styled(Card)`
     background: #1c2473;
     width: 100%;
     margin-top: 1rem;
