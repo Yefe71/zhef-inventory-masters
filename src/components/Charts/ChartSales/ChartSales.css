@@ -21,7 +21,33 @@ padding-left: 0px;
     top: 0rem;
 
 }
+.titleDayWeekSub{
+    position: absolute;
+    top: 65%;
+    left: 39%;
+        
+}
 
+.titleDayWeekSub2{
+    position: absolute;
+    top: 65%;
+    left: 45%;
+        
+}
+
+.titleDayWeekSub3{
+    position: absolute;
+    top: 80%;
+    left: 47.5%;
+        
+}
+
+.titleDayWeekSub4{
+    position: absolute;
+    top: 75%;
+    left: 39.5%;
+        
+}
 
 
 .titleSales{

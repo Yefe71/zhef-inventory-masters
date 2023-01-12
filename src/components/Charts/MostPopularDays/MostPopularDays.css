@@ -76,7 +76,19 @@
     
     
     
-    
+    .titleDayWeekSub{
+        position: absolute;
+        top: 65%;
+        left: 39%;
+        
+    }
+
+    .titleDayWeekSub2{
+        position: absolute;
+        top: 65%;
+        left: 45%;
+        
+    }
     
     
     

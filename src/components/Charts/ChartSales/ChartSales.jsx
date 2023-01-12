@@ -42,9 +42,9 @@ class App extends Component {
 
       currentWeekData: [
         {
-          name: "Week 1: 2022-12-08",
+          name: "",
           data: [
-           0, 0, 0, 0, 0, 0,
+           
           ],
         }
 
@@ -575,6 +575,7 @@ class App extends Component {
           </div>
 
           <h1 className="titleSales">Top Sales</h1>
+          <h2 className = "titleDayWeekSub4">(In Philippine Peso)</h2>
           <div className="nav-buttons">
             <button
               onClick={() => {
