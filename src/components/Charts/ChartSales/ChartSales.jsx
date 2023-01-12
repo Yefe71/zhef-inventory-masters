@@ -24,9 +24,11 @@ class App extends Component {
       weekDataAdo: [
 
       ],
+
       weekDataAdoT:  [
 
       ],
+
       weekDataE10:  [
 
       ],
@@ -574,7 +576,7 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className="titleSales">Top Sales</h1>
+          <h1 className="titleSales">Top Product Sales</h1>
           <h2 className = "titleDayWeekSub4">(In Philippine Peso)</h2>
           <div className="nav-buttons">
             <button

@@ -479,7 +479,7 @@ class App extends Component {
                         ],
                         options: {
                           ...this.state.options,
-                          colors: ["#66ff0d", "#ffffff", "#ffffff"],
+                          colors: ["#0054f0", "#ffffff", "#ffffff"],
                         }
             
                         ,
@@ -506,7 +506,7 @@ class App extends Component {
                         ],
                         options: {
                           ...this.state.options,
-                          colors: ["#66ff0d", "#ffffff", "#ffffff"],
+                          colors: ["#0054f0", "#ffffff", "#ffffff"],
                         },
                       });
                       break;
@@ -530,7 +530,7 @@ class App extends Component {
                         ],
                         options: {
                           ...this.state.options,
-                          colors: ["#66ff0d", "#ffffff", "#ffffff"],
+                          colors: ["#0054f0", "#ffffff", "#ffffff"],
                         },
                       });
                       break;
@@ -553,7 +553,7 @@ class App extends Component {
                         ],
                         options: {
                           ...this.state.options,
-                          colors: ["#66ff0d", "#ffffff", "#ffffff"],
+                          colors: ["#0054f0", "#ffffff", "#ffffff"],
                         },
                       });
                       break;
@@ -583,7 +583,7 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className = "titleProducts">Top Products</h1>
+          <h1 className = "titleProducts">Top Products Sold</h1>
           <h2 className = "titleDayWeekSub3">(In Liters)</h2>
           <div className="nav-buttons">
             <button
