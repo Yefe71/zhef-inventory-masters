@@ -46,7 +46,8 @@ class App extends Component {
           data: [
            0, 0, 0, 0, 0, 0,
           ],
-        },
+        }
+
       ],
       currentWeekNum: "Week 1",
       currentWeek: "2022-12-01",
@@ -355,12 +356,6 @@ class App extends Component {
     
   }
 
-
-
-
-
-
-
   componentDidUpdate(prevProps, prevState) {
     function sumArray(arr) {
       let sum = 0;
@@ -369,79 +364,202 @@ class App extends Component {
       }
       return sum;
     }
-
+    
     if (this.state.currentWeek !== prevState.currentWeek) {
       const currentWeekData = this.state.series.filter((datapoint) =>
         datapoint.name.startsWith(this.state.currentWeek)
       );
 
-      switch (this.state.currentWeek) {
-        case "2022-12-01":
 
-          this.setState({
-            currentWeekEnd: "2022-12-07",
-            currentWeekNum: "Week 1",
-
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
-
-        case "2022-12-08":
-          this.setState({
-            currentWeekEnd: "2022-12-14",
-            currentWeekNum: "Week 2",
-            currentWeekData: [
+      fetch(
+        `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(
+          -2
+        )}&weekEnd=${this.state.currentWeekEnd.slice(-2)}`,
+        {
+          method: "get",
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+        .then((response) => response.json())
+        .then((values) => {
+          if (values) {
+            let valueIncVat = values.map((item) => item.valueinvat);
+            this.setState(
               {
-                name: "Week 2: 2022-12-08",
-                
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
+                valueIncVat: valueIncVat,
+              }, () => {
 
-        case "2022-12-15":
-          this.setState({
-            currentWeekEnd: "2022-12-21",
-            currentWeekNum: "Week 3",
-            currentWeekData: [
-              {
-                name: "Week 3: 2022-12-15",
 
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
-        case "2022-12-22":
-          this.setState({
-            currentWeekEnd: "2022-12-28",
-            currentWeekNum: "Week 4",
-            currentWeekData: [
-              {
-                name: "Week 4: 2022-12-22",
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
+                //second set state for adding fetched values to state on refresh
+                this.setState({
 
-        default:
-          console.log("Error");
-          break;
-      }
+                  weekDataAdo: [ 
+                    this.state.valueIncVat[0],
+                    this.state.valueIncVat[6],
+                    this.state.valueIncVat[12],
+                    this.state.valueIncVat[18],
+                    this.state.valueIncVat[24],
+                    this.state.valueIncVat[30],
+                    this.state.valueIncVat[36],
+                  ],
+                  weekDataAdoT:  [
+                    this.state.valueIncVat[1],
+                    this.state.valueIncVat[7],
+                    this.state.valueIncVat[13],
+                    this.state.valueIncVat[19],
+                    this.state.valueIncVat[25],
+                    this.state.valueIncVat[31],
+                    this.state.valueIncVat[37],
+                  ],
+                  weekDataE10:  [
+                    this.state.valueIncVat[2],
+                    this.state.valueIncVat[8],
+                    this.state.valueIncVat[14],
+                    this.state.valueIncVat[20],
+                    this.state.valueIncVat[26],
+                    this.state.valueIncVat[32],
+                    this.state.valueIncVat[38],
+                  ],
+                  weekDataKero:  [
+                    this.state.valueIncVat[3],
+                    this.state.valueIncVat[9],
+                    this.state.valueIncVat[15],
+                    this.state.valueIncVat[21],
+                    this.state.valueIncVat[27],
+                    this.state.valueIncVat[33],
+                    this.state.valueIncVat[39],
+                  ],
+                  weekDataXcs:  [
+                    this.state.valueIncVat[4],
+                    this.state.valueIncVat[10],
+                    this.state.valueIncVat[16],
+                    this.state.valueIncVat[22],
+                    this.state.valueIncVat[28],
+                    this.state.valueIncVat[34],
+                    this.state.valueIncVat[40],
+                  ],
+                  weekDataXub:  [
+                    this.state.valueIncVat[5],
+                    this.state.valueIncVat[11],
+                    this.state.valueIncVat[17],
+                    this.state.valueIncVat[23],
+                    this.state.valueIncVat[29],
+                    this.state.valueIncVat[35],
+                    this.state.valueIncVat[41],
+                  ],
+                }, () => {
+
+                  switch (this.state.currentWeek) {
+                    case "2022-12-01":
+
+                      this.setState({
+                        currentWeekEnd: "2022-12-07",
+                        currentWeekNum: "Week 1",
+                        currentWeekData: [
+                          {
+                            name: "Week 1: 2022-12-01",
+                            data: [
+                              sumArray(this.state.weekDataAdo),
+                              sumArray(this.state.weekDataAdoT),
+                              sumArray(this.state.weekDataE10),
+                              sumArray(this.state.weekDataKero),
+                              sumArray(this.state.weekDataXcs),
+                              sumArray(this.state.weekDataXub),
+                            ],
+                          },
+                        ],
+                        options: {
+                          ...this.state.options,
+                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                        }
+            
+                        ,
+                      });
+                      break;
+
+                    case "2022-12-08":
+         
+                      this.setState({
+                        currentWeekEnd: "2022-12-14",
+                        currentWeekNum: "Week 2",
+                        currentWeekData: [
+                          {
+                            name: "Week 2: 2022-12-08",
+                            data: [
+                              sumArray(this.state.weekDataAdo),
+                              sumArray(this.state.weekDataAdoT),
+                              sumArray(this.state.weekDataE10),
+                              sumArray(this.state.weekDataKero),
+                              sumArray(this.state.weekDataXcs),
+                              sumArray(this.state.weekDataXub),
+                            ],
+                          },
+                        ],
+                        options: {
+                          ...this.state.options,
+                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                        },
+                      });
+                      break;
+
+                    case "2022-12-15":
+                      this.setState({
+                        currentWeekEnd: "2022-12-21",
+                        currentWeekNum: "Week 3",
+                        currentWeekData: [
+                          {
+                            name: "Week 3: 2022-12-15",
+                            data: [
+                              sumArray(this.state.weekDataAdo),
+                              sumArray(this.state.weekDataAdoT),
+                              sumArray(this.state.weekDataE10),
+                              sumArray(this.state.weekDataKero),
+                              sumArray(this.state.weekDataXcs),
+                              sumArray(this.state.weekDataXub),
+                            ],
+                          },
+                        ],
+                        options: {
+                          ...this.state.options,
+                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                        },
+                      });
+                      break;
+                    case "2022-12-22":
+                      this.setState({
+                        currentWeekEnd: "2022-12-28",
+                        currentWeekNum: "Week 4",
+                        currentWeekData: [
+                          {
+                            name: "Week 4: 2022-12-08",
+                            data: [
+                              sumArray(this.state.weekDataAdo),
+                              sumArray(this.state.weekDataAdoT),
+                              sumArray(this.state.weekDataE10),
+                              sumArray(this.state.weekDataKero),
+                              sumArray(this.state.weekDataXcs),
+                              sumArray(this.state.weekDataXub),
+                            ],
+                          },
+                        ],
+                        options: {
+                          ...this.state.options,
+                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                        },
+                      });
+                      break;
+
+                    default:
+                      console.log("Error");
+                      break;
+                  }
+
+                })
+              }); 
+               //do something
+          }
+        });
+
     }
   }
 
