@@ -103,28 +103,7 @@ class App extends Component {
       },
 
       series: [
-        {
-          name: "Week 1: 2022-12-01",
-          data: [
-            1557307.65, 212116.79, 1271749.24, 231179.55, 900765.68, 66767.69,
-          ],
-        },
-        {
-          name: "Week 2: 2022-12-08",
-          data: [482882.93, 17093, 226393, 28944, 132831, 12057],
-        },
-        {
-          name: "Week 3: 2022-12-15",
-          data: [
-            2292862.73, 340154.28, 1383918.03, 244971.48, 1135987.48, 120485.12,
-          ],
-        },
-        {
-          name: "Week 4:2022-12-22",
-          data: [
-            696039.77, 154466.56, 922506.33, 207681.09, 1301989.12, 76318.5,
-          ],
-        },
+        
       ],
     };
   }
@@ -256,61 +235,13 @@ class App extends Component {
               //second set state for adding fetched values to state on refresh
               this.setState(
                 {
-                  weekDataAdo: [
-                    this.state.valueIncVat[0],
-                    this.state.valueIncVat[1],
-                    this.state.valueIncVat[2],
-                    this.state.valueIncVat[3],
-                    this.state.valueIncVat[4],
-                    this.state.valueIncVat[5],
-                    this.state.valueIncVat[6],
-                  ],
-                  weekDataAdoT: [
-                    this.state.valueIncVat[7],
-                    this.state.valueIncVat[8],
-                    this.state.valueIncVat[9],
-                    this.state.valueIncVat[10],
-                    this.state.valueIncVat[11],
-                    this.state.valueIncVat[12],
-                    this.state.valueIncVat[13],
-                  ],
-                  weekDataE10: [
-                    this.state.valueIncVat[14],
-                    this.state.valueIncVat[15],
-                    this.state.valueIncVat[16],
-                    this.state.valueIncVat[17],
-                    this.state.valueIncVat[18],
-                    this.state.valueIncVat[19],
-                    this.state.valueIncVat[20],
-                  ],
-                  weekDataKero: [
-                    this.state.valueIncVat[21],
-                    this.state.valueIncVat[22],
-                    this.state.valueIncVat[23],
-                    this.state.valueIncVat[24],
-                    this.state.valueIncVat[25],
-                    this.state.valueIncVat[26],
-                    this.state.valueIncVat[27],
-                  ],
-                  weekDataXcs: [
-                    this.state.valueIncVat[28],
-                    this.state.valueIncVat[29],
-                    this.state.valueIncVat[30],
-                    this.state.valueIncVat[31],
-                    this.state.valueIncVat[32],
-                    this.state.valueIncVat[33],
-                    this.state.valueIncVat[34],
-                  ],
-                  weekDataXub: [
-                    this.state.valueIncVat[35],
-                    this.state.valueIncVat[36],
-                    this.state.valueIncVat[37],
-                    this.state.valueIncVat[38],
-                    this.state.valueIncVat[39],
-                    this.state.valueIncVat[40],
-                    this.state.valueIncVat[41],
-                  ],
-                },
+                  weekDataAdo: this.state.valueIncVat.slice(0, 7),
+                  weekDataAdoT: this.state.valueIncVat.slice(7, 14),
+                  weekDataE10: this.state.valueIncVat.slice(14, 21),
+                  weekDataKero: this.state.valueIncVat.slice(21, 28),
+                  weekDataXcs: this.state.valueIncVat.slice(28, 35),
+                  weekDataXub: this.state.valueIncVat.slice(35, 42),
+              },
                 () => {
                   this.setState({
                     currentWeekEnd: "2022-12-07",
@@ -370,61 +301,13 @@ class App extends Component {
                 //second set state for adding fetched values to state on refresh
                 this.setState(
                   {
-                    weekDataAdo: [
-                      this.state.valueIncVat[0],
-                      this.state.valueIncVat[1],
-                      this.state.valueIncVat[2],
-                      this.state.valueIncVat[3],
-                      this.state.valueIncVat[4],
-                      this.state.valueIncVat[5],
-                      this.state.valueIncVat[6],
-                    ],
-                    weekDataAdoT: [
-                      this.state.valueIncVat[7],
-                      this.state.valueIncVat[8],
-                      this.state.valueIncVat[9],
-                      this.state.valueIncVat[10],
-                      this.state.valueIncVat[11],
-                      this.state.valueIncVat[12],
-                      this.state.valueIncVat[13],
-                    ],
-                    weekDataE10: [
-                      this.state.valueIncVat[14],
-                      this.state.valueIncVat[15],
-                      this.state.valueIncVat[16],
-                      this.state.valueIncVat[17],
-                      this.state.valueIncVat[18],
-                      this.state.valueIncVat[19],
-                      this.state.valueIncVat[20],
-                    ],
-                    weekDataKero: [
-                      this.state.valueIncVat[21],
-                      this.state.valueIncVat[22],
-                      this.state.valueIncVat[23],
-                      this.state.valueIncVat[24],
-                      this.state.valueIncVat[25],
-                      this.state.valueIncVat[26],
-                      this.state.valueIncVat[27],
-                    ],
-                    weekDataXcs: [
-                      this.state.valueIncVat[28],
-                      this.state.valueIncVat[29],
-                      this.state.valueIncVat[30],
-                      this.state.valueIncVat[31],
-                      this.state.valueIncVat[32],
-                      this.state.valueIncVat[33],
-                      this.state.valueIncVat[34],
-                    ],
-                    weekDataXub: [
-                      this.state.valueIncVat[35],
-                      this.state.valueIncVat[36],
-                      this.state.valueIncVat[37],
-                      this.state.valueIncVat[38],
-                      this.state.valueIncVat[39],
-                      this.state.valueIncVat[40],
-                      this.state.valueIncVat[41],
-                    ],
-                  },
+                    weekDataAdo: this.state.valueIncVat.slice(0, 7),
+                    weekDataAdoT: this.state.valueIncVat.slice(7, 14),
+                    weekDataE10: this.state.valueIncVat.slice(14, 21),
+                    weekDataKero: this.state.valueIncVat.slice(21, 28),
+                    weekDataXcs: this.state.valueIncVat.slice(28, 35),
+                    weekDataXub: this.state.valueIncVat.slice(35, 42),
+                },
                   () => {
                     switch (this.state.currentWeek) {
                       case "2022-12-01":

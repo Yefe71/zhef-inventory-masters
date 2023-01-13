@@ -47,7 +47,6 @@ const Dashboard = () => {
 
                 <StyleHeader>                
                   <img className="logo" src={logo} alt="" />DASHBOARD
-                  
                 </StyleHeader>
 
                 <StyleChart1>
