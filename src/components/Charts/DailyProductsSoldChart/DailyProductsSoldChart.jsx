@@ -129,7 +129,10 @@ class App extends Component {
           //FETCH DATA
 
           fetch(
-            `http://localhost:3000/grabdata2?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&code=${this.state.stateCode
+            `http://localhost:3000/grabdata2?weekStart=${this.state.currentWeek.slice(
+              -2
+            )}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&code=${
+              this.state.stateCode
             }`,
             {
               method: "get",
