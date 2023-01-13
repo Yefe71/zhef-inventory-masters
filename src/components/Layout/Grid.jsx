@@ -8,7 +8,6 @@ export const Grid = styled.div`
         
     grid-template-areas:
     "header header header header"
-    /* "top1 top2 top3 top4" */
     "chart1 chart1 chart2 chart2"
     "chart1 chart1 chart2 chart2"
     "chart3 chart3 chart4 chart4"
@@ -20,11 +19,26 @@ export const Grid = styled.div`
 export const StyleTotalRevenue= styled(Card)`
     grid-area: top1;
     padding: 0;
-    
 
-    
-    
     `;
+
+export const StyleTable = styled(Card)`
+  background: #1c2473;
+  width: 100%;
+  margin-top: 1rem;
+
+  box-shadow: 0 0 0 6 8px #ccc;
+`;
+
+export const StyleHeader = styled.div`
+  position: relative;
+  grid-area: header;
+  font-weight: 800;
+  font-size: 40px;
+
+  color: #1c2473;
+`;
+
 
 export const StyleTotalOrders= styled(Card)`
     grid-area: top2;
@@ -64,29 +78,21 @@ export const StyleChart4= styled(Card)`
     grid-area: chart4;
     `;
 
-
-export const StyleTable= styled(Card)`
-    background: #1c2473;
-    width: 100%;
-    margin-top: 1rem;
- 
-    box-shadow: 0 0 0 6 8px #ccc   `;
-
-export const StyleHeader = styled.div`
-   
-    span.red {
-        color: #dc001e;
-      }
-
+export const StyleMonth = styled.div`
+    display: flex;
     grid-area: header;
     font-weight: 800;
-    font-size: 40px;
-    
-
+    font-size: 30px;
+    align-items: center;
     color: #1c2473;
-    
+    margin-top: 15px;
+    position: absolute;
+    top: 1rem;
+    left: 80.7%;
+    top: 40%
+   
+`;
 
-    `;
 
 
 

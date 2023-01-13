@@ -336,8 +336,8 @@ class App extends Component {
                   }, () => {
 
                   switch (this.state.currentWeek) {
+                    
                     case "2022-12-01":
-
                       this.setState({
                         currentWeekEnd: "2022-12-07",
                         currentWeekNum: "Week 1",

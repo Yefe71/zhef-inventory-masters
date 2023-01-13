@@ -1,7 +1,7 @@
 // Imports
 import "./Dashboard.css"
 import profileImg from './images/dp.jpg'
-import {Grid, StyleHeader, StyleChart1, StyleChart2, StyleChart3, StyleChart4,StyleTable} from '../../components/Layout/Grid'
+import {Grid, StyleHeader, StyleChart1, StyleChart2, StyleChart3, StyleChart4,StyleTable, StyleMonth} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
 import Table from "../../components/ContentComponents/Table/Table"
 import logo from "./images/logo.png"
@@ -11,12 +11,54 @@ import TopProductsSold from "../../components/ContentComponents/TopProductsSold/
 import DailyProductSales from "../../components/ContentComponents/DailyProductSales/DailyProductSales"
 import DailyProductsSold from "../../components/ContentComponents/DailyProductsSold/DailyProductsSold"
 
+import React from "react";
+import { Component } from "react";
 
 
-const Dashboard = () => {
 
 
 
+class Dashboard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      month: "December",
+      months: [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ],
+    };
+  }
+
+  moveBackward() {
+    let currentIndex = this.state.months.indexOf(this.state.month);
+    if (currentIndex !== 0) {
+      this.setState({
+        month: this.state.months[currentIndex - 1],
+      });
+    }
+  }
+
+  moveForward() {
+    let currentIndex = this.state.months.indexOf(this.state.month);
+    if (currentIndex !== 11) {
+      this.setState({
+        month: this.state.months[currentIndex + 1],
+      });
+    }
+  }
+
+  render() {
     return (
       <div>
         <div className="wrapper">
@@ -42,41 +84,63 @@ const Dashboard = () => {
           </div>
 
           <Container>
-
             <Grid>
+              <StyleHeader>
+                <img className="logo" src={logo} alt="" />DASHBOARD
 
-                <StyleHeader>                
-                  <img className="logo" src={logo} alt="" />DASHBOARD
-                </StyleHeader>
+                <StyleMonth>
 
-                <StyleChart1>
-                  <TopProductSales />
-                </StyleChart1>
+                  <button
+                    onClick={() => {
+                      this.moveBackward();
+                    }}
+                    type="button"
+                    className="backBtRoot"
+                  >
+                    &lt;
+                  </button>
 
-                <StyleChart2>
-                  <TopProductsSold />
-                </StyleChart2>
+                  
+                  <button
+                    onClick={() => {
+                      this.moveForward();
+                    }}
+                    type="button"
+                    className="forwardBtRoot"
+                  >
+                    &gt;
+                  </button>
+                  {this.state.month}
 
-                <StyleChart3>
-                  <DailyProductSales />
-                </StyleChart3>
+                </StyleMonth>
 
-                <StyleChart4>
-                  <DailyProductsSold />
-                </StyleChart4>
+              </StyleHeader>
 
+              <StyleChart1>
+                <TopProductSales month = {this.state.month}/>
+              </StyleChart1>
+
+              <StyleChart2>
+                <TopProductsSold month = {this.state.month}/>
+              </StyleChart2>
+
+              <StyleChart3>
+                <DailyProductSales month = {this.state.month}/>
+              </StyleChart3>
+
+              <StyleChart4>
+                <DailyProductsSold />
+              </StyleChart4>
             </Grid>
 
-                <StyleTable>
-                  <Table />
-                </StyleTable>
-
+            <StyleTable>
+              <Table />
+            </StyleTable>
           </Container>
         </div>
       </div>
     );
-
+  }
 }
-
 
 export default Dashboard;
