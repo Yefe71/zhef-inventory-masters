@@ -44,7 +44,7 @@ class App extends Component {
         colors: ["#ff0fdfea", "#ffffff", "#ffffff"],
 
         grid: {
-          borderColor: "#444443",
+          borderColor: "#0401cf",
           padding: {
             left: 0,
             right: 0,

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Chart from "react-apexcharts";
-import "./TopProductsSoldChart.css";
+import "./WeeklyProductsSoldChart.css";
 import moment from "moment";
 
 
@@ -66,7 +66,7 @@ class App extends Component {
         colors: ["#0054f0", "#ffffff", "#ffffff"],
 
         grid: {
-          borderColor: "#444443",
+          borderColor: "#0401cf",
           padding: {
             left: 0,
             right: 0,
@@ -460,7 +460,7 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className = "titleProducts">Top Products Sold</h1>
+          <h1 className = "titleProducts">Weekly Products Sold</h1>
           <h2 className = "titleDayWeekSub2">(In Liters)</h2>
           <div className="nav-buttons">
             <button

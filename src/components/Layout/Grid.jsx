@@ -78,7 +78,14 @@ export const StyleChart4= styled(Card)`
     grid-area: chart4;
     `;
 
+export const StyleMonthCard = styled.div`
+
+
+`;
+
 export const StyleMonth = styled.div`
+     text-shadow: 1px 2px 4px #c2bebe;
+
     display: flex;
     grid-area: header;
     font-weight: 800;
@@ -90,6 +97,7 @@ export const StyleMonth = styled.div`
     top: 1rem;
     left: 80.7%;
     top: 40%
+    
    
 `;
 

@@ -1,13 +1,13 @@
 // Imports
 import "./Dashboard.css"
 import profileImg from './images/dp.jpg'
-import {Grid, StyleHeader, StyleChart1, StyleChart2, StyleChart3, StyleChart4,StyleTable, StyleMonth} from '../../components/Layout/Grid'
+import {Grid, StyleHeader, StyleChart1, StyleChart2, StyleChart3, StyleChart4,StyleTable, StyleMonth, StyleMonthCard} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
 import Table from "../../components/ContentComponents/Table/Table"
 import logo from "./images/logo.png"
 
-import TopProductSales from '../../components/ContentComponents/TopProductSales/TopProductSales'
-import TopProductsSold from "../../components/ContentComponents/TopProductsSold/TopProductsSold"
+import WeeklyProductSales from '../../components/ContentComponents/WeeklyProductSales/WeeklyProductSales'
+import WeeklyProductsSold from "../../components/ContentComponents/WeeklyProductsSold/WeeklyProductsSold"
 import DailyProductSales from "../../components/ContentComponents/DailyProductSales/DailyProductSales"
 import DailyProductsSold from "../../components/ContentComponents/DailyProductsSold/DailyProductsSold"
 
@@ -88,40 +88,42 @@ class Dashboard extends Component {
               <StyleHeader>
                 <img className="logo" src={logo} alt="" />DASHBOARD
 
-                <StyleMonth>
+                <StyleMonthCard>
+                  <StyleMonth>
 
-                  <button
-                    onClick={() => {
-                      this.moveBackward();
-                    }}
-                    type="button"
-                    className="backBtRoot"
-                  >
-                    &lt;
-                  </button>
+                    <button
+                      onClick={() => {
+                        this.moveBackward();
+                      }}
+                      type="button"
+                      className="backBtRoot"
+                    >
+                      &lt;
+                    </button>
 
-                  
-                  <button
-                    onClick={() => {
-                      this.moveForward();
-                    }}
-                    type="button"
-                    className="forwardBtRoot"
-                  >
-                    &gt;
-                  </button>
-                  {this.state.month}
+                    
+                    <button
+                      onClick={() => {
+                        this.moveForward();
+                      }}
+                      type="button"
+                      className="forwardBtRoot"
+                    >
+                      &gt;
+                    </button>
+                    {this.state.month}
 
-                </StyleMonth>
+                  </StyleMonth>
+                </StyleMonthCard>
 
               </StyleHeader>
 
               <StyleChart1>
-                <TopProductSales month = {this.state.month}/>
+                <WeeklyProductSales month = {this.state.month}/>
               </StyleChart1>
 
               <StyleChart2>
-                <TopProductsSold month = {this.state.month}/>
+                <WeeklyProductsSold month = {this.state.month}/>
               </StyleChart2>
 
               <StyleChart3>
@@ -129,7 +131,7 @@ class Dashboard extends Component {
               </StyleChart3>
 
               <StyleChart4>
-                <DailyProductsSold />
+                <DailyProductsSold month = {this.state.month}/>
               </StyleChart4>
             </Grid>
 

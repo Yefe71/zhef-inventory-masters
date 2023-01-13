@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import "./TopProductSalesChart.css";
+import "./WeeklyProductSalesChart.css";
 import moment from "moment";
 
 function shortenLabelsPesos(value) {
@@ -60,7 +60,7 @@ class App extends Component {
         colors: ["#ed1b2f", "#ffffff", "#ffffff"],
 
         grid: {
-          borderColor: "#444443",
+          borderColor: "#0401cf",
           padding: {
             left: 0,
             right: 0,
@@ -287,6 +287,8 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+   
+
     function sumArray(arr) {
       let sum = 0;
       for (let i = 0; i < arr.length; i++) {
@@ -452,7 +454,7 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className="titleSales">Top Product Sales</h1>
+          <h1 className="titleSales">Weekly Product Sales</h1>
           <h2 className = "titleDayWeekSub1">(In Philippine Peso)</h2>
           <div className="nav-buttons">
             <button
