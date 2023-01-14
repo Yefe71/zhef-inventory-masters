@@ -95,7 +95,7 @@ export const StyleMonth = styled.div`
     margin-top: 15px;
     position: absolute;
     top: 1rem;
-    left: 80.7%;
+    left: 75%;
     top: 40%
     
    

@@ -20,26 +20,45 @@ class App extends Component {
     this.state = {
       valueIncVat: ["wat"],
 
-      weekDataAdo: [],
-      weekDataAdoT: [],
-      weekDataE10: [],
-      weekDataKero: [],
-      weekDataXcs: [],
-      weekDataXub: [],
+      monthProp: this.props.month.month.toLowerCase().slice(0,3),
+
+      weekDataAdo: [
+
+      ],
+
+      weekDataAdoT:  [
+
+      ],
+
+      weekDataE10:  [
+
+      ],
+      weekDataKero:  [
+
+      ],
+      weekDataXcs:  [
+
+      ],
+      weekDataXub:  [
+
+      ],
 
       currentWeekData: [
         {
           name: "",
-          data: [],
-        },
+          data: [
+         
+          ],
+        }
+
       ],
       currentWeekNum: "Week 1",
       currentWeek: "2022-12-01",
       currentWeekEnd: "2022-12-07",
-  
+      currentWeekDefault: "01",
 
       options: {
-        colors: ["#ff912aea", "#ffffff", "#ffffff"],
+        colors: ["#ed1b2f", "#ffffff", "#ffffff"],
 
         grid: {
           borderColor: "#0401cf",
@@ -59,7 +78,7 @@ class App extends Component {
           formatter: function (value) {
             return shortenLabelsPesos(value);
           },
-          enabled: true,
+          enabled: true
         },
         chart: {
           id: "basic-line",
@@ -109,6 +128,7 @@ class App extends Component {
   //back and forward buttons
 
   moveBackward() {
+    console.log(this.state.monthProp)
     if (this.state.currentWeek !== "2022-12-01") {
       const currentWeek = this.state.currentWeek;
       const currentWeekMoment = moment(currentWeek, "YYYY-MM-DD");
@@ -120,6 +140,7 @@ class App extends Component {
 
       this.setState(
         {
+          monthProp: this.props.month.month.toLowerCase().slice(0,3),
           currentWeek: previousWeek,
           currentWeekEnd: nextWeekPrev,
         },
@@ -127,11 +148,7 @@ class App extends Component {
           //FETCH DATA
 
           fetch(
-            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(
-              -2
-            )}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&code=${
-              this.state.stateCode
-            }`,
+            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
             {
               method: "get",
               headers: { "Content-Type": "application/json" },
@@ -168,6 +185,7 @@ class App extends Component {
 
       this.setState(
         {
+          monthProp: this.props.month.month.toLowerCase().slice(0,3),
           currentWeek: nextWeek,
           currentWeekEnd: nextWeekEnd,
         },
@@ -175,9 +193,7 @@ class App extends Component {
           //FETCH DATA
 
           fetch(
-            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(
-              -2
-            )}&weekEnd=${this.state.currentWeekEnd.slice(-2)}`,
+            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
             {
               method: "get",
               headers: { "Content-Type": "application/json" },
@@ -200,7 +216,11 @@ class App extends Component {
     }
   }
 
+
+
+
   componentDidMount() {
+    console.log(this.props.month.month.toLowerCase().slice(0,3))
     console.log(this.state.currentWeek, this.state.currentWeekEnd, "START");
     function sumArray(arr) {
       let sum = 0;
@@ -212,9 +232,7 @@ class App extends Component {
     //fetch default data for currentWeekData at start
 
     fetch(
-      `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(
-        -2
-      )}&weekEnd=${this.state.currentWeekEnd.slice(-2)}`,
+      `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
       {
         method: "get",
         headers: { "Content-Type": "application/json" },
@@ -222,92 +240,87 @@ class App extends Component {
     )
       .then((response) => response.json())
       .then((values) => {
-        console.log(values);
         if (values) {
+          console.log(values)
           let valueIncVat = values.map((item) => item.valueinvat);
           this.setState(
             {
               valueIncVat: valueIncVat,
-            },
-            () => {
+            }, () => {
               //second set state for adding fetched values to state on refresh
-              this.setState(
-                {
-                  weekDataAdo: this.state.valueIncVat.slice(0, 7),
-                  weekDataAdoT: this.state.valueIncVat.slice(7, 14),
-                  weekDataE10: this.state.valueIncVat.slice(14, 21),
-                  weekDataKero: this.state.valueIncVat.slice(21, 28),
-                  weekDataXcs: this.state.valueIncVat.slice(28, 35),
-                  weekDataXub: this.state.valueIncVat.slice(35, 42),
-              },
-                () => {
-                  this.setState({
-                    currentWeekEnd: "2022-12-07",
-                    currentWeekNum: "Week 1",
-                    currentWeekData: [
-                      {
-                        name: "Week 1: 2022-12-01",
-                        data: [
-                          sumArray(this.state.weekDataAdo),
-                          sumArray(this.state.weekDataAdoT),
-                          sumArray(this.state.weekDataE10),
-                          sumArray(this.state.weekDataKero),
-                          sumArray(this.state.weekDataXcs),
-                          sumArray(this.state.weekDataXub),
-                        ],
-                      },
+              this.setState({
+                weekDataAdo: this.state.valueIncVat.slice(0, 7),
+                weekDataAdoT: this.state.valueIncVat.slice(7, 14),
+                weekDataE10: this.state.valueIncVat.slice(14, 21),
+                weekDataKero: this.state.valueIncVat.slice(21, 28),
+                weekDataXcs: this.state.valueIncVat.slice(28, 35),
+                weekDataXub: this.state.valueIncVat.slice(35, 42),
+              }, () => {
+
+                this.setState({
+                currentWeekEnd: "2022-12-07",
+                currentWeekNum: "Week 1",
+                currentWeekData: [
+                  {
+                    name: "Week 1: 2022-12-01",
+                    data: [
+                      sumArray(this.state.weekDataAdo),
+                      sumArray(this.state.weekDataAdoT),
+                      sumArray(this.state.weekDataE10),
+                      sumArray(this.state.weekDataKero),
+                      sumArray(this.state.weekDataXcs),
+                      sumArray(this.state.weekDataXub),
                     ],
-                  });
-                }
-              );
-            }
-          );
-          //do something
+                  },
+                ],
+              })
+              })
+
+
+            }); 
+             //do something
         }
       });
+  
   }
 
   componentDidUpdate(prevProps, prevState) {
-    function sumArray(arr) {
-      let sum = 0;
-      for (let i = 0; i < arr.length; i++) {
-        sum += Number(arr[i]);
-      }
-      return sum;
-    }
+ 
+    if (this.props.month !== prevProps.month) {
+      this.setState({monthProp: this.props.month.month.toLowerCase().slice(0,3)}, () => {
 
-    if (this.state.currentWeek !== prevState.currentWeek) {
-      fetch(
-        `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(
-          -2
-        )}&weekEnd=${this.state.currentWeekEnd.slice(-2)}`,
-        {
-          method: "get",
-          headers: { "Content-Type": "application/json" },
-        }
-      )
-        .then((response) => response.json())
-        .then((values) => {
-          if (values) {
-            let valueIncVat = values.map((item) => item.valueinvat);
-            this.setState(
-              {
-                valueIncVat: valueIncVat,
-              },
-              () => {
-                //second set state for adding fetched values to state on refresh
-                this.setState(
-                  {
+    
+        fetch(
+          `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
+          {
+            method: "get",
+            headers: { "Content-Type": "application/json" },
+          }
+        )
+          .then((response) => response.json())
+          .then((values) => {
+            if (values) {
+              let valueIncVat = values.map((item) => item.valueinvat);
+              this.setState(
+                {
+                  valueIncVat: valueIncVat,
+                }, () => {
+
+
+                  //second set state for adding fetched values to state on refresh
+                  this.setState({
+
                     weekDataAdo: this.state.valueIncVat.slice(0, 7),
                     weekDataAdoT: this.state.valueIncVat.slice(7, 14),
                     weekDataE10: this.state.valueIncVat.slice(14, 21),
                     weekDataKero: this.state.valueIncVat.slice(21, 28),
                     weekDataXcs: this.state.valueIncVat.slice(28, 35),
                     weekDataXub: this.state.valueIncVat.slice(35, 42),
-                },
-                  () => {
+                  }, () => {
+
                     switch (this.state.currentWeek) {
                       case "2022-12-01":
+
                         this.setState({
                           currentWeekEnd: "2022-12-07",
                           currentWeekNum: "Week 1",
@@ -326,12 +339,15 @@ class App extends Component {
                           ],
                           options: {
                             ...this.state.options,
-                            colors: ["#ff912aea", "#ffffff", "#ffffff"],
-                          },
+                            colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                          }
+          
+                          ,
                         });
                         break;
 
                       case "2022-12-08":
+       
                         this.setState({
                           currentWeekEnd: "2022-12-14",
                           currentWeekNum: "Week 2",
@@ -350,7 +366,7 @@ class App extends Component {
                           ],
                           options: {
                             ...this.state.options,
-                            colors: ["#ff912aea", "#ffffff", "#ffffff"],
+                            colors: ["#ed1b2f", "#ffffff", "#ffffff"],
                           },
                         });
                         break;
@@ -374,7 +390,7 @@ class App extends Component {
                           ],
                           options: {
                             ...this.state.options,
-                            colors: ["#ff912aea", "#ffffff", "#ffffff"],
+                            colors: ["#ed1b2f", "#ffffff", "#ffffff"],
                           },
                         });
                         break;
@@ -397,7 +413,7 @@ class App extends Component {
                           ],
                           options: {
                             ...this.state.options,
-                            colors: ["#ff912aea", "#ffffff", "#ffffff"],
+                            colors: ["#ed1b2f", "#ffffff", "#ffffff"],
                           },
                         });
                         break;
@@ -406,13 +422,167 @@ class App extends Component {
                         console.log("Error");
                         break;
                     }
+
+                  })
+                }); 
+                 //do something
+            }
+          });
+
+
+      });
+  
+
+    }
+
+    function sumArray(arr) {
+      let sum = 0;
+      for (let i = 0; i < arr.length; i++) {
+        sum += Number(arr[i]);
+      }
+      return sum;
+    }
+  
+    if (this.state.currentWeek !== prevState.currentWeek) {
+
+      fetch(
+        `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
+        {
+          method: "get",
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+        .then((response) => response.json())
+        .then((values) => {
+          if (values) {
+            let valueIncVat = values.map((item) => item.valueinvat);
+            this.setState(
+              {
+                valueIncVat: valueIncVat,
+              }, () => {
+
+
+                //second set state for adding fetched values to state on refresh
+                this.setState({
+                  weekDataAdo: this.state.valueIncVat.slice(0, 7),
+                  weekDataAdoT: this.state.valueIncVat.slice(7, 14),
+                  weekDataE10: this.state.valueIncVat.slice(14, 21),
+                  weekDataKero: this.state.valueIncVat.slice(21, 28),
+                  weekDataXcs: this.state.valueIncVat.slice(28, 35),
+                  weekDataXub: this.state.valueIncVat.slice(35, 42),
+                }, () => {
+
+                  switch (this.state.currentWeek) {
+                    case "2022-12-01":
+
+                      this.setState({
+                        currentWeekEnd: "2022-12-07",
+                        currentWeekNum: "Week 1",
+                        currentWeekData: [
+                          {
+                            name: "Week 1: 2022-12-01",
+                            data: [
+                              sumArray(this.state.weekDataAdo),
+                              sumArray(this.state.weekDataAdoT),
+                              sumArray(this.state.weekDataE10),
+                              sumArray(this.state.weekDataKero),
+                              sumArray(this.state.weekDataXcs),
+                              sumArray(this.state.weekDataXub),
+                            ],
+                          },
+                        ],
+                        options: {
+                          ...this.state.options,
+                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                        }
+          
+                        ,
+                      });
+                      break;
+
+                    case "2022-12-08":
+       
+                      this.setState({
+                        currentWeekEnd: "2022-12-14",
+                        currentWeekNum: "Week 2",
+                        currentWeekData: [
+                          {
+                            name: "Week 2: 2022-12-08",
+                            data: [
+                              sumArray(this.state.weekDataAdo),
+                              sumArray(this.state.weekDataAdoT),
+                              sumArray(this.state.weekDataE10),
+                              sumArray(this.state.weekDataKero),
+                              sumArray(this.state.weekDataXcs),
+                              sumArray(this.state.weekDataXub),
+                            ],
+                          },
+                        ],
+                        options: {
+                          ...this.state.options,
+                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                        },
+                      });
+                      break;
+
+                    case "2022-12-15":
+                      this.setState({
+                        currentWeekEnd: "2022-12-21",
+                        currentWeekNum: "Week 3",
+                        currentWeekData: [
+                          {
+                            name: "Week 3: 2022-12-15",
+                            data: [
+                              sumArray(this.state.weekDataAdo),
+                              sumArray(this.state.weekDataAdoT),
+                              sumArray(this.state.weekDataE10),
+                              sumArray(this.state.weekDataKero),
+                              sumArray(this.state.weekDataXcs),
+                              sumArray(this.state.weekDataXub),
+                            ],
+                          },
+                        ],
+                        options: {
+                          ...this.state.options,
+                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                        },
+                      });
+                      break;
+                    case "2022-12-22":
+                      this.setState({
+                        currentWeekEnd: "2022-12-28",
+                        currentWeekNum: "Week 4",
+                        currentWeekData: [
+                          {
+                            name: "Week 4: 2022-12-08",
+                            data: [
+                              sumArray(this.state.weekDataAdo),
+                              sumArray(this.state.weekDataAdoT),
+                              sumArray(this.state.weekDataE10),
+                              sumArray(this.state.weekDataKero),
+                              sumArray(this.state.weekDataXcs),
+                              sumArray(this.state.weekDataXub),
+                            ],
+                          },
+                        ],
+                        options: {
+                          ...this.state.options,
+                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                        },
+                      });
+                      break;
+
+                    default:
+                      console.log("Error");
+                      break;
                   }
-                );
-              }
-            );
-            //do something
+
+                })
+              }); 
+               //do something
           }
         });
+
     }
   }
 
