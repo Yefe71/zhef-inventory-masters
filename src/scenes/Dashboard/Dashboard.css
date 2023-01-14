@@ -266,9 +266,98 @@ html{
     color: #262A41;
 } */
 
-.backBtRoot{
-    
+.date{
+    text-shadow: 1px 2px 4px #c2bebe;
+    display: flex;
+    grid-area: header;
+    font-weight: 800;
+    font-size: 30px;
+    color: #1c2473;
+    margin-top: 15px;
+    position: absolute;
+    left: 75%;
+    top: 40%
+}
+
+.month{
+    position: relative;
+    left: -90%;
+
    
+}
+
+.containerMonth{
+    position: absolute;
+    top: 65%;
+    right: 17rem;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color: #1c2473;
+    width: 14%;
+
+}
+
+.vl {
+    position: absolute;
+    border-left: 2px solid #bdbdd8;
+    height: 38px;
+    top: 68%;
+    right: 13.3rem;
+  }
+
+.containerYear{
+    position: absolute;
+    top: 66.5%;
+    right: 3.4rem;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color: #1c2473;
+    width: 7%;
+
+}
+
+.year{
+    position: relative;
+    right: -160%;
+
+}
+.backBtRootMonth{
+
+    position: relative;
+    left: -2.5rem;
+
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 30px;
+    width: 25px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+   /* position: relative;
+   left: -40%;
     margin-right: 10px;
     align-items: center;
     appearance: none;
@@ -298,13 +387,44 @@ html{
     touch-action: manipulation;
     white-space: nowrap;
     will-change: box-shadow,transform;
-    font-size: 18px;
+    font-size: 18px; */
  
 }
-.forwardBtRoot{
-    
-  position: absolute;
-  left: -12px;
+.forwardBtRootMonth{
+
+    position: relative;
+    right: -10rem;
+
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 30px;
+    width: 25px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+  /* position: absolute;
+  left: 60%;
   align-items: center;
   appearance: none;
   background-color: #FCFCFD;
@@ -324,7 +444,6 @@ html{
   overflow: hidden;
   padding-left: 16px;
   padding-right: 16px;
-  position: relative;
   text-align: center;
   text-decoration: none;
   transition: box-shadow .15s,transform .15s;
@@ -334,33 +453,131 @@ html{
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
-  margin-left: 10px;
+  margin-left: 10px; */
 }
 
-.forwardBtRoot:focus {
+.backBtRootYear{
+    position: relative;
+    left: -7rem;
+   
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 30px;
+    width: 25px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+ 
+}
+.forwardBtRootYear{
+    position: relative;
+    left: -0.1rem;
+
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 30px;
+    width: 25px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px; 
+   
+}
+
+.forwardBtRootMonth:focus {
 box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 }
 
-.forwardBtRoot:hover {
+.forwardBtRootMonth:hover {
 box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 transform: translateY(-2px);
 }
 
-.forwardBtRoot:active {
+.forwardBtRootMonth:active {
 box-shadow: #D6D6E7 0 3px 7px inset;
 transform: translateY(2px);
 }
 
-.backBtRoot:focus {
+.backBtRootMonth:focus {
 box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 }
 
-.backBtRoot:hover {
+.backBtRootMonth:hover {
 box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
 transform: translateY(-2px);
 }
 
-.backBtRoot:active {
+.backBtRootMonth:active {
 box-shadow: #D6D6E7 0 3px 7px inset;
 transform: translateY(2px);
 }
+
+
+.forwardBtRootYear:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    }
+    
+    .forwardBtRootYear:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+    }
+    
+    .forwardBtRootYear:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+    }
+    
+    .backBtRootYear:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    }
+    
+    .backBtRootYear:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+    }
+    
+    .backBtRootYear:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+    }

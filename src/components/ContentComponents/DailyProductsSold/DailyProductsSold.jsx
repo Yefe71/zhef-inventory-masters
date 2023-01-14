@@ -2,10 +2,10 @@ import React from "react";
 import DailyProductsSoldChart from "../../Charts/DailyProductsSoldChart/DailyProductsSoldChart";
 import "./DailyProductsSold.css";
 
-const DailyProductsSold = ({month}) => {
+const DailyProductsSold = ({month, year}) => {
   return (
     <div>
-      <DailyProductsSoldChart month = {{month}}/>
+      <DailyProductsSoldChart month = {{month}} year = {{year}}/>
     </div>
   );
 };

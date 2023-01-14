@@ -35,7 +35,6 @@ export const StyleHeader = styled.div`
   grid-area: header;
   font-weight: 800;
   font-size: 40px;
-
   color: #1c2473;
 `;
 
@@ -83,23 +82,6 @@ export const StyleMonthCard = styled.div`
 
 `;
 
-export const StyleMonth = styled.div`
-     text-shadow: 1px 2px 4px #c2bebe;
-
-    display: flex;
-    grid-area: header;
-    font-weight: 800;
-    font-size: 30px;
-    align-items: center;
-    color: #1c2473;
-    margin-top: 15px;
-    position: absolute;
-    top: 1rem;
-    left: 75%;
-    top: 40%
-    
-   
-`;
 
 
 

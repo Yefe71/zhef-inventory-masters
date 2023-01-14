@@ -1,7 +1,7 @@
 // Imports
 import "./Dashboard.css"
 import profileImg from './images/dp.jpg'
-import {Grid, StyleHeader, StyleChart1, StyleChart2, StyleChart3, StyleChart4,StyleTable, StyleMonth, StyleMonthCard} from '../../components/Layout/Grid'
+import {Grid, StyleHeader, StyleChart1, StyleChart2, StyleChart3, StyleChart4,StyleTable} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
 import Table from "../../components/ContentComponents/Table/Table"
 import logo from "./images/logo.png"
@@ -39,16 +39,16 @@ class Dashboard extends Component {
       ],
       year: "2022",
       years:[
-        "2022",
-        "2021",
-        "2020",
+        "2018",
         "2019",
-        "2018"
+        "2020",
+        "2021",
+        "2022"
       ]
     };
   }
 
-  moveBackward() {
+  moveBackwardMonth() {
     let currentIndex = this.state.months.indexOf(this.state.month);
     if (currentIndex !== 0) {
       this.setState({
@@ -57,11 +57,29 @@ class Dashboard extends Component {
     }
   }
 
-  moveForward() {
+  moveForwardMonth() {
     let currentIndex = this.state.months.indexOf(this.state.month);
     if (currentIndex !== 11) {
       this.setState({
         month: this.state.months[currentIndex + 1],
+      });
+    }
+  }
+
+  moveBackwardYear() {
+    let currentIndex = this.state.years.indexOf(this.state.year);
+    if (currentIndex !== 0) {
+      this.setState({
+        year: this.state.years[currentIndex - 1],
+      });
+    }
+  }
+
+  moveForwardYear() {
+    let currentIndex = this.state.years.indexOf(this.state.year);
+    if (currentIndex !== 4) {
+      this.setState({
+        year: this.state.years[currentIndex + 1],
       });
     }
   }
@@ -96,50 +114,83 @@ class Dashboard extends Component {
               <StyleHeader>
                 <img className="logo" src={logo} alt="" />DASHBOARD
 
-                <StyleMonthCard>
-                  <StyleMonth>
-
+                <div className = "date">
+                  <div className = "month">
                     <button
                       onClick={() => {
-                        this.moveBackward();
+                        this.moveBackwardMonth();
                       }}
                       type="button"
-                      className="backBtRoot"
+                      className="backBtRootMonth"
                     >
                       &lt;
                     </button>
 
-                    
                     <button
                       onClick={() => {
-                        this.moveForward();
+                        this.moveForwardMonth();
                       }}
                       type="button"
-                      className="forwardBtRoot"
+                      className="forwardBtRootMonth"
                     >
                       &gt;
                     </button>
-                    {this.state.month} {this.state.year}
+                
+                    </div>
 
-                  </StyleMonth>
-                </StyleMonthCard>
+                    <div className = "year">
 
+                      <button
+                        onClick={() => {
+                          this.moveBackwardYear();
+                        }}
+                        type="button"
+                        className="backBtRootYear"
+                      >
+                        &lt;
+                      </button>
+
+              
+                      <button
+                        onClick={() => {
+                          this.moveForwardYear();
+                        }}
+                        type="button"
+                        className="forwardBtRootYear"
+                      >
+                        &gt;
+                      </button>
+              
+                    </div>
+                  </div>  
+
+                  <div className = "containerMonth">
+                    <div className = "">{this.state.month}</div>
+                  </div>
+
+                  <div class="vl"></div>
+
+                  <div className = "containerYear">
+                    <div className = "">{this.state.year}</div>
+                  </div>
+                  
+                    
               </StyleHeader>
 
               <StyleChart1>
-                <WeeklyProductSales month = {this.state.month}/>
+                <WeeklyProductSales month = {this.state.month} year = {this.state.year}/>
               </StyleChart1>
 
               <StyleChart2>
-                <WeeklyProductsSold month = {this.state.month}/>
+                <WeeklyProductsSold month = {this.state.month} year = {this.state.year}/>
               </StyleChart2>
 
               <StyleChart3>
-                <DailyProductSales month = {this.state.month}/>
+                <DailyProductSales month = {this.state.month} year = {this.state.year}/>
               </StyleChart3>
 
               <StyleChart4>
-                <DailyProductsSold month = {this.state.month}/>
+                <DailyProductsSold month = {this.state.month} year = {this.state.year}/>
               </StyleChart4>
             </Grid>
 

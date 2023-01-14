@@ -2,10 +2,10 @@ import React from "react";
 import "./WeeklyProductSales.css";
 import WeeklyProductSalesChart from "../../Charts/WeeklyProductsSalesChart/WeeklyProductSalesChart";
 
-const WeeklyProductSales = ({month}) => {
+const WeeklyProductSales = ({month, year}) => {
   return (
     <div>
-      <WeeklyProductSalesChart month = {{month}}/>
+      <WeeklyProductSalesChart month = {{month}} year = {{year}}/>
     </div>
   );
 };
