@@ -19,7 +19,7 @@ class App extends Component {
 
     this.state = {
       valueIncVat: ["wat"],
-
+      yearProp: this.props.year.year,
       monthProp: this.props.month.month.toLowerCase().slice(0,3),
 
       weekDataAdo: [

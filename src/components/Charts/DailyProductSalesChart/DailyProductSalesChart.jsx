@@ -21,7 +21,8 @@ class App extends Component {
       valueIncVat: ["wat"],
 
       monthProp: this.props.month.month.toLowerCase().slice(0,3),
-
+      yearProp: this.props.year.year,
+      
       weekDataAdo: [
 
       ],
@@ -626,7 +627,7 @@ class App extends Component {
           <Chart
             options={this.state.options}
             series={this.state.currentWeekData}
-            type="line"
+            type="area"
             width="610"
           />
         </div>

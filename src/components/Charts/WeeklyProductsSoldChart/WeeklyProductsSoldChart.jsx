@@ -26,6 +26,7 @@ class App extends Component {
     this.state = {
       valueIncVat: ["wat"],
 
+      yearProp: this.props.year.year,
       monthProp: this.props.month.month.toLowerCase().slice(0,3),
 
       weekDataAdo: [
@@ -134,7 +135,7 @@ class App extends Component {
   //back and forward buttons
 
   moveBackward() {
-    console.log(this.state.monthProp)
+    console.log(this.props.year)
     if (this.state.currentWeek !== "2022-12-01") {
       const currentWeek = this.state.currentWeek;
       const currentWeekMoment = moment(currentWeek, "YYYY-MM-DD");
@@ -226,6 +227,7 @@ class App extends Component {
 
 
   componentDidMount() {
+   
     console.log(this.props.month.month.toLowerCase().slice(0,3))
     console.log(this.state.currentWeek, this.state.currentWeekEnd, "START");
     function sumArray(arr) {
