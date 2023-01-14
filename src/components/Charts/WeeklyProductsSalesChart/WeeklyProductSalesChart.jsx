@@ -140,6 +140,7 @@ class App extends Component {
 
       this.setState(
         {
+          year: this.props.year.year,
           monthProp: this.props.month.month.toLowerCase().slice(0,3),
           currentWeek: previousWeek,
           currentWeekEnd: nextWeekPrev,
@@ -148,7 +149,7 @@ class App extends Component {
           //FETCH DATA
 
           fetch(
-            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
+            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
             {
               method: "get",
               headers: { "Content-Type": "application/json" },
@@ -185,6 +186,7 @@ class App extends Component {
 
       this.setState(
         {
+          year: this.props.year.year,
           monthProp: this.props.month.month.toLowerCase().slice(0,3),
           currentWeek: nextWeek,
           currentWeekEnd: nextWeekEnd,
@@ -193,7 +195,7 @@ class App extends Component {
           //FETCH DATA
 
           fetch(
-            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
+            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
             {
               method: "get",
               headers: { "Content-Type": "application/json" },
@@ -232,7 +234,7 @@ class App extends Component {
     //fetch default data for currentWeekData at start
   
     fetch(
-      `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
+      `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
       {
         method: "get",
         headers: { "Content-Type": "application/json" },
@@ -286,12 +288,10 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
    
-    if (this.props.month !== prevProps.month) {
-      this.setState({monthProp: this.props.month.month.toLowerCase().slice(0,3)}, () => {
-
-      
+    if (this.props.month !== prevProps.month || this.props.year !== prevProps.year) {
+      this.setState({monthProp: this.props.month.month.toLowerCase().slice(0,3), yearProp: this.props.year.year}, () => {
         fetch(
-          `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
+          `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
           {
             method: "get",
             headers: { "Content-Type": "application/json" },
@@ -446,7 +446,7 @@ class App extends Component {
     if (this.state.currentWeek !== prevState.currentWeek) {
 
       fetch(
-        `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}`,
+        `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
         {
           method: "get",
           headers: { "Content-Type": "application/json" },
