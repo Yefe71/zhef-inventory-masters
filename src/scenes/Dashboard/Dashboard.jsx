@@ -1,7 +1,7 @@
 // Imports
 import "./Dashboard.css"
 import profileImg from './images/dp.jpg'
-import {Grid, StyleHeader, StyleChart1, StyleChart2, StyleChart3, StyleChart4,StyleTable} from '../../components/Layout/Grid'
+import {Grid, StyleHeader1, StyleHeader2, StyleHeader3, StyleChart1, StyleChart2, StyleChart3, StyleChart4,StyleTable} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
 import Table from "../../components/ContentComponents/Table/Table"
 import logo from "./images/logo.png"
@@ -22,6 +22,8 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
+      toggled: "Monthly",
+      toggles: ["Monthly", "Yearly"],
       month: "December",
       months: [
         "January",
@@ -84,6 +86,26 @@ class Dashboard extends Component {
     }
   }
 
+
+  moveBackwardNav() {
+    let currentIndex = this.state.toggles.indexOf(this.state.toggled);
+    if (currentIndex !== 0) {
+      this.setState({
+        toggled: this.state.toggles[currentIndex - 1],
+      });
+    }
+  }
+
+  moveForwardNav() {
+    let currentIndex = this.state.toggles.indexOf(this.state.toggled);
+    if (currentIndex !== 1) {
+      this.setState({
+        toggled: this.state.toggles[currentIndex + 1],
+      });
+    }
+  }
+
+
   render() {
     return (
       <div>
@@ -111,34 +133,87 @@ class Dashboard extends Component {
 
           <Container>
             <Grid>
-              <StyleHeader>
+
+
+              <StyleHeader1>
                 <img className="logo" src={logo} alt="" />DASHBOARD
+                <div className = "navContainer">
 
-                <div className = "date">
-                  <div className = "month">
-                    <button
-                      onClick={() => {
-                        this.moveBackwardMonth();
-                      }}
-                      type="button"
-                      className="backBtRootMonth"
-                    >
-                      &lt;
-                    </button>
 
-                    <button
-                      onClick={() => {
-                        this.moveForwardMonth();
-                      }}
-                      type="button"
-                      className="forwardBtRootMonth"
-                    >
-                      &gt;
-                    </button>
-                
+                    <div className = "navButtons">
+
+                      <button
+                        onClick={() => {
+                          this.moveBackwardNav();
+                        }}
+                        type="button"
+                        className="backBtRootNav"
+                      >
+                        &lt;
+                      </button>
+
+              
+                      <button
+                        onClick={() => {
+                          this.moveForwardNav();
+                        }}
+                        type="button"
+                        className="forwardBtRootNav"
+                      >
+                        &gt;
+                      </button>
+              
                     </div>
+                  </div>  
 
-                    <div className = "year">
+                  <div className = "titleNav">
+                    <div className = "">{this.state.toggled}</div>
+                  </div>              
+              </StyleHeader1>
+
+              <StyleHeader2>
+                <img className="logo" src={logo} alt="" />DASHBOARD
+                <div className = "monthContainer">
+
+
+                    <div className = "monthButtons">
+
+                      <button
+                        onClick={() => {
+                          this.moveBackwardMonth();
+                        }}
+                        type="button"
+                        className="backBtRootMonth"
+                      >
+                        &lt;
+                      </button>
+
+              
+                      <button
+                        onClick={() => {
+                          this.moveForwardMonth();
+                        }}
+                        type="button"
+                        className="forwardBtRootMonth"
+                      >
+                        &gt;
+                      </button>
+              
+                    </div>
+                  </div>  
+
+                  <div className = "titleMonth">
+                    <div className = "">{this.state.month}</div>
+                  </div>              
+              </StyleHeader2>
+
+
+              <StyleHeader3>
+                <img className="logo" src={logo} alt="" />DASHBOARD
+                <div className = "yearContainer">
+
+
+                    <div className = "yearButtons">
 
                       <button
                         onClick={() => {
@@ -164,18 +239,13 @@ class Dashboard extends Component {
                     </div>
                   </div>  
 
-                  <div className = "containerMonth">
-                    <div className = "">{this.state.month}</div>
-                  </div>
-
-                  <div class="vl"></div>
-
-                  <div className = "containerYear">
+                  <div className = "titleyear">
                     <div className = "">{this.state.year}</div>
-                  </div>
-                  
-                    
-              </StyleHeader>
+                  </div>              
+              </StyleHeader3>
+
+
+              <div className="vl"></div>
 
               <StyleChart1>
                 <WeeklyProductSales month = {this.state.month} year = {this.state.year}/>

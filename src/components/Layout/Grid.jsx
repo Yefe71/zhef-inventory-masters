@@ -3,8 +3,8 @@ import Card from "./CardParent";
 export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 0.3fr 2.3fr 2.3fr 2.3fr 2.3fr;
-    
+    grid-template-rows: 1.3fr 2.3fr 2.3fr 2.3fr 2.3fr;
+    position: relative;
         
     grid-template-areas:
     "header header header header"
@@ -30,8 +30,24 @@ export const StyleTable = styled(Card)`
   box-shadow: 0 0 0 6 8px #ccc;
 `;
 
-export const StyleHeader = styled.div`
-  position: relative;
+export const StyleHeader1 = styled.div`
+  position: absolute;
+  grid-area: header;
+  font-weight: 800;
+  font-size: 40px;
+  color: #1c2473;
+`;
+
+export const StyleHeader2 = styled.div`
+  position: absolute;
+  grid-area: header;
+  font-weight: 800;
+  font-size: 40px;
+  color: #1c2473;
+`;
+
+export const StyleHeader3 = styled.div`
+  position: absolute;
   grid-area: header;
   font-weight: 800;
   font-size: 40px;

@@ -600,7 +600,7 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className="titleDayWeek3">Daily Product Sales</h1>
+          <h1 className="titleDayWeek3">Daily Sales</h1>
           <h2 className="titleDayWeekSub3">(In Philippine Peso)</h2>
 
           <div className="nav-buttons">
