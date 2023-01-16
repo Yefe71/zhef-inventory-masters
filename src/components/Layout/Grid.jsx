@@ -16,6 +16,19 @@ export const Grid = styled.div`
     gap: 1rem;
     `;
 
+export const Grid2 = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1.3fr 2.3fr 2.3fr;
+  position: relative;
+
+  grid-template-areas:
+    "header header header header"
+    "chart1 chart1 chart2 chart2"
+    "chart1 chart1 chart2 chart2";
+  gap: 1rem;
+`;
+
 export const StyleTotalRevenue= styled(Card)`
     grid-area: top1;
     padding: 0;

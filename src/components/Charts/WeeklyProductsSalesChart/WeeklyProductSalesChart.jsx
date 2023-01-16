@@ -22,26 +22,7 @@ class App extends Component {
       yearProp: this.props.year.year,
       monthProp: this.props.month.month.toLowerCase().slice(0,3),
 
-      weekDataAdo: [
 
-      ],
-
-      weekDataAdoT:  [
-
-      ],
-
-      weekDataE10:  [
-
-      ],
-      weekDataKero:  [
-
-      ],
-      weekDataXcs:  [
-
-      ],
-      weekDataXub:  [
-
-      ],
 
       currentWeekData: [
         {
