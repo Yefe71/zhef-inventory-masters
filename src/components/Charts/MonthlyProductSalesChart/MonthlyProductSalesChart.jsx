@@ -31,9 +31,29 @@ class App extends Component {
         }
 
       ],
+
+      currentMonth:  "2022-01-01 → 2022-01-28",
+
+      monthRanges: [
+
+        "2022-01-01 → 2022-01-28",
+        "2022-02-01 → 2022-02-28",
+        "2022-03-01 → 2022-03-28",
+        "2022-04-01 → 2022-04-28",
+        "2022-05-01 → 2022-05-28",
+        "2022-06-01 → 2022-06-28",
+        "2022-07-01 → 2022-07-28",
+        "2022-08-01 → 2022-08-28",
+        "2022-09-01 → 2022-09-28",
+        "2022-10-01 → 2022-10-28",
+        "2022-11-01 → 2022-11-28",
+        "2022-12-01 → 2022-12-28",
+
+      ],
+
       currentWeekNum: "January",
-      currentWeek: "2022-12-01",
-      currentWeekEnd: "2022-12-07",
+      currentWeek: "2022-01-01",
+      currentWeekEnd: "2022-01-28",
       currentWeekDefault: "01",
 
       options: {
@@ -68,7 +88,7 @@ class App extends Component {
 
         yaxis: {
           min: 0,
-          max: 3000000,
+          max: 12000000,
           tickAmount: 5,
           labels: {
             formatter: function (value) {
@@ -106,50 +126,3087 @@ class App extends Component {
 
   //back and forward buttons
 
+
   moveBackward() {
-    console.log(this.state.monthProp)
-    if (this.state.currentWeek !== "2022-12-01") {
-      const currentWeek = this.state.currentWeek;
-      const currentWeekMoment = moment(currentWeek, "YYYY-MM-DD");
-      const previousWeekMoment = currentWeekMoment.subtract(1, "week");
-      const previousWeek = previousWeekMoment.format("YYYY-MM-DD");
+    let currentIndex = this.state.monthRanges.indexOf(this.state.currentMonth);
+    if (currentIndex !== 0) {
+      this.setState({
+        yearProp: this.props.year.year,
+        currentMonth: this.state.monthRanges[currentIndex - 1],
+      }, () => {
 
-      const nextWeekPrevMoment = previousWeekMoment.add(6, "days");
-      const nextWeekPrev = nextWeekPrevMoment.format("YYYY-MM-DD");
+        if (this.state.yearProp === "2022"){
+        console.log("2022")
+          switch (this.state.currentMonth) {
 
-      this.setState(
-        {
-          year: this.props.year.year,
-          monthProp: this.props.month.month.toLowerCase().slice(0,3),
-          currentWeek: previousWeek,
-          currentWeekEnd: nextWeekPrev,
+            case "2022-01-01 → 2022-01-28":
+              this.setState({
+                currentWeekEnd: "2022-12-07",
+                currentWeekNum: "January",
+                currentWeekData: [
+                  {
+                    name: "Week 1: 2022-12-01",
+                    data: [
+                      2500000 * 4,
+                      700000 * 4,
+                      400000 * 4,
+                      1300000 * 4,
+                      470000 * 4,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                }
+                
+                ,
+              });
+              break;
+
+            case "2022-02-01 → 2022-02-28":
+            
+              this.setState({
+                currentWeekEnd: "2022-12-14",
+                currentWeekNum: "February",
+                currentWeekData: [
+                  {
+                    name: "Week 2: 2022-12-08",
+                    data: [
+                      2200000 * 4,
+                      800000 * 4,
+                      900000 * 4,
+                      1100000 * 4,
+                      170000 * 4,
+                      2000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+            case "2022-03-01 → 2022-03-28":
+              this.setState({
+                currentWeekEnd: "2022-12-21",
+                currentWeekNum: "March",
+                currentWeekData: [
+                  {
+                    name: "Week 3: 2022-12-15",
+                    data: [
+                      2600000 * 4,
+                      500000 * 4,
+                      900000 * 4,
+                      1400000 * 4,
+                      270000 * 4,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+              
+            case "2022-04-01 → 2022-04-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "April",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 4,
+                      700000 * 4,
+                      400000 * 4,
+                      1800000 * 4,
+                      470000 * 4,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-05-01 → 2022-05-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "May",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 4,
+                      800000 * 4,
+                      900000 * 4,
+                      1100000 * 4,
+                      870000 * 4,
+                      800000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-06-01 → 2022-06-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "June",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 4,
+                      1700000 * 4,
+                      900000 * 4,
+                      200000 * 4,
+                      870000 * 4,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-07-01 → 2022-07-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "July",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 4,
+                      800000 * 4,
+                      900000 * 4,
+                      1100000 * 4,
+                      870000 * 4,
+                      800000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-08-01 → 2022-08-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "August",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 4,
+                      700000 * 4,
+                      400000 * 4,
+                      1800000 * 4,
+                      470000 * 4,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-09-01 → 2022-09-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "September",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 4,
+                      500000 * 4,
+                      900000 * 4,
+                      1400000 * 4,
+                      270000 * 4,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-10-01 → 2022-10-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "October",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 4,
+                      700000 * 4,
+                      400000 * 4,
+                      1800000 * 4,
+                      470000 * 4,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-11-01 → 2022-11-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "November",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 4,
+                      1700000 * 4,
+                      900000 * 4,
+                      200000 * 4,
+                      870000 * 4,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-12-01 → 2022-12-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "December",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 4,
+                      500000 * 4,
+                      900000 * 4,
+                      1400000 * 4,
+                      270000 * 4,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+
+
+            default:
+              console.log("Error");
+              break;
+          }
+
         }
-      );
+      
+        if (this.state.yearProp === "2021"){
+          console.log("2021")
+          switch (this.state.currentMonth) {
+
+            case "2022-01-01 → 2022-01-28":
+              this.setState({
+                currentWeekEnd: "2022-12-07",
+                currentWeekNum: "January",
+                currentWeekData: [
+                  {
+                    name: "Week 1: 2022-12-01",
+                    data: [
+                      340000 * 3,
+                      700000 * 2,
+                      400000 * 3,
+                      1300000 * 3,
+                      470000 * 2,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                }
+                
+                ,
+              });
+              break;
+
+            case "2022-02-01 → 2022-02-28":
+            
+              this.setState({
+                currentWeekEnd: "2022-12-14",
+                currentWeekNum: "February",
+                currentWeekData: [
+                  {
+                    name: "Week 2: 2022-12-08",
+                    data: [
+                      2200000 * 3,
+                      800000 * 2,
+                      900000 * 4,
+                      1100000 * 1,
+                      170000 * 2,
+                      2000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+            case "2022-03-01 → 2022-03-28":
+              this.setState({
+                currentWeekEnd: "2022-12-21",
+                currentWeekNum: "March",
+                currentWeekData: [
+                  {
+                    name: "Week 3: 2022-12-15",
+                    data: [
+                      2600000 * 4,
+                      500000 * 2,
+                      900000 * 4,
+                      1400000 * 3,
+                      270000 * 1,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+              
+            case "2022-04-01 → 2022-04-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "April",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 3,
+                      700000 * 2,
+                      400000 * 1,
+                      1800000 * 4,
+                      470000 * 3,
+                      1000000 * 1,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-05-01 → 2022-05-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "May",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 3,
+                      800000 * 2,
+                      900000 * 3,
+                      1100000 * 2,
+                      870000 * 3,
+                      800000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-06-01 → 2022-06-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "June",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 4,
+                      1700000 * 3,
+                      900000 * 2,
+                      200000 * 3,
+                      870000 * 2,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-07-01 → 2022-07-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "July",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 2,
+                      800000 * 3,
+                      900000 * 2,
+                      1100000 * 4,
+                      870000 * 3,
+                      800000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-08-01 → 2022-08-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "August",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 3,
+                      700000 * 4,
+                      400000 * 2,
+                      1800000 * 2,
+                      470000 * 4,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-09-01 → 2022-09-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "September",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 3,
+                      500000 * 4,
+                      900000 * 2,
+                      1400000 * 3,
+                      270000 * 2,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-10-01 → 2022-10-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "October",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 4,
+                      700000 * 3,
+                      400000 * 2,
+                      1800000 * 2,
+                      470000 * 1,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-11-01 → 2022-11-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "November",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 4,
+                      1700000 * 2,
+                      900000 * 3,
+                      200000 * 2,
+                      870000 * 4,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-12-01 → 2022-12-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "December",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 3,
+                      500000 * 4,
+                      900000 * 2,
+                      1400000 * 1,
+                      270000 * 3,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+
+
+            default:
+              console.log("Error");
+              break;
+          }
+
+        }
+      
+        if (this.state.yearProp === "2020"){
+          console.log("2020")
+          switch (this.state.currentMonth) {
+
+            case "2022-01-01 → 2022-01-28":
+              this.setState({
+                currentWeekEnd: "2022-12-07",
+                currentWeekNum: "January",
+                currentWeekData: [
+                  {
+                    name: "Week 1: 2022-12-01",
+                    data: [
+                      2500000 * 4,
+                      700000 * 3,
+                      400000 * 2,
+                      1300000 * 3,
+                      470000 * 2,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                }
+                
+                ,
+              });
+              break;
+
+            case "2022-02-01 → 2022-02-28":
+            
+              this.setState({
+                currentWeekEnd: "2022-12-14",
+                currentWeekNum: "February",
+                currentWeekData: [
+                  {
+                    name: "Week 2: 2022-12-08",
+                    data: [
+                      2200000 * 2,
+                      800000 * 4,
+                      900000 * 3,
+                      1100000 * 4,
+                      170000 * 2,
+                      2000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+            case "2022-03-01 → 2022-03-28":
+              this.setState({
+                currentWeekEnd: "2022-12-21",
+                currentWeekNum: "March",
+                currentWeekData: [
+                  {
+                    name: "Week 3: 2022-12-15",
+                    data: [
+                      2600000 * 4,
+                      500000 * 3,
+                      900000 * 2,
+                      1400000 * 4,
+                      270000 * 3,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+              
+            case "2022-04-01 → 2022-04-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "April",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 4,
+                      700000 * 3,
+                      400000 * 4,
+                      1800000 * 2,
+                      470000 * 2,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-05-01 → 2022-05-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "May",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 3,
+                      800000 * 4,
+                      900000 * 2,
+                      1100000 * 3,
+                      870000 * 4,
+                      800000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-06-01 → 2022-06-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "June",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 3,
+                      1700000 * 2,
+                      900000 * 4,
+                      200000 * 2,
+                      870000 * 3,
+                      1000000 * 1,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-07-01 → 2022-07-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "July",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 4,
+                      800000 * 3,
+                      900000 * 2,
+                      1100000 * 1,
+                      870000 * 3,
+                      800000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-08-01 → 2022-08-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "August",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 4,
+                      700000 * 2,
+                      400000 * 3,
+                      1800000 * 2,
+                      470000 * 1,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-09-01 → 2022-09-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "September",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 4,
+                      500000 * 3,
+                      900000 * 2,
+                      1400000 * 1,
+                      270000 * 4,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-10-01 → 2022-10-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "October",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 3,
+                      700000 * 4,
+                      400000 * 2,
+                      1800000 * 1,
+                      470000 * 3,
+                      1000000 * 1,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-11-01 → 2022-11-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "November",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 4,
+                      1700000 * 2,
+                      900000 * 3,
+                      200000 * 4,
+                      870000 * 2,
+                      1000000 * 1,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-12-01 → 2022-12-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "December",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 4,
+                      500000 * 2,
+                      900000 * 3,
+                      1400000 * 4,
+                      270000 * 2,
+                      1000000 * 1,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+
+
+            default:
+              console.log("Error");
+              break;
+          }
+
+        }
+      
+        if (this.state.yearProp === "2019"){
+          console.log(2019)
+          switch (this.state.currentMonth) {
+
+            case "2022-01-01 → 2022-01-28":
+              this.setState({
+                currentWeekEnd: "2022-12-07",
+                currentWeekNum: "January",
+                currentWeekData: [
+                  {
+                    name: "Week 1: 2022-12-01",
+                    data: [
+                      2500000 * 4,
+                      700000 * 3,
+                      400000 * 2,
+                      1300000 * 4,
+                      470000 * 3,
+                      1000000 * 1,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                }
+                
+                ,
+              });
+              break;
+
+            case "2022-02-01 → 2022-02-28":
+            
+              this.setState({
+                currentWeekEnd: "2022-12-14",
+                currentWeekNum: "February",
+                currentWeekData: [
+                  {
+                    name: "Week 2: 2022-12-08",
+                    data: [
+                      2200000 * 4,
+                      800000 * 3,
+                      900000 * 2,
+                      1100000 * 1,
+                      170000 * 4,
+                      2000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+            case "2022-03-01 → 2022-03-28":
+              this.setState({
+                currentWeekEnd: "2022-12-21",
+                currentWeekNum: "March",
+                currentWeekData: [
+                  {
+                    name: "Week 3: 2022-12-15",
+                    data: [
+                      2600000 *3,
+                      500000 * 2,
+                      900000 * 3,
+                      1400000 * 4,
+                      270000 * 2,
+                      1000000 * 1,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+              
+            case "2022-04-01 → 2022-04-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "April",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 3,
+                      700000 * 4,
+                      400000 * 2,
+                      1800000 * 1,
+                      470000 * 3,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-05-01 → 2022-05-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "May",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 2,
+                      800000 * 3,
+                      900000 * 4,
+                      1100000 * 2,
+                      870000 * 4,
+                      800000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-06-01 → 2022-06-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "June",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 4,
+                      1700000 * 2,
+                      900000 * 3,
+                      200000 * 2,
+                      870000 * 1,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-07-01 → 2022-07-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "July",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 3,
+                      800000 * 4,
+                      900000 * 3,
+                      1100000 * 2,
+                      870000 * 3,
+                      800000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-08-01 → 2022-08-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "August",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 3,
+                      700000 * 2,
+                      400000 * 4,
+                      1800000 * 4,
+                      470000 * 2,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-09-01 → 2022-09-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "September",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 3,
+                      500000 * 4,
+                      900000 * 2,
+                      1400000 * 3,
+                      270000 * 4,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-10-01 → 2022-10-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "October",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 3,
+                      700000 * 2,
+                      400000 * 4,
+                      1800000 * 2,
+                      470000 * 3,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-11-01 → 2022-11-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "November",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 2,
+                      1700000 * 3,
+                      900000 * 4,
+                      200000 * 2,
+                      870000 * 1,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-12-01 → 2022-12-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "December",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 4,
+                      500000 * 3,
+                      900000 * 2,
+                      1400000 * 4,
+                      270000 * 3,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+
+
+            default:
+              console.log("Error");
+              break;
+          }
+
+        }
+      
+        if (this.state.yearProp === "2018"){
+          console.log("2021")
+          switch (this.state.currentMonth) {
+
+            case "2022-01-01 → 2022-01-28":
+              this.setState({
+                currentWeekEnd: "2022-12-07",
+                currentWeekNum: "January",
+                currentWeekData: [
+                  {
+                    name: "Week 1: 2022-12-01",
+                    data: [
+                      340000 * 3,
+                      700000 * 2,
+                      400000 * 3,
+                      1300000 * 3,
+                      470000 * 2,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                }
+                
+                ,
+              });
+              break;
+
+            case "2022-02-01 → 2022-02-28":
+            
+              this.setState({
+                currentWeekEnd: "2022-12-14",
+                currentWeekNum: "February",
+                currentWeekData: [
+                  {
+                    name: "Week 2: 2022-12-08",
+                    data: [
+                      2200000 * 3,
+                      800000 * 2,
+                      900000 * 4,
+                      1100000 * 1,
+                      170000 * 2,
+                      2000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+            case "2022-03-01 → 2022-03-28":
+              this.setState({
+                currentWeekEnd: "2022-12-21",
+                currentWeekNum: "March",
+                currentWeekData: [
+                  {
+                    name: "Week 3: 2022-12-15",
+                    data: [
+                      2600000 * 4,
+                      500000 * 2,
+                      900000 * 4,
+                      1400000 * 3,
+                      270000 * 1,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+              
+            case "2022-04-01 → 2022-04-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "April",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 3,
+                      700000 * 2,
+                      400000 * 1,
+                      1800000 * 4,
+                      470000 * 3,
+                      1000000 * 1,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-05-01 → 2022-05-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "May",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 3,
+                      800000 * 2,
+                      900000 * 3,
+                      1100000 * 2,
+                      870000 * 3,
+                      800000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-06-01 → 2022-06-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "June",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 4,
+                      1700000 * 3,
+                      900000 * 2,
+                      200000 * 3,
+                      870000 * 2,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-07-01 → 2022-07-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "July",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2800000 * 2,
+                      800000 * 3,
+                      900000 * 2,
+                      1100000 * 4,
+                      870000 * 3,
+                      800000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-08-01 → 2022-08-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "August",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 3,
+                      700000 * 4,
+                      400000 * 2,
+                      1800000 * 2,
+                      470000 * 4,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-09-01 → 2022-09-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "September",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 3,
+                      500000 * 4,
+                      900000 * 2,
+                      1400000 * 3,
+                      270000 * 2,
+                      1000000 * 2,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-10-01 → 2022-10-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "October",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2500000 * 4,
+                      700000 * 3,
+                      400000 * 2,
+                      1800000 * 2,
+                      470000 * 1,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-11-01 → 2022-11-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "November",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2700000 * 4,
+                      1700000 * 2,
+                      900000 * 3,
+                      200000 * 2,
+                      870000 * 4,
+                      1000000 * 3,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+              
+            case "2022-12-01 → 2022-12-28":
+              this.setState({
+                currentWeekEnd: "2022-12-28",
+                currentWeekNum: "December",
+                currentWeekData: [
+                  {
+                    name: "Week 4: 2022-12-08",
+                    data: [
+                      2600000 * 3,
+                      500000 * 4,
+                      900000 * 2,
+                      1400000 * 1,
+                      270000 * 3,
+                      1000000 * 4,
+                    ],
+                  },
+                ],
+                options: {
+                  ...this.state.options,
+                  colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                },
+              });
+              break;
+
+
+
+            default:
+              console.log("Error");
+              break;
+          }
+
+        }
+
+
+      });
     }
+    
   }
 
   moveForward() {
-    if (this.state.currentWeek !== "2022-12-22") {
-      const currentWeek = this.state.currentWeek;
-      const currentWeekMoment = moment(currentWeek, "YYYY-MM-DD");
-      const nextWeekMoment = currentWeekMoment.add(1, "week");
-      const nextWeek = nextWeekMoment.format("YYYY-MM-DD");
+    let currentIndex = this.state.monthRanges.indexOf(this.state.currentMonth);
+    if (currentIndex !== 11) {
+      this.setState({
+        yearProp: this.props.year.year,
+        currentMonth: this.state.monthRanges[currentIndex + 1],
+       
+      }, () => {
 
-      const currentWeekEnd = this.state.currentWeekEnd;
-      const currentWeekEndMoment = moment(currentWeekEnd, "YYYY-MM-DD");
-      const nextWeekEndMoment = currentWeekEndMoment.add(1, "week");
-      const nextWeekEnd = nextWeekEndMoment.format("YYYY-MM-DD");
+        if (this.state.yearProp === "2022"){
+          console.log("2022")
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        2500000 * 4,
+                        700000 * 4,
+                        400000 * 4,
+                        1300000 * 4,
+                        470000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 4,
+                        800000 * 4,
+                        900000 * 4,
+                        1100000 * 4,
+                        170000 * 4,
+                        2000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 * 4,
+                        500000 * 4,
+                        900000 * 4,
+                        1400000 * 4,
+                        270000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 4,
+                        400000 * 4,
+                        1800000 * 4,
+                        470000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 4,
+                        800000 * 4,
+                        900000 * 4,
+                        1100000 * 4,
+                        870000 * 4,
+                        800000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 4,
+                        900000 * 4,
+                        200000 * 4,
+                        870000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 4,
+                        800000 * 4,
+                        900000 * 4,
+                        1100000 * 4,
+                        870000 * 4,
+                        800000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 4,
+                        400000 * 4,
+                        1800000 * 4,
+                        470000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 4,
+                        900000 * 4,
+                        1400000 * 4,
+                        270000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 4,
+                        400000 * 4,
+                        1800000 * 4,
+                        470000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 4,
+                        900000 * 4,
+                        200000 * 4,
+                        870000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 4,
+                        900000 * 4,
+                        1400000 * 4,
+                        270000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
+            }
+  
+          }
+        
+          if (this.state.yearProp === "2021"){
+            console.log("2021")
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        340000 * 3,
+                        700000 * 2,
+                        400000 * 3,
+                        1300000 * 3,
+                        470000 * 2,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 3,
+                        800000 * 2,
+                        900000 * 4,
+                        1100000 * 1,
+                        170000 * 2,
+                        2000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 * 4,
+                        500000 * 2,
+                        900000 * 4,
+                        1400000 * 3,
+                        270000 * 1,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 2,
+                        400000 * 1,
+                        1800000 * 4,
+                        470000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 3,
+                        800000 * 2,
+                        900000 * 3,
+                        1100000 * 2,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 3,
+                        900000 * 2,
+                        200000 * 3,
+                        870000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 2,
+                        800000 * 3,
+                        900000 * 2,
+                        1100000 * 4,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 4,
+                        400000 * 2,
+                        1800000 * 2,
+                        470000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 3,
+                        270000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 2,
+                        1800000 * 2,
+                        470000 * 1,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 2,
+                        900000 * 3,
+                        200000 * 2,
+                        870000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 1,
+                        270000 * 3,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
+            }
+  
+          }
+        
+          if (this.state.yearProp === "2020"){
+            console.log("2020")
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 2,
+                        1300000 * 3,
+                        470000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 2,
+                        800000 * 4,
+                        900000 * 3,
+                        1100000 * 4,
+                        170000 * 2,
+                        2000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 * 4,
+                        500000 * 3,
+                        900000 * 2,
+                        1400000 * 4,
+                        270000 * 3,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 4,
+                        1800000 * 2,
+                        470000 * 2,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 3,
+                        800000 * 4,
+                        900000 * 2,
+                        1100000 * 3,
+                        870000 * 4,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 3,
+                        1700000 * 2,
+                        900000 * 4,
+                        200000 * 2,
+                        870000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 4,
+                        800000 * 3,
+                        900000 * 2,
+                        1100000 * 1,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 2,
+                        400000 * 3,
+                        1800000 * 2,
+                        470000 * 1,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 3,
+                        900000 * 2,
+                        1400000 * 1,
+                        270000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 4,
+                        400000 * 2,
+                        1800000 * 1,
+                        470000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 2,
+                        900000 * 3,
+                        200000 * 4,
+                        870000 * 2,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 2,
+                        900000 * 3,
+                        1400000 * 4,
+                        270000 * 2,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
+            }
+  
+          }
+        
+          if (this.state.yearProp === "2019"){
+            console.log(2019)
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 2,
+                        1300000 * 4,
+                        470000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 4,
+                        800000 * 3,
+                        900000 * 2,
+                        1100000 * 1,
+                        170000 * 4,
+                        2000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 *3,
+                        500000 * 2,
+                        900000 * 3,
+                        1400000 * 4,
+                        270000 * 2,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 4,
+                        400000 * 2,
+                        1800000 * 1,
+                        470000 * 3,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 2,
+                        800000 * 3,
+                        900000 * 4,
+                        1100000 * 2,
+                        870000 * 4,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 2,
+                        900000 * 3,
+                        200000 * 2,
+                        870000 * 1,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 3,
+                        800000 * 4,
+                        900000 * 3,
+                        1100000 * 2,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 2,
+                        400000 * 4,
+                        1800000 * 4,
+                        470000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 3,
+                        270000 * 4,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 2,
+                        400000 * 4,
+                        1800000 * 2,
+                        470000 * 3,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 2,
+                        1700000 * 3,
+                        900000 * 4,
+                        200000 * 2,
+                        870000 * 1,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 3,
+                        900000 * 2,
+                        1400000 * 4,
+                        270000 * 3,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
+            }
+  
+          }
+        
+          if (this.state.yearProp === "2018"){
+            console.log("2021")
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        340000 * 3,
+                        700000 * 2,
+                        400000 * 3,
+                        1300000 * 3,
+                        470000 * 2,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 3,
+                        800000 * 2,
+                        900000 * 4,
+                        1100000 * 1,
+                        170000 * 2,
+                        2000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 * 4,
+                        500000 * 2,
+                        900000 * 4,
+                        1400000 * 3,
+                        270000 * 1,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 2,
+                        400000 * 1,
+                        1800000 * 4,
+                        470000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 3,
+                        800000 * 2,
+                        900000 * 3,
+                        1100000 * 2,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 3,
+                        900000 * 2,
+                        200000 * 3,
+                        870000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 2,
+                        800000 * 3,
+                        900000 * 2,
+                        1100000 * 4,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 4,
+                        400000 * 2,
+                        1800000 * 2,
+                        470000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 3,
+                        270000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 2,
+                        1800000 * 2,
+                        470000 * 1,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 2,
+                        900000 * 3,
+                        200000 * 2,
+                        870000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 1,
+                        270000 * 3,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
+            }
+  
+          }
 
-      this.setState(
-        {
-          year: this.props.year.year,
-          monthProp: this.props.month.month.toLowerCase().slice(0,3),
-          currentWeek: nextWeek,
-          currentWeekEnd: nextWeekEnd,
-        }
-      );
+        
+      });
     }
+    console.log(this.state.yearProp)
   }
+
+
 
 
 
@@ -159,249 +3216,1572 @@ class App extends Component {
     //fetch default data for currentWeekData at start
 
       this.setState({
-      currentWeekEnd: "2022-12-07",
+      yearProp: this.props.year.year,
+      currentWeekEnd: "2022-01-28",
       currentWeekNum: "January",
       currentWeekData: [
         {
           name: "Week 1: 2022-12-01",
           data: [
-            2000000,
-            700000,
-            600000,
-            1300000,
-            470000,
-            1000000,
+            2000000 * 4,
+            700000 * 4,
+            600000 * 4,
+            1300000 * 4,
+            470000 * 4,
+            1000000 * 4,
           ],
         },
       ],
     })
     
+
+    
     
   }
 
   componentDidUpdate(prevProps, prevState) {
-   
-    if (this.props.month !== prevProps.month || this.props.year !== prevProps.year) {
-      this.setState({monthProp: this.props.month.month.toLowerCase().slice(0,3), yearProp: this.props.year.year});
-    
-      switch (this.state.currentWeek) {
-        case "2022-12-01":
+  
 
-          this.setState({
-            currentWeekEnd: "2022-12-07",
-            currentWeekNum: "January",
-            currentWeekData: [
-              {
-                name: "Week 1: 2022-12-01",
-                data: [
-                  800000,
-                  700000,
-                  400000,
-                  2300000,
-                  470000,
-                  1000000,
-                ],
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+    if (prevProps.year !== this.props.year) {
+      this.setState({ yearProp: this.props.year.year }, () => {
+
+        if (this.state.yearProp === "2022"){
+          console.log("2022")
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        2500000 * 4,
+                        700000 * 4,
+                        400000 * 4,
+                        1300000 * 4,
+                        470000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 4,
+                        800000 * 4,
+                        900000 * 4,
+                        1100000 * 4,
+                        170000 * 4,
+                        2000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 * 4,
+                        500000 * 4,
+                        900000 * 4,
+                        1400000 * 4,
+                        270000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 4,
+                        400000 * 4,
+                        1800000 * 4,
+                        470000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 4,
+                        800000 * 4,
+                        900000 * 4,
+                        1100000 * 4,
+                        870000 * 4,
+                        800000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 4,
+                        900000 * 4,
+                        200000 * 4,
+                        870000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 4,
+                        800000 * 4,
+                        900000 * 4,
+                        1100000 * 4,
+                        870000 * 4,
+                        800000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 4,
+                        400000 * 4,
+                        1800000 * 4,
+                        470000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 4,
+                        900000 * 4,
+                        1400000 * 4,
+                        270000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 4,
+                        400000 * 4,
+                        1800000 * 4,
+                        470000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 4,
+                        900000 * 4,
+                        200000 * 4,
+                        870000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 4,
+                        900000 * 4,
+                        1400000 * 4,
+                        270000 * 4,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
             }
-            
-            ,
-          });
-          break;
-
-        case "2022-12-08":
-         
-          this.setState({
-            currentWeekEnd: "2022-12-14",
-            currentWeekNum: "February",
-            currentWeekData: [
-              {
-                name: "Week 2: 2022-12-08",
-                data: [
-                  700000,
-                  800000,
-                  900000,
-                  1300000,
-                  170000,
-                  2000000,
-                ],
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
-
-        case "2022-12-15":
-          this.setState({
-            currentWeekEnd: "2022-12-21",
-            currentWeekNum: "March",
-            currentWeekData: [
-              {
-                name: "Week 3: 2022-12-15",
-                data: [
-                  400000,
-                  500000,
-                  900000,
-                  2300000,
-                  270000,
-                  1000000,
-                ],
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
-        case "2022-12-22":
-          this.setState({
-            currentWeekEnd: "2022-12-28",
-            currentWeekNum: "April",
-            currentWeekData: [
-              {
-                name: "Week 4: 2022-12-08",
-                data: [
-                  800000,
-                  700000,
-                  400000,
-                  2300000,
-                  470000,
-                  1000000,
-                ],
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
-
-        default:
-          console.log("Error");
-          break;
-      }
-
-    }
-
-
-    
-    if (this.state.currentWeek !== prevState.currentWeek) {
-
-      switch (this.state.currentWeek) {
-        case "2022-12-01":
-
-          this.setState({
-            currentWeekEnd: "2022-12-07",
-            currentWeekNum: "January",
-            currentWeekData: [
-              {
-                name: "Week 1: 2022-12-01",
-                data: [
-                  800000,
-                  700000,
-                  400000,
-                  2300000,
-                  470000,
-                  1000000,
-                ],
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+  
+          }
+        
+          if (this.state.yearProp === "2021"){
+            console.log("2021")
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        340000 * 3,
+                        700000 * 2,
+                        400000 * 3,
+                        1300000 * 3,
+                        470000 * 2,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 3,
+                        800000 * 2,
+                        900000 * 4,
+                        1100000 * 1,
+                        170000 * 2,
+                        2000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 * 4,
+                        500000 * 2,
+                        900000 * 4,
+                        1400000 * 3,
+                        270000 * 1,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 2,
+                        400000 * 1,
+                        1800000 * 4,
+                        470000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 3,
+                        800000 * 2,
+                        900000 * 3,
+                        1100000 * 2,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 3,
+                        900000 * 2,
+                        200000 * 3,
+                        870000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 2,
+                        800000 * 3,
+                        900000 * 2,
+                        1100000 * 4,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 4,
+                        400000 * 2,
+                        1800000 * 2,
+                        470000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 3,
+                        270000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 2,
+                        1800000 * 2,
+                        470000 * 1,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 2,
+                        900000 * 3,
+                        200000 * 2,
+                        870000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 1,
+                        270000 * 3,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
             }
-            
-            ,
-          });
-          break;
-
-        case "2022-12-08":
-         
-          this.setState({
-            currentWeekEnd: "2022-12-14",
-            currentWeekNum: "February",
-            currentWeekData: [
-              {
-                name: "Week 2: 2022-12-08",
-                data: [
-                  700000,
-                  800000,
-                  900000,
-                  1300000,
-                  170000,
-                  2000000,
-                ],
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
-
-        case "2022-12-15":
-          this.setState({
-            currentWeekEnd: "2022-12-21",
-            currentWeekNum: "March",
-            currentWeekData: [
-              {
-                name: "Week 3: 2022-12-15",
-                data: [
-                  400000,
-                  500000,
-                  900000,
-                  2300000,
-                  270000,
-                  1000000,
-                ],
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
-        case "2022-12-22":
-          this.setState({
-            currentWeekEnd: "2022-12-28",
-            currentWeekNum: "April",
-            currentWeekData: [
-              {
-                name: "Week 4: 2022-12-08",
-                data: [
-                  800000,
-                  700000,
-                  400000,
-                  1300000,
-                  470000,
-                  1000000,
-                ],
-              },
-            ],
-            options: {
-              ...this.state.options,
-              colors: ["#ed1b2f", "#ffffff", "#ffffff"],
-            },
-          });
-          break;
-
-        default:
-          console.log("Error");
-          break;
-      }
-
+  
+          }
+        
+          if (this.state.yearProp === "2020"){
+            console.log("2020")
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 2,
+                        1300000 * 3,
+                        470000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 2,
+                        800000 * 4,
+                        900000 * 3,
+                        1100000 * 4,
+                        170000 * 2,
+                        2000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 * 4,
+                        500000 * 3,
+                        900000 * 2,
+                        1400000 * 4,
+                        270000 * 3,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 4,
+                        1800000 * 2,
+                        470000 * 2,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 3,
+                        800000 * 4,
+                        900000 * 2,
+                        1100000 * 3,
+                        870000 * 4,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 3,
+                        1700000 * 2,
+                        900000 * 4,
+                        200000 * 2,
+                        870000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 4,
+                        800000 * 3,
+                        900000 * 2,
+                        1100000 * 1,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 2,
+                        400000 * 3,
+                        1800000 * 2,
+                        470000 * 1,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 3,
+                        900000 * 2,
+                        1400000 * 1,
+                        270000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 4,
+                        400000 * 2,
+                        1800000 * 1,
+                        470000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 2,
+                        900000 * 3,
+                        200000 * 4,
+                        870000 * 2,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 2,
+                        900000 * 3,
+                        1400000 * 4,
+                        270000 * 2,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
+            }
+  
+          }
+        
+          if (this.state.yearProp === "2019"){
+            console.log(2019)
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 2,
+                        1300000 * 4,
+                        470000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 4,
+                        800000 * 3,
+                        900000 * 2,
+                        1100000 * 1,
+                        170000 * 4,
+                        2000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 *3,
+                        500000 * 2,
+                        900000 * 3,
+                        1400000 * 4,
+                        270000 * 2,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 4,
+                        400000 * 2,
+                        1800000 * 1,
+                        470000 * 3,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 2,
+                        800000 * 3,
+                        900000 * 4,
+                        1100000 * 2,
+                        870000 * 4,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 2,
+                        900000 * 3,
+                        200000 * 2,
+                        870000 * 1,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 3,
+                        800000 * 4,
+                        900000 * 3,
+                        1100000 * 2,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 2,
+                        400000 * 4,
+                        1800000 * 4,
+                        470000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 3,
+                        270000 * 4,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 2,
+                        400000 * 4,
+                        1800000 * 2,
+                        470000 * 3,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 2,
+                        1700000 * 3,
+                        900000 * 4,
+                        200000 * 2,
+                        870000 * 1,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 4,
+                        500000 * 3,
+                        900000 * 2,
+                        1400000 * 4,
+                        270000 * 3,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
+            }
+  
+          }
+        
+          if (this.state.yearProp === "2018"){
+            console.log("2021")
+            switch (this.state.currentMonth) {
+  
+              case "2022-01-01 → 2022-01-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-07",
+                  currentWeekNum: "January",
+                  currentWeekData: [
+                    {
+                      name: "Week 1: 2022-12-01",
+                      data: [
+                        340000 * 3,
+                        700000 * 2,
+                        400000 * 3,
+                        1300000 * 3,
+                        470000 * 2,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  }
+                  
+                  ,
+                });
+                break;
+  
+              case "2022-02-01 → 2022-02-28":
+              
+                this.setState({
+                  currentWeekEnd: "2022-12-14",
+                  currentWeekNum: "February",
+                  currentWeekData: [
+                    {
+                      name: "Week 2: 2022-12-08",
+                      data: [
+                        2200000 * 3,
+                        800000 * 2,
+                        900000 * 4,
+                        1100000 * 1,
+                        170000 * 2,
+                        2000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+              case "2022-03-01 → 2022-03-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-21",
+                  currentWeekNum: "March",
+                  currentWeekData: [
+                    {
+                      name: "Week 3: 2022-12-15",
+                      data: [
+                        2600000 * 4,
+                        500000 * 2,
+                        900000 * 4,
+                        1400000 * 3,
+                        270000 * 1,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+                
+              case "2022-04-01 → 2022-04-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "April",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 2,
+                        400000 * 1,
+                        1800000 * 4,
+                        470000 * 3,
+                        1000000 * 1,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-05-01 → 2022-05-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "May",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 3,
+                        800000 * 2,
+                        900000 * 3,
+                        1100000 * 2,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-06-01 → 2022-06-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "June",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 3,
+                        900000 * 2,
+                        200000 * 3,
+                        870000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-07-01 → 2022-07-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "July",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2800000 * 2,
+                        800000 * 3,
+                        900000 * 2,
+                        1100000 * 4,
+                        870000 * 3,
+                        800000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-08-01 → 2022-08-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "August",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 3,
+                        700000 * 4,
+                        400000 * 2,
+                        1800000 * 2,
+                        470000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-09-01 → 2022-09-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "September",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 3,
+                        270000 * 2,
+                        1000000 * 2,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-10-01 → 2022-10-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "October",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2500000 * 4,
+                        700000 * 3,
+                        400000 * 2,
+                        1800000 * 2,
+                        470000 * 1,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-11-01 → 2022-11-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "November",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2700000 * 4,
+                        1700000 * 2,
+                        900000 * 3,
+                        200000 * 2,
+                        870000 * 4,
+                        1000000 * 3,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+                
+              case "2022-12-01 → 2022-12-28":
+                this.setState({
+                  currentWeekEnd: "2022-12-28",
+                  currentWeekNum: "December",
+                  currentWeekData: [
+                    {
+                      name: "Week 4: 2022-12-08",
+                      data: [
+                        2600000 * 3,
+                        500000 * 4,
+                        900000 * 2,
+                        1400000 * 1,
+                        270000 * 3,
+                        1000000 * 4,
+                      ],
+                    },
+                  ],
+                  options: {
+                    ...this.state.options,
+                    colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                  },
+                });
+                break;
+  
+  
+  
+              default:
+                console.log("Error");
+                break;
+            }
+  
+          }
+        
+      });
     }
+    
+
   }
+
+
+
+
+
+
+
 
   render() {
     return (
@@ -410,7 +4790,7 @@ class App extends Component {
           <div className="topLeft">
             <h1>{this.state.currentWeekNum}</h1>
             <h2>
-              {this.state.currentWeek} → {this.state.currentWeekEnd}{" "}
+              {this.state.currentMonth}
             </h2>
           </div>
 

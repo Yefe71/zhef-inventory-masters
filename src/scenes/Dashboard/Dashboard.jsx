@@ -558,25 +558,25 @@ class Dashboard extends Component {
                 <MonthlyProductsSold month = {this.state.month} year = {this.state.year}/>
               </StyleChart6>
 
-              <StyleChart7>
+              {/* <StyleChart7>
                 <WeeklyYearlyProductSales month = {this.state.month} year = {this.state.year}/>
               </StyleChart7>
 
               <StyleChart8>
                 <WeeklyYearlyProductsSold month = {this.state.month} year = {this.state.year}/>
-              </StyleChart8>
+              </StyleChart8> */}
 
 
             </Grid>
             : null}
-
-
-
-
+            
 
             <StyleTable>
               <Table />
             </StyleTable>
+
+
+
           </Container>
         </div>
       </div>
