@@ -95,7 +95,7 @@ class Dashboard extends Component {
       });
     }
   }
-
+      
   moveForwardNav() {
     let currentIndex = this.state.toggles.indexOf(this.state.toggled);
     if (currentIndex !== 1) {
