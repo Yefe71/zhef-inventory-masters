@@ -8,7 +8,6 @@ const Container = styled.div`
   align-self: center;
   margin: 0 1.7rem 0 0;
   border-radius: 3rem;
-
   padding: 2rem;
   overflow-y: auto;
   scrollbar-width: none;

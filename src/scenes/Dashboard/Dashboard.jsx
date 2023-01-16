@@ -1,7 +1,7 @@
 // Imports
 import "./Dashboard.css"
 import profileImg from './images/dp.jpg'
-import {Grid, StyleHeader1, StyleHeader2, StyleHeader3, StyleChart1, StyleChart2, StyleChart3, StyleChart4,StyleTable} from '../../components/Layout/Grid'
+import {Grid, StyleHeader1, StyleHeader2, StyleHeader3, StyleChart1, StyleChart2, StyleChart3, StyleChart4, StyleChart5, StyleChart6, StyleChart7, StyleChart8, StyleTable} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
 import Table from "../../components/ContentComponents/Table/Table"
 import logo from "./images/logo.png"
@@ -10,6 +10,11 @@ import WeeklyProductSales from '../../components/ContentComponents/WeeklyProduct
 import WeeklyProductsSold from "../../components/ContentComponents/WeeklyProductsSold/WeeklyProductsSold"
 import DailyProductSales from "../../components/ContentComponents/DailyProductSales/DailyProductSales"
 import DailyProductsSold from "../../components/ContentComponents/DailyProductsSold/DailyProductsSold"
+import YearlyProductSales from "../../components/ContentComponents/YearlyProductSales/YearlyProductSales"
+import YearlyProductsSold from "../../components/ContentComponents/YearlyProductsSold/YearlyProductsSold"
+import MonthlyProductSales from "../../components/ContentComponents/MonthlyProductSales/MonthlyProductSales"
+import MonthlyProductsSold from "../../components/ContentComponents/MonthlyProductsSold/MonthlyProductsSold"
+
 
 import React from "react";
 import { Component } from "react";
@@ -85,7 +90,6 @@ class Dashboard extends Component {
       });
     }
   }
-
 
   moveBackwardNav() {
     let currentIndex = this.state.toggles.indexOf(this.state.toggled);
@@ -344,6 +348,9 @@ class Dashboard extends Component {
               <StyleChart4>
                 <DailyProductsSold month = {this.state.month} year = {this.state.year}/>
               </StyleChart4>
+
+
+
             </Grid>
 
             <StyleTable>

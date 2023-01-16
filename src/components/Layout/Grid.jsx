@@ -93,6 +93,28 @@ export const StyleChart4= styled(Card)`
     grid-area: chart4;
     `;
 
+
+export const StyleChart5= styled(Card)`
+    background: #1c2473;
+    grid-area: chart1;
+    `;
+
+export const StyleChart6= styled(Card)`
+    background: #1c2473;
+    grid-area: chart2;
+    `;
+
+export const StyleChart7= styled(Card)`
+    background: #1c2473;
+    grid-area: chart3;
+    `;
+
+export const StyleChart8= styled(Card)`
+    background: #1c2473;
+    grid-area: chart4;
+    `;
+
+
 export const StyleMonthCard = styled.div`
 
 
