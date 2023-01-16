@@ -1,6 +1,6 @@
 import React from "react";
-import MonthlyProductSalesChart from "../../Charts/MonthlyProductSalesChart/MonthlyProductSalesChart";
 import "./MonthlyProductSales.css";
+import MonthlyProductSalesChart from "../../Charts/MonthlyProductSalesChart/MonthlyProductSalesChart";
 
 const MonthlyProductSales = ({month, year}) => {
   return (

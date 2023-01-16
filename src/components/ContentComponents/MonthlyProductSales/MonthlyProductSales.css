@@ -1,5 +1,16 @@
+.title{
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+   
+
+}
 
 h3{
+    color: white;
+}
+
+h2{
     color: white;
 }
 
@@ -11,6 +22,31 @@ h3{
     align-items: center;
     margin-left: -32px;
 }
+.labelsy{
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    margin-left: 0px;
+
+}
+
+
+.labelsy2{
+    position: absolute;
+    top: -2200%;
+}
+
+.labelsy2 h2{
+    padding-bottom: 42px;
+}
+
+
+
+
+
+
 
 h3:nth-child(4){
     position: relative;

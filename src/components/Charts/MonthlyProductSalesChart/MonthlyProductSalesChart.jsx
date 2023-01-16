@@ -19,10 +19,9 @@ class App extends Component {
 
     this.state = {
       valueIncVat: ["wat"],
-
-      monthProp: this.props.month.month.toLowerCase().slice(0,3),
       yearProp: this.props.year.year,
-      
+      monthProp: this.props.month.month.toLowerCase().slice(0,3),
+
       weekDataAdo: [
 
       ],
@@ -48,7 +47,7 @@ class App extends Component {
         {
           name: "",
           data: [
-         
+           
           ],
         }
 
@@ -90,7 +89,7 @@ class App extends Component {
 
         yaxis: {
           min: 0,
-          max: 1500000,
+          max: 3000000,
           tickAmount: 5,
           labels: {
             formatter: function (value) {
@@ -108,7 +107,7 @@ class App extends Component {
           axisTicks: {
             color: "#363636",
           },
-          categories: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          categories: ["ADO", "ADO T", "E10", "KERO", "XCS", "XUB"],
 
           labels: {
             style: {
@@ -233,7 +232,7 @@ class App extends Component {
       return sum;
     }
     //fetch default data for currentWeekData at start
-
+  
     fetch(
       `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
       {
@@ -252,12 +251,12 @@ class App extends Component {
             }, () => {
               //second set state for adding fetched values to state on refresh
               this.setState({
-                weekDataAdo: this.state.valueIncVat.slice(0, 7),
-                weekDataAdoT: this.state.valueIncVat.slice(7, 14),
-                weekDataE10: this.state.valueIncVat.slice(14, 21),
-                weekDataKero: this.state.valueIncVat.slice(21, 28),
-                weekDataXcs: this.state.valueIncVat.slice(28, 35),
-                weekDataXub: this.state.valueIncVat.slice(35, 42),
+                weekDataAdo: Array.from({length: 7}, ( _ , i) => i * 6).map((i) => this.state.valueIncVat[i]),
+                weekDataAdoT:Array.from({length: 7}, ( _ , i) => i * 6 + 1).map((i) => this.state.valueIncVat[i]),
+                weekDataE10: Array.from({length: 7}, ( _ , i) => i * 6 + 2).map((i) => this.state.valueIncVat[i]),
+                weekDataKero:Array.from({length: 7}, ( _ , i) => i * 6 + 3).map((i) => this.state.valueIncVat[i]),
+                weekDataXcs: Array.from({length: 7}, ( _ , i) => i * 6 + 4).map((i) => this.state.valueIncVat[i]),
+                weekDataXub: Array.from({length: 7}, ( _ , i) => i * 6 + 5).map((i) => this.state.valueIncVat[i]),
               }, () => {
 
                 this.setState({
@@ -284,15 +283,13 @@ class App extends Component {
              //do something
         }
       });
-  
+    
   }
 
   componentDidUpdate(prevProps, prevState) {
- 
-    if (this.props.month !== prevProps.month || this.props.year !== prevProps.year ) {
+   
+    if (this.props.month !== prevProps.month || this.props.year !== prevProps.year) {
       this.setState({monthProp: this.props.month.month.toLowerCase().slice(0,3), yearProp: this.props.year.year}, () => {
-
-    
         fetch(
           `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
           {
@@ -313,12 +310,12 @@ class App extends Component {
                   //second set state for adding fetched values to state on refresh
                   this.setState({
 
-                    weekDataAdo: this.state.valueIncVat.slice(0, 7),
-                    weekDataAdoT: this.state.valueIncVat.slice(7, 14),
-                    weekDataE10: this.state.valueIncVat.slice(14, 21),
-                    weekDataKero: this.state.valueIncVat.slice(21, 28),
-                    weekDataXcs: this.state.valueIncVat.slice(28, 35),
-                    weekDataXub: this.state.valueIncVat.slice(35, 42),
+                    weekDataAdo: Array.from({length: 7}, ( _ , i) => i * 6).map((i) => this.state.valueIncVat[i]),
+                    weekDataAdoT:Array.from({length: 7}, ( _ , i) => i * 6 + 1).map((i) => this.state.valueIncVat[i]),
+                    weekDataE10: Array.from({length: 7}, ( _ , i) => i * 6 + 2).map((i) => this.state.valueIncVat[i]),
+                    weekDataKero:Array.from({length: 7}, ( _ , i) => i * 6 + 3).map((i) => this.state.valueIncVat[i]),
+                    weekDataXcs: Array.from({length: 7}, ( _ , i) => i * 6 + 4).map((i) => this.state.valueIncVat[i]),
+                    weekDataXub: Array.from({length: 7}, ( _ , i) => i * 6 + 5).map((i) => this.state.valueIncVat[i]),
                   }, () => {
 
                     switch (this.state.currentWeek) {
@@ -344,13 +341,13 @@ class App extends Component {
                             ...this.state.options,
                             colors: ["#ed1b2f", "#ffffff", "#ffffff"],
                           }
-          
+            
                           ,
                         });
                         break;
 
                       case "2022-12-08":
-       
+         
                         this.setState({
                           currentWeekEnd: "2022-12-14",
                           currentWeekNum: "Week 2",
@@ -434,7 +431,7 @@ class App extends Component {
 
 
       });
-  
+    
 
     }
 
@@ -445,8 +442,8 @@ class App extends Component {
       }
       return sum;
     }
-  
-    if (this.state.currentWeek !== prevState.currentWeek ) {
+    
+    if (this.state.currentWeek !== prevState.currentWeek) {
 
       fetch(
         `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
@@ -467,12 +464,13 @@ class App extends Component {
 
                 //second set state for adding fetched values to state on refresh
                 this.setState({
-                  weekDataAdo: this.state.valueIncVat.slice(0, 7),
-                  weekDataAdoT: this.state.valueIncVat.slice(7, 14),
-                  weekDataE10: this.state.valueIncVat.slice(14, 21),
-                  weekDataKero: this.state.valueIncVat.slice(21, 28),
-                  weekDataXcs: this.state.valueIncVat.slice(28, 35),
-                  weekDataXub: this.state.valueIncVat.slice(35, 42),
+
+                  weekDataAdo: Array.from({length: 7}, ( _ , i) => i * 6).map((i) => this.state.valueIncVat[i]),
+                  weekDataAdoT:Array.from({length: 7}, ( _ , i) => i * 6 + 1).map((i) => this.state.valueIncVat[i]),
+                  weekDataE10: Array.from({length: 7}, ( _ , i) => i * 6 + 2).map((i) => this.state.valueIncVat[i]),
+                  weekDataKero:Array.from({length: 7}, ( _ , i) => i * 6 + 3).map((i) => this.state.valueIncVat[i]),
+                  weekDataXcs: Array.from({length: 7}, ( _ , i) => i * 6 + 4).map((i) => this.state.valueIncVat[i]),
+                  weekDataXub: Array.from({length: 7}, ( _ , i) => i * 6 + 5).map((i) => this.state.valueIncVat[i]),
                 }, () => {
 
                   switch (this.state.currentWeek) {
@@ -498,13 +496,13 @@ class App extends Component {
                           ...this.state.options,
                           colors: ["#ed1b2f", "#ffffff", "#ffffff"],
                         }
-          
+            
                         ,
                       });
                       break;
 
                     case "2022-12-08":
-       
+         
                       this.setState({
                         currentWeekEnd: "2022-12-14",
                         currentWeekNum: "Week 2",
@@ -600,9 +598,8 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className="titleDayWeek3">Monthly Sales</h1>
-          <h2 className="titleDayWeekSub3">(In Philippine Peso)</h2>
-
+          <h1 className="titleSales">Monthly Product Sales</h1>
+          <h2 className = "titleDayWeekSub1">(In Philippine Peso)</h2>
           <div className="nav-buttons">
             <button
               onClick={() => {

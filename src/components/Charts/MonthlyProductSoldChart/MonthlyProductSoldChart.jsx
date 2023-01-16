@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import "./YearlyProductSoldChart.css";
+import "./MonthlyProductSoldChart.css";
 import moment from "moment";
 
 function shortenLabelsLiters(value) {
@@ -608,7 +608,7 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className="titleProducts">Yearly Products Sold</h1>
+          <h1 className="titleProducts">Monthly Products Sold</h1>
           <h2 className = "titleDayWeekSub2">(In Liters)</h2>
           <div className="nav-buttons">
             <button

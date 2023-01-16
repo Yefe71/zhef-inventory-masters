@@ -1,5 +1,5 @@
 import React from "react";
-import MonthlyProductsSoldChart from "../../Charts/MonthlyProductsSoldChart/MonthlyProductsSoldChart";
+import MonthlyProductsSoldChart from "../../Charts/MonthlyProductSoldChart/MonthlyProductSoldChart";
 import "./MonthlyProductsSold.css";
 
 const MonthlyProductsSold = ({month, year}) => {

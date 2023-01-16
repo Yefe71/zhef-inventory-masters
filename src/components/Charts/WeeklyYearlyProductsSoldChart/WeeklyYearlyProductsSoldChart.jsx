@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import "./YearlyProductSalesChart.css";
+import "./WeeklyYearlyProductsSoldChart.css";
 import moment from "moment";
 
-function shortenLabelsPesos(value) {
+function shortenLabelsLiters(value) {
   if (value >= 1000000) {
-    return "P" + (value / 1000000).toFixed(1) + "m";
+    return  (value / 1000000).toFixed(1) + "m L";
   } else if (value >= 1000) {
-    return "P" + (value / 1000).toFixed(1) + "k";
-  } else {
+    return  (value / 1000).toFixed(1) + "k L";
+
+  
+  } else if (value < 1000){
+    return  (value / 1000).toFixed(1) + "L";
+  }
+
+  else {
     return value;
   }
 }
@@ -19,9 +25,10 @@ class App extends Component {
 
     this.state = {
       valueIncVat: ["wat"],
-      yearProp: this.props.year.year,
-      monthProp: this.props.month.month.toLowerCase().slice(0,3),
 
+      monthProp: this.props.month.month.toLowerCase().slice(0,3),
+      yearProp: this.props.year.year,
+      
       weekDataAdo: [
 
       ],
@@ -47,7 +54,7 @@ class App extends Component {
         {
           name: "",
           data: [
-           
+         
           ],
         }
 
@@ -58,7 +65,7 @@ class App extends Component {
       currentWeekDefault: "01",
 
       options: {
-        colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+        colors: ["#0054f0", "#ffffff", "#ffffff"],
 
         grid: {
           borderColor: "#0401cf",
@@ -76,7 +83,7 @@ class App extends Component {
         },
         dataLabels: {
           formatter: function (value) {
-            return shortenLabelsPesos(value);
+            return shortenLabelsLiters(value);
           },
           enabled: true
         },
@@ -89,11 +96,11 @@ class App extends Component {
 
         yaxis: {
           min: 0,
-          max: 3000000,
+          max: 20000,
           tickAmount: 5,
           labels: {
             formatter: function (value) {
-              return shortenLabelsPesos(value);
+              return shortenLabelsLiters(value);
             },
             style: {
               colors: "white",
@@ -107,7 +114,7 @@ class App extends Component {
           axisTicks: {
             color: "#363636",
           },
-          categories: ["ADO", "ADO T", "E10", "KERO", "XCS", "XUB"],
+          categories: ["Week 1", "Week 2", "Week 3", "Week 4"],
 
           labels: {
             style: {
@@ -149,7 +156,7 @@ class App extends Component {
           //FETCH DATA
 
           fetch(
-            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
+            `http://localhost:3000/grabdata2?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
             {
               method: "get",
               headers: { "Content-Type": "application/json" },
@@ -158,7 +165,7 @@ class App extends Component {
             .then((response) => response.json())
             .then((values) => {
               if (values) {
-                let valueIncVat = values.map((item) => item.valueinvat);
+                let valueIncVat = values.map((item) => item.quantity);
                 this.setState(
                   {
                     valueIncVat: valueIncVat,
@@ -195,7 +202,7 @@ class App extends Component {
           //FETCH DATA
 
           fetch(
-            `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
+            `http://localhost:3000/grabdata2?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
             {
               method: "get",
               headers: { "Content-Type": "application/json" },
@@ -204,7 +211,7 @@ class App extends Component {
             .then((response) => response.json())
             .then((values) => {
               if (values) {
-                let valueIncVat = values.map((item) => item.valueinvat);
+                let valueIncVat = values.map((item) => item.quantity);
                 this.setState(
                   {
                     valueIncVat: valueIncVat,
@@ -232,9 +239,9 @@ class App extends Component {
       return sum;
     }
     //fetch default data for currentWeekData at start
-  
+
     fetch(
-      `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
+      `http://localhost:3000/grabdata2?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
       {
         method: "get",
         headers: { "Content-Type": "application/json" },
@@ -244,19 +251,19 @@ class App extends Component {
       .then((values) => {
         if (values) {
           console.log(values)
-          let valueIncVat = values.map((item) => item.valueinvat);
+          let valueIncVat = values.map((item) => item.quantity);
           this.setState(
             {
               valueIncVat: valueIncVat,
             }, () => {
               //second set state for adding fetched values to state on refresh
               this.setState({
-                weekDataAdo: Array.from({length: 7}, ( _ , i) => i * 6).map((i) => this.state.valueIncVat[i]),
-                weekDataAdoT:Array.from({length: 7}, ( _ , i) => i * 6 + 1).map((i) => this.state.valueIncVat[i]),
-                weekDataE10: Array.from({length: 7}, ( _ , i) => i * 6 + 2).map((i) => this.state.valueIncVat[i]),
-                weekDataKero:Array.from({length: 7}, ( _ , i) => i * 6 + 3).map((i) => this.state.valueIncVat[i]),
-                weekDataXcs: Array.from({length: 7}, ( _ , i) => i * 6 + 4).map((i) => this.state.valueIncVat[i]),
-                weekDataXub: Array.from({length: 7}, ( _ , i) => i * 6 + 5).map((i) => this.state.valueIncVat[i]),
+                weekDataAdo: this.state.valueIncVat.slice(0, 7),
+                weekDataAdoT: this.state.valueIncVat.slice(7, 14),
+                weekDataE10: this.state.valueIncVat.slice(14, 21),
+                weekDataKero: this.state.valueIncVat.slice(21, 28),
+                weekDataXcs: this.state.valueIncVat.slice(28, 35),
+                weekDataXub: this.state.valueIncVat.slice(35, 42),
               }, () => {
 
                 this.setState({
@@ -283,15 +290,17 @@ class App extends Component {
              //do something
         }
       });
-    
+  
   }
 
   componentDidUpdate(prevProps, prevState) {
-   
+ 
     if (this.props.month !== prevProps.month || this.props.year !== prevProps.year) {
       this.setState({monthProp: this.props.month.month.toLowerCase().slice(0,3), yearProp: this.props.year.year}, () => {
+
+    
         fetch(
-          `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
+          `http://localhost:3000/grabdata2?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
           {
             method: "get",
             headers: { "Content-Type": "application/json" },
@@ -300,7 +309,7 @@ class App extends Component {
           .then((response) => response.json())
           .then((values) => {
             if (values) {
-              let valueIncVat = values.map((item) => item.valueinvat);
+              let valueIncVat = values.map((item) => item.quantity);
               this.setState(
                 {
                   valueIncVat: valueIncVat,
@@ -309,13 +318,12 @@ class App extends Component {
 
                   //second set state for adding fetched values to state on refresh
                   this.setState({
-
-                    weekDataAdo: Array.from({length: 7}, ( _ , i) => i * 6).map((i) => this.state.valueIncVat[i]),
-                    weekDataAdoT:Array.from({length: 7}, ( _ , i) => i * 6 + 1).map((i) => this.state.valueIncVat[i]),
-                    weekDataE10: Array.from({length: 7}, ( _ , i) => i * 6 + 2).map((i) => this.state.valueIncVat[i]),
-                    weekDataKero:Array.from({length: 7}, ( _ , i) => i * 6 + 3).map((i) => this.state.valueIncVat[i]),
-                    weekDataXcs: Array.from({length: 7}, ( _ , i) => i * 6 + 4).map((i) => this.state.valueIncVat[i]),
-                    weekDataXub: Array.from({length: 7}, ( _ , i) => i * 6 + 5).map((i) => this.state.valueIncVat[i]),
+                    weekDataAdo: this.state.valueIncVat.slice(0, 7),
+                    weekDataAdoT: this.state.valueIncVat.slice(7, 14),
+                    weekDataE10: this.state.valueIncVat.slice(14, 21),
+                    weekDataKero: this.state.valueIncVat.slice(21, 28),
+                    weekDataXcs: this.state.valueIncVat.slice(28, 35),
+                    weekDataXub: this.state.valueIncVat.slice(35, 42),
                   }, () => {
 
                     switch (this.state.currentWeek) {
@@ -339,15 +347,15 @@ class App extends Component {
                           ],
                           options: {
                             ...this.state.options,
-                            colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                            colors: ["#0054f0", "#ffffff", "#ffffff"],
                           }
-            
+          
                           ,
                         });
                         break;
 
                       case "2022-12-08":
-         
+       
                         this.setState({
                           currentWeekEnd: "2022-12-14",
                           currentWeekNum: "Week 2",
@@ -366,7 +374,7 @@ class App extends Component {
                           ],
                           options: {
                             ...this.state.options,
-                            colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                            colors: ["#0054f0", "#ffffff", "#ffffff"],
                           },
                         });
                         break;
@@ -390,7 +398,7 @@ class App extends Component {
                           ],
                           options: {
                             ...this.state.options,
-                            colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                            colors: ["#0054f0", "#ffffff", "#ffffff"],
                           },
                         });
                         break;
@@ -413,7 +421,7 @@ class App extends Component {
                           ],
                           options: {
                             ...this.state.options,
-                            colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                            colors: ["#0054f0", "#ffffff", "#ffffff"],
                           },
                         });
                         break;
@@ -431,7 +439,7 @@ class App extends Component {
 
 
       });
-    
+  
 
     }
 
@@ -442,11 +450,11 @@ class App extends Component {
       }
       return sum;
     }
-    
+  
     if (this.state.currentWeek !== prevState.currentWeek) {
 
       fetch(
-        `http://localhost:3000/grabdata?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
+        `http://localhost:3000/grabdata2?weekStart=${this.state.currentWeek.slice(-2)}&weekEnd=${this.state.currentWeekEnd.slice(-2)}&month=${this.state.monthProp}&year=${this.state.yearProp}`,
         {
           method: "get",
           headers: { "Content-Type": "application/json" },
@@ -455,7 +463,7 @@ class App extends Component {
         .then((response) => response.json())
         .then((values) => {
           if (values) {
-            let valueIncVat = values.map((item) => item.valueinvat);
+            let valueIncVat = values.map((item) => item.quantity);
             this.setState(
               {
                 valueIncVat: valueIncVat,
@@ -464,13 +472,12 @@ class App extends Component {
 
                 //second set state for adding fetched values to state on refresh
                 this.setState({
-
-                  weekDataAdo: Array.from({length: 7}, ( _ , i) => i * 6).map((i) => this.state.valueIncVat[i]),
-                  weekDataAdoT:Array.from({length: 7}, ( _ , i) => i * 6 + 1).map((i) => this.state.valueIncVat[i]),
-                  weekDataE10: Array.from({length: 7}, ( _ , i) => i * 6 + 2).map((i) => this.state.valueIncVat[i]),
-                  weekDataKero:Array.from({length: 7}, ( _ , i) => i * 6 + 3).map((i) => this.state.valueIncVat[i]),
-                  weekDataXcs: Array.from({length: 7}, ( _ , i) => i * 6 + 4).map((i) => this.state.valueIncVat[i]),
-                  weekDataXub: Array.from({length: 7}, ( _ , i) => i * 6 + 5).map((i) => this.state.valueIncVat[i]),
+                  weekDataAdo: this.state.valueIncVat.slice(0, 7),
+                  weekDataAdoT: this.state.valueIncVat.slice(7, 14),
+                  weekDataE10: this.state.valueIncVat.slice(14, 21),
+                  weekDataKero: this.state.valueIncVat.slice(21, 28),
+                  weekDataXcs: this.state.valueIncVat.slice(28, 35),
+                  weekDataXub: this.state.valueIncVat.slice(35, 42),
                 }, () => {
 
                   switch (this.state.currentWeek) {
@@ -494,15 +501,15 @@ class App extends Component {
                         ],
                         options: {
                           ...this.state.options,
-                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                          colors: ["#0054f0", "#ffffff", "#ffffff"],
                         }
-            
+          
                         ,
                       });
                       break;
 
                     case "2022-12-08":
-         
+       
                       this.setState({
                         currentWeekEnd: "2022-12-14",
                         currentWeekNum: "Week 2",
@@ -521,7 +528,7 @@ class App extends Component {
                         ],
                         options: {
                           ...this.state.options,
-                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                          colors: ["#0054f0", "#ffffff", "#ffffff"],
                         },
                       });
                       break;
@@ -545,7 +552,7 @@ class App extends Component {
                         ],
                         options: {
                           ...this.state.options,
-                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                          colors: ["#0054f0", "#ffffff", "#ffffff"],
                         },
                       });
                       break;
@@ -568,7 +575,7 @@ class App extends Component {
                         ],
                         options: {
                           ...this.state.options,
-                          colors: ["#ed1b2f", "#ffffff", "#ffffff"],
+                          colors: ["#0054f0", "#ffffff", "#ffffff"],
                         },
                       });
                       break;
@@ -587,6 +594,7 @@ class App extends Component {
     }
   }
 
+
   render() {
     return (
       <div className="app">
@@ -598,8 +606,9 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className="titleSales">Yearly Product Sales</h1>
-          <h2 className = "titleDayWeekSub1">(In Philippine Peso)</h2>
+          <h1 className="titleDayWeek4">Weekly Liters Sold</h1>
+          <h2 className="titleDayWeekSub4">(In Liters)</h2>
+
           <div className="nav-buttons">
             <button
               onClick={() => {
@@ -626,7 +635,7 @@ class App extends Component {
           <Chart
             options={this.state.options}
             series={this.state.currentWeekData}
-            type="area"
+            type="bar"
             width="610"
           />
         </div>

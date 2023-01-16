@@ -10,8 +10,8 @@ import WeeklyProductSales from '../../components/ContentComponents/WeeklyProduct
 import WeeklyProductsSold from "../../components/ContentComponents/WeeklyProductsSold/WeeklyProductsSold"
 import DailyProductSales from "../../components/ContentComponents/DailyProductSales/DailyProductSales"
 import DailyProductsSold from "../../components/ContentComponents/DailyProductsSold/DailyProductsSold"
-import YearlyProductSales from "../../components/ContentComponents/YearlyProductSales/YearlyProductSales"
-import YearlyProductsSold from "../../components/ContentComponents/YearlyProductsSold/YearlyProductsSold"
+import WeeklyYearlyProductSales from "../../components/ContentComponents/WeeklyYearlyProductSales/WeeklyYearlyProductSales"
+import WeeklyYearlyProductsSold from "../../components/ContentComponents/WeeklyYearlyProductsSold/WeeklyYearlyProductsSold"
 import MonthlyProductSales from "../../components/ContentComponents/MonthlyProductSales/MonthlyProductSales"
 import MonthlyProductsSold from "../../components/ContentComponents/MonthlyProductsSold/MonthlyProductsSold"
 
@@ -358,7 +358,6 @@ class Dashboard extends Component {
 
             <Grid>
 
-
             {this.state.toggled === "Monthly" ? 
                 <div>
 
@@ -552,19 +551,19 @@ class Dashboard extends Component {
               : null}
 
               <StyleChart5>
-                <YearlyProductSales month = {this.state.month} year = {this.state.year}/>
+                <MonthlyProductSales month = {this.state.month} year = {this.state.year}/>
               </StyleChart5>
 
               <StyleChart6>
-                <YearlyProductsSold month = {this.state.month} year = {this.state.year}/>
+                <MonthlyProductsSold month = {this.state.month} year = {this.state.year}/>
               </StyleChart6>
 
               <StyleChart7>
-                <MonthlyProductSales month = {this.state.month} year = {this.state.year}/>
+                <WeeklyYearlyProductSales month = {this.state.month} year = {this.state.year}/>
               </StyleChart7>
 
               <StyleChart8>
-                <MonthlyProductsSold month = {this.state.month} year = {this.state.year}/>
+                <WeeklyYearlyProductsSold month = {this.state.month} year = {this.state.year}/>
               </StyleChart8>
 
 
