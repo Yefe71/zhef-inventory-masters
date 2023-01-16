@@ -52,7 +52,7 @@ class App extends Component {
         }
 
       ],
-      currentWeekNum: "Week 1",
+      currentWeekNum: "January",
       currentWeek: "2022-12-01",
       currentWeekEnd: "2022-12-07",
       currentWeekDefault: "01",
@@ -261,7 +261,7 @@ class App extends Component {
 
                 this.setState({
                 currentWeekEnd: "2022-12-07",
-                currentWeekNum: "Week 1",
+                currentWeekNum: "January",
                 currentWeekData: [
                   {
                     name: "Week 1: 2022-12-01",
@@ -323,7 +323,7 @@ class App extends Component {
 
                         this.setState({
                           currentWeekEnd: "2022-12-07",
-                          currentWeekNum: "Week 1",
+                          currentWeekNum: "January",
                           currentWeekData: [
                             {
                               name: "Week 1: 2022-12-01",
@@ -350,7 +350,7 @@ class App extends Component {
          
                         this.setState({
                           currentWeekEnd: "2022-12-14",
-                          currentWeekNum: "Week 2",
+                          currentWeekNum: "February",
                           currentWeekData: [
                             {
                               name: "Week 2: 2022-12-08",
@@ -374,7 +374,7 @@ class App extends Component {
                       case "2022-12-15":
                         this.setState({
                           currentWeekEnd: "2022-12-21",
-                          currentWeekNum: "Week 3",
+                          currentWeekNum: "March",
                           currentWeekData: [
                             {
                               name: "Week 3: 2022-12-15",
@@ -397,7 +397,7 @@ class App extends Component {
                       case "2022-12-22":
                         this.setState({
                           currentWeekEnd: "2022-12-28",
-                          currentWeekNum: "Week 4",
+                          currentWeekNum: "April",
                           currentWeekData: [
                             {
                               name: "Week 4: 2022-12-08",
@@ -478,7 +478,7 @@ class App extends Component {
 
                       this.setState({
                         currentWeekEnd: "2022-12-07",
-                        currentWeekNum: "Week 1",
+                        currentWeekNum: "January",
                         currentWeekData: [
                           {
                             name: "Week 1: 2022-12-01",
@@ -505,7 +505,7 @@ class App extends Component {
          
                       this.setState({
                         currentWeekEnd: "2022-12-14",
-                        currentWeekNum: "Week 2",
+                        currentWeekNum: "February",
                         currentWeekData: [
                           {
                             name: "Week 2: 2022-12-08",
@@ -529,7 +529,7 @@ class App extends Component {
                     case "2022-12-15":
                       this.setState({
                         currentWeekEnd: "2022-12-21",
-                        currentWeekNum: "Week 3",
+                        currentWeekNum: "March",
                         currentWeekData: [
                           {
                             name: "Week 3: 2022-12-15",
@@ -552,7 +552,7 @@ class App extends Component {
                     case "2022-12-22":
                       this.setState({
                         currentWeekEnd: "2022-12-28",
-                        currentWeekNum: "Week 4",
+                        currentWeekNum: "April",
                         currentWeekData: [
                           {
                             name: "Week 4: 2022-12-08",
