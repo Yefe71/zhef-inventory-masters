@@ -136,6 +136,8 @@ class Dashboard extends Component {
           </div>
 
           <Container>
+
+          {this.state.toggled === "Monthly" ? 
             <Grid>
 
 
@@ -331,8 +333,6 @@ class Dashboard extends Component {
                 </div>
               : null}
 
-           
-
               <StyleChart1>
                 <WeeklyProductSales month = {this.state.month} year = {this.state.year}/>
               </StyleChart1>
@@ -350,8 +350,230 @@ class Dashboard extends Component {
               </StyleChart4>
 
 
+            </Grid>
+            : null}
+
+
+          {this.state.toggled === "Yearly" ? 
+
+            <Grid>
+
+
+            {this.state.toggled === "Monthly" ? 
+                <div>
+
+                  <StyleHeader1>
+                    <img className="logo" src={logo} alt="" />DASHBOARD
+                    <div className = "navContainer">
+
+
+                        <div className = "navButtons">
+
+                          <button
+                            onClick={() => {
+                              this.moveBackwardNav();
+                            }}
+                            type="button"
+                            className="backBtRootNav"
+                          >
+                            &lt;
+                          </button>
+
+              
+                          <button
+                            onClick={() => {
+                              this.moveForwardNav();
+                            }}
+                            type="button"
+                            className="forwardBtRootNav"
+                          >
+                            &gt;
+                          </button>
+              
+                        </div>
+                      </div>  
+
+                      <div className = "titleNav">
+                        <div className = "">{this.state.toggled}</div>
+                      </div>              
+                  </StyleHeader1>
+
+                  <StyleHeader2>
+                    <img className="logo" src={logo} alt="" />DASHBOARD
+                    <div className = "monthContainer">
+
+
+                        <div className = "monthButtons">
+
+                          <button
+                            onClick={() => {
+                              this.moveBackwardMonth();
+                            }}
+                            type="button"
+                            className="backBtRootMonth"
+                          >
+                            &lt;
+                          </button>
+
+              
+                          <button
+                            onClick={() => {
+                              this.moveForwardMonth();
+                            }}
+                            type="button"
+                            className="forwardBtRootMonth"
+                          >
+                            &gt;
+                          </button>
+              
+                        </div>
+                      </div>  
+
+                      <div className = "titleMonth">
+                        <div className = "">{this.state.month}</div>
+                      </div>              
+                  </StyleHeader2>
+
+                  <StyleHeader3>
+                    <img className="logo" src={logo} alt="" />DASHBOARD
+                    <div className = "yearContainer">
+
+
+                        <div className = "yearButtons">
+
+                          <button
+                            onClick={() => {
+                              this.moveBackwardYear();
+                            }}
+                            type="button"
+                            className="backBtRootYear"
+                          >
+                            &lt;
+                          </button>
+
+              
+                          <button
+                            onClick={() => {
+                              this.moveForwardYear();
+                            }}
+                            type="button"
+                            className="forwardBtRootYear"
+                          >
+                            &gt;
+                          </button>
+              
+                        </div>
+                      </div>  
+
+                      <div className = "titleyear">
+                        <div className = "">{this.state.year}</div>
+                      </div>              
+                  </StyleHeader3>
+
+                  <div className="vl"></div>
+
+                </div>
+              : null}
+
+              {this.state.toggled === "Yearly" ? 
+                <div>
+                   <StyleHeader1>
+                    <img className="logo" src={logo} alt="" />DASHBOARD
+                    <div className = "navContainer">
+
+
+                        <div className = "navButtons">
+
+                          <button
+                            onClick={() => {
+                              this.moveBackwardNav();
+                            }}
+                            type="button"
+                            className="backBtRootNav"
+                          >
+                            &lt;
+                          </button>
+
+              
+                          <button
+                            onClick={() => {
+                              this.moveForwardNav();
+                            }}
+                            type="button"
+                            className="forwardBtRootNav"
+                          >
+                            &gt;
+                          </button>
+              
+                        </div>
+                      </div>  
+
+                      <div className = "titleNav">
+                        <div className = "">{this.state.toggled}</div>
+                      </div>              
+                   </StyleHeader1>
+
+                   <StyleHeader3>
+                    <img className="logo" src={logo} alt="" />DASHBOARD
+                    <div className = "yearContainer">
+
+
+                        <div className = "yearButtons">
+
+                          <button
+                            onClick={() => {
+                              this.moveBackwardYear();
+                            }}
+                            type="button"
+                            className="backBtRootYear"
+                          >
+                            &lt;
+                          </button>
+
+              
+                          <button
+                            onClick={() => {
+                              this.moveForwardYear();
+                            }}
+                            type="button"
+                            className="forwardBtRootYear"
+                          >
+                            &gt;
+                          </button>
+              
+                        </div>
+                      </div>  
+
+                      <div className = "titleyear">
+                        <div className = "">{this.state.year}</div>
+                      </div>              
+                  </StyleHeader3>
+                </div>
+              : null}
+
+              <StyleChart5>
+                <YearlyProductSales month = {this.state.month} year = {this.state.year}/>
+              </StyleChart5>
+
+              <StyleChart6>
+                <YearlyProductsSold month = {this.state.month} year = {this.state.year}/>
+              </StyleChart6>
+
+              <StyleChart7>
+                <MonthlyProductSales month = {this.state.month} year = {this.state.year}/>
+              </StyleChart7>
+
+              <StyleChart8>
+                <MonthlyProductsSold month = {this.state.month} year = {this.state.year}/>
+              </StyleChart8>
+
 
             </Grid>
+            : null}
+
+
+
+
 
             <StyleTable>
               <Table />
