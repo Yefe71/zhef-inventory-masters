@@ -28,22 +28,31 @@ margin-left: 7%
 
 }
 
-.topLeft2{
-    visibility: hidden;
-}
-
-.nav-buttons2{
-    visibility: hidden;
-}
 
 
-.titleSales{
+
+.titleSales1{
     font-size: 25px;
     font-weight: 600;
     color: rgb(255, 255, 255);
     position: absolute;
-    left: 29.6%;
+    left: 32.6%;
 }
+.titleSales2{
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 31.6%;
+}
+.titleSales3{
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    left: 31.6%;
+}
+
 .topBarSales{
     position: relative;
     display: flex;

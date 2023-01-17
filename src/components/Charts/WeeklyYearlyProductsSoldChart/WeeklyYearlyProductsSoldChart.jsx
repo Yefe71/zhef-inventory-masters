@@ -4435,7 +4435,7 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className="titleDayWeek4">Weekly Liters Sold</h1>
+          <h1 className="titleDayWeek6">Weekly Liters Sold</h1>
           <h2 className="titleDayWeekSub4">(In Liters)</h2>
 
           <div className="nav-buttons">

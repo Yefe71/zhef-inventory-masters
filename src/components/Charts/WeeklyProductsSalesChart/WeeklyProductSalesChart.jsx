@@ -579,7 +579,7 @@ class App extends Component {
             </h2>
           </div>
 
-          <h1 className="titleSales">Weekly Product Sales</h1>
+          <h1 className="titleSales1">Weekly Product Sales</h1>
           <h2 className = "titleDayWeekSub1">(In Philippine Peso)</h2>
           <div className="nav-buttons">
             <button

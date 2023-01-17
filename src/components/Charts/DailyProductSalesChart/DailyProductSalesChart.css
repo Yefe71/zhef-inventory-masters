@@ -41,7 +41,15 @@
         font-weight: 600;
         color: rgb(255, 255, 255);
         position: absolute;
-        left: 34.5%;
+        left: 37.5%;
+        top: 3%;
+    }
+    .titleDayWeek6{
+        font-size: 25px;
+        font-weight: 600;
+        color: rgb(255, 255, 255);
+        position: absolute;
+        left: 33.5%;
         top: 3%;
     }
 
