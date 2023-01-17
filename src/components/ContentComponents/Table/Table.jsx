@@ -84,7 +84,7 @@ class BasicTable extends React.Component {
     render() {
         return (
         <div className="Table">
-        <h3 className="title" style = {{marginBottom: "10px"}}>Recent Orders</h3>
+        <h3 className="title" style = {{marginBottom: "10px"}}>Recent Transactions</h3>
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
           <TableContainer sx={{ maxHeight: 350}}>
             <Table stickyHeader aria-label="sticky table">

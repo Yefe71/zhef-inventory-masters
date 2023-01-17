@@ -1,6 +1,6 @@
 // Imports
 import "./Dashboard.css"
-import profileImg from './images/dp.jpg'
+import profileImg from './images/index.jpg'
 import {Grid, Grid2, StyleHeader1, StyleHeader2, StyleHeader3, StyleChart1, StyleChart2, StyleChart3, StyleChart4, StyleChart5, StyleChart6, StyleChart7, StyleChart8, StyleTable} from '../../components/Layout/Grid'
 import Container from '../../components/Layout/Container'
 import Table from "../../components/ContentComponents/Table/Table"
@@ -120,8 +120,8 @@ class Dashboard extends Component {
           <div className="aside-container">
             <div className="info-container">
               <img src={profileImg} alt="" />
-              <h1 className="username">Zhef</h1>
-              <h3 className="email">zhef71@gmail.com</h3>
+              <h1 className="username">Admin</h1>
+              <h3 className="email">admin@group3adb.com</h3>
             </div>
             <div className="nav-links">
               <li>
